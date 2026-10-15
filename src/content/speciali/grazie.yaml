@@ -1,0 +1,9 @@
+# Contenuti della pagina di conferma, da docs/testi-it.md (sezione "Pagina di conferma").
+# I testi del cliente non si modificano.
+h1: Grazie, abbiamo ricevuto la vostra richiesta
+testo: Un nostro tecnico la leggerà e vi ricontatterà all'indirizzo email o al numero che ci avete indicato. Nel frattempo potete approfondire i nostri servizi o leggere gli ultimi articoli del blog.
+link:
+  - label: Tornate alla home
+    href: /
+  - label: Leggete il blog
+    href: /blog/

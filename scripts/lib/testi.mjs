@@ -154,3 +154,35 @@ export function stringheAttese(pagina) {
   for (const s of pagina.sezioni) { if (s.titolo !== 'Domande frequenti') out.push(s.titolo); daBlocchi(s.blocchi); }
   return out;
 }
+
+// Annotazioni tra parentesi che nei testi di servizio descrivono il sito multilingue.
+const ANNOTAZIONI = [' (nelle altre lingue: Paese)', ' (solo in italiano)'];
+const PREFISSI_ELENCO = ['Campi: ', 'Messaggi di errore: ', 'Link: ', 'Colonna recapiti: '];
+const PREFISSI_VALORE = ['H1: ', 'Testo guida del campo Messaggio: ', 'Casella obbligatoria: ', 'Casella facoltativa: ', 'Bottone: ', 'Blocco candidature: '];
+// Parole che nei testi indicano un componente e non un testo da pubblicare.
+const SEGNALI = new Set(['mappa']);
+
+/** Testi della sezione "Blog, contatti e testi di servizio", per titolo di terzo livello. */
+export function leggiTestiServizio(percorso) {
+  const md = readFileSync(percorso, 'utf8').replace(/\r\n/g, '\n');
+  const sezione = md.split(/^## /m).find((p) => p.startsWith('Blog, contatti e testi di servizio'));
+  const out = {};
+  for (const parte of sezione.split(/^### /m).slice(1)) {
+    const [titolo, ...righe] = parte.split('\n');
+    const attese = [];
+    for (let r of righe) {
+      r = r.trim();
+      if (!r) continue;
+      for (const a of ANNOTAZIONI) r = r.replace(a, '');
+      const meta = r.match(/^Title: (.+?)\. Description: (.+)$/);
+      if (meta) { attese.push(meta[1], meta[2]); continue; }
+      const pe = PREFISSI_ELENCO.find((p) => r.startsWith(p));
+      if (pe) { attese.push(...senzaPunto(r.slice(pe.length)).split(' · ').filter((v) => !SEGNALI.has(v))); continue; }
+      const pv = PREFISSI_VALORE.find((p) => r.startsWith(p));
+      if (pv) { const v = r.slice(pv.length); attese.push(pv === 'Blocco candidature: ' || pv === 'Testo guida del campo Messaggio: ' ? v : senzaPunto(v)); continue; }
+      attese.push(r);
+    }
+    out[titolo.trim()] = attese;
+  }
+  return out;
+}

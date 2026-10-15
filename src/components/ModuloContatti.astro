@@ -1,0 +1,183 @@
+---
+// Modulo contatti della demo (docs/brief-sito.md, "Il form"): validazione lato client,
+// precompilazione del servizio da ?servizio=, poi /contatti/grazie/. Non invia dati.
+import Icon from './Icon.astro';
+import { province } from '../data/province';
+import { servizi } from '../data/servizi';
+
+interface Props {
+  testi: Record<string, any>;
+}
+const { testi } = Astro.props;
+const { campi, errori } = testi;
+const [primaPrivacy, dopoPrivacy] = (testi.privacy as string).split('informativa sulla privacy');
+---
+<form class="modulo" id="modulo-contatti" method="post" action="/contatti/grazie/" novalidate
+  data-err-obbligatorio={errori.obbligatorio} data-err-email={errori.email} data-err-privacy={errori.privacy}>
+
+  <input type="hidden" name="lingua" value="it" />
+  <input type="hidden" name="origine" value="" />
+  <input type="hidden" name="pagina_origine" value="" />
+  <input type="hidden" name="utm_source" value="" />
+  <input type="hidden" name="utm_medium" value="" />
+  <input type="hidden" name="utm_campaign" value="" />
+  <input type="hidden" name="utm_term" value="" />
+  <input type="hidden" name="utm_content" value="" />
+
+  <div class="griglia">
+    <div class="campo">
+      <label for="f-nome">{campi.nome}</label>
+      <input id="f-nome" name="nome" type="text" autocomplete="name" required aria-describedby="e-nome" />
+      <p class="errore" id="e-nome" hidden></p>
+    </div>
+    <div class="campo">
+      <label for="f-azienda">{campi.azienda}</label>
+      <input id="f-azienda" name="azienda" type="text" autocomplete="organization" required aria-describedby="e-azienda" />
+      <p class="errore" id="e-azienda" hidden></p>
+    </div>
+    <div class="campo">
+      <label for="f-email">{campi.email}</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email" />
+      <p class="errore" id="e-email" hidden></p>
+    </div>
+    <div class="campo">
+      <label for="f-telefono">{campi.telefono}</label>
+      <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" />
+    </div>
+    <div class="campo">
+      <label for="f-provincia">{campi.provincia}</label>
+      <select id="f-provincia" name="provincia" required aria-describedby="e-provincia">
+        <option value=""></option>
+        {province.map((p) => <option value={p.sigla}>{p.nome}</option>)}
+      </select>
+      <p class="errore" id="e-provincia" hidden></p>
+    </div>
+    <div class="campo">
+      <label for="f-servizio">{campi.area}</label>
+      <select id="f-servizio" name="servizio" required aria-describedby="e-servizio">
+        <option value=""></option>
+        {servizi.map((s) => <option value={s.slug}>{s.nome}</option>)}
+        <option value="altro">{testi.altroServizio}</option>
+      </select>
+      <p class="errore" id="e-servizio" hidden></p>
+    </div>
+    <div class="campo largo">
+      <label for="f-messaggio">{campi.messaggio}</label>
+      <p class="guida small" id="g-messaggio">{testi.guidaMessaggio}</p>
+      <textarea id="f-messaggio" name="messaggio" rows="6" required aria-describedby="g-messaggio e-messaggio"></textarea>
+      <p class="errore" id="e-messaggio" hidden></p>
+    </div>
+  </div>
+
+  <div class="caselle">
+    <div class="campo">
+      <label class="casella" for="f-privacy">
+        <input id="f-privacy" name="privacy" type="checkbox" required aria-describedby="e-privacy" />
+        <span>{primaPrivacy}<a href="/privacy-policy/">informativa sulla privacy</a>{dopoPrivacy}</span>
+      </label>
+      <p class="errore" id="e-privacy" hidden></p>
+    </div>
+    <label class="casella" for="f-newsletter">
+      <input id="f-newsletter" name="newsletter" type="checkbox" />
+      <span>{testi.newsletter}</span>
+    </label>
+  </div>
+
+  <div class="invio">
+    <button class="btn btn-primary" type="submit">{testi.bottone}</button>
+    <p class="small nota"><Icon name="info" class="icon icon-sm" />{testi.notaDemo}</p>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById('modulo-contatti') as HTMLFormElement;
+  const msg = {
+    obbligatorio: form.dataset.errObbligatorio ?? '',
+    email: form.dataset.errEmail ?? '',
+    privacy: form.dataset.errPrivacy ?? '',
+  };
+  const params = new URLSearchParams(location.search);
+
+  // Precompilazione dai parametri del link della CTA e campi nascosti.
+  const servizio = form.elements.namedItem('servizio') as HTMLSelectElement;
+  const richiesto = params.get('servizio');
+  if (richiesto && [...servizio.options].some((o) => o.value === richiesto)) servizio.value = richiesto;
+  const nascosto = (n: string, v: string) => { (form.elements.namedItem(n) as HTMLInputElement).value = v; };
+  nascosto('origine', params.get('origine') ?? '');
+  try {
+    const ref = document.referrer ? new URL(document.referrer) : null;
+    nascosto('pagina_origine', ref && ref.origin === location.origin ? ref.pathname : '');
+  } catch { /* referrer non valido */ }
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach((k) => nascosto(k, params.get(k) ?? ''));
+
+  // Validazione.
+  const campi = [...form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[required]')];
+  const emailValida = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+  const errore = (el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): string => {
+    if (el instanceof HTMLInputElement && el.type === 'checkbox') return el.checked ? '' : msg.privacy;
+    const v = el.value.trim();
+    if (!v) return msg.obbligatorio;
+    if (el instanceof HTMLInputElement && el.type === 'email' && !emailValida(v)) return msg.email;
+    return '';
+  };
+
+  const mostra = (el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) => {
+    const testo = errore(el);
+    const box = document.getElementById(`e-${el.name}`);
+    el.setAttribute('aria-invalid', String(Boolean(testo)));
+    if (box) { box.textContent = testo; box.hidden = !testo; }
+    return !testo;
+  };
+
+  let tentato = false;
+  campi.forEach((el) => {
+    const evento = el instanceof HTMLSelectElement || (el instanceof HTMLInputElement && el.type === 'checkbox') ? 'change' : 'input';
+    el.addEventListener(evento, () => { if (tentato) mostra(el); });
+    el.addEventListener('blur', () => { if (tentato) mostra(el); });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    tentato = true;
+    const invalidi = campi.filter((el) => !mostra(el));
+    if (invalidi.length) { invalidi[0]!.focus(); return; }
+    // Demo: nessun dato viene inviato o salvato.
+    location.assign('/contatti/grazie/');
+  });
+</script>
+
+<style>
+  .modulo {
+    background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: var(--space-6); display: grid; gap: var(--space-6);
+  }
+  @media (min-width: 768px) { .modulo { padding: var(--space-8); } }
+  .griglia { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 640px) {
+    .griglia { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .largo { grid-column: 1 / -1; }
+  }
+  .campo { display: grid; gap: var(--space-2); align-content: start; }
+  label { font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--label-weight); color: var(--ink); }
+  .guida { margin-top: calc(-1 * var(--space-1)); }
+  input:not([type='checkbox']), select, textarea {
+    width: 100%; font: inherit; font-size: var(--body-size); line-height: var(--body-line); color: var(--ink);
+    background: var(--surface-raised); border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3); min-height: var(--space-12);
+  }
+  textarea { resize: vertical; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+  [aria-invalid='true'] { border-color: var(--state-danger) !important; }
+  .errore { color: var(--state-danger); font-size: var(--small-size); line-height: var(--small-line); font-weight: var(--label-weight); }
+
+  .caselle { display: grid; gap: var(--space-4); }
+  .casella { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); align-items: start; font-weight: var(--body-weight); }
+  .casella input {
+    width: var(--space-6); height: var(--space-6); margin: 0; accent-color: var(--brand);
+  }
+  .casella input[aria-invalid='true'] { outline: 2px solid var(--state-danger); outline-offset: 1px; }
+
+  .invio { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); }
+  .nota { display: inline-flex; align-items: center; gap: var(--space-2); }
+</style>

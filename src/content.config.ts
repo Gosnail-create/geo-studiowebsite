@@ -48,4 +48,10 @@ const pagine = defineCollection({
   }),
 });
 
-export const collections = { pagine };
+// Pagine con struttura propria (Contatti, conferma): i campi li leggono le singole pagine.
+const speciali = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/speciali' }),
+  schema: z.record(z.string(), z.any()),
+});
+
+export const collections = { pagine, speciali };

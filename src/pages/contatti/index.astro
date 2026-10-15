@@ -1,0 +1,50 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import ModuloContatti from '../../components/ModuloContatti.astro';
+import MappaSede from '../../components/MappaSede.astro';
+import Testo from '../../components/Testo.astro';
+import Icon from '../../components/Icon.astro';
+import { foto, type NomeFoto } from '../../data/immagini';
+import { azienda } from '../../data/sito';
+
+const t = (await getEntry('speciali', 'contatti'))!.data;
+const [ragione, indirizzo, tel, email, piva] = t.recapiti as string[];
+---
+<Base title={t.title} description={t.description}>
+  <Hero titolo={t.h1} testo={[t.testo]} foto={foto(t.foto as NomeFoto)} />
+
+  <section class="section section--sunken" aria-label={t.h1}>
+    <div class="container contatti">
+      <div class="col-modulo">
+        <ModuloContatti testi={t} />
+      </div>
+      <aside class="col-recapiti" aria-label="Recapiti">
+        <address class="recapiti">
+          <p class="h3">{ragione}</p>
+          <p class="riga"><Icon name="map-pin" class="icon" /><span>{indirizzo}</span></p>
+          <p class="riga"><Icon name="phone" class="icon" /><a href={azienda.telefonoHref}>{tel}</a></p>
+          <p class="riga"><Icon name="mail" class="icon" /><a href={`mailto:${email}`}>{email}</a></p>
+          <p class="small">{piva}</p>
+        </address>
+        <MappaSede />
+        <p class="candidature"><Testo text={t.candidature} /></p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contatti { display: grid; gap: var(--space-8); }
+  @media (min-width: 1080px) {
+    .contatti { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); align-items: start; }
+    .col-modulo { grid-column: 1 / span 8; }
+    .col-recapiti { grid-column: 9 / span 4; }
+  }
+  .col-recapiti { display: grid; gap: var(--space-6); }
+  .recapiti { font-style: normal; display: grid; gap: var(--space-3); }
+  .riga { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); align-items: start; }
+  .riga :global(.icon) { color: var(--brand); margin-top: var(--space-1); }
+  .candidature { padding-top: var(--space-6); border-top: 1px solid var(--line-strong); }
+</style>

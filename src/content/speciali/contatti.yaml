@@ -1,0 +1,33 @@
+# Contenuti della pagina Contatti, da docs/testi-it.md (sezione "Contatti") e docs/brief-sito.md (form).
+# I testi del cliente non si modificano.
+title: Contatti | Geo Studio Engineering, Bovolone (VR)
+description: Scriveteci per una consulenza su sicurezza, ambiente, prevenzione incendi, sistemi di gestione, formazione o progettazione di impianti. Tel. 045 7101045.
+h1: Parliamo del vostro progetto
+testo: "Compilate il modulo con qualche informazione sulla vostra azienda e su ciò di cui avete bisogno: un nostro tecnico vi ricontatterà per approfondire. Se preferite, potete chiamarci o scriverci direttamente ai recapiti qui accanto."
+foto: facciata-edificio-uffici
+campi:
+  nome: Nome e cognome
+  azienda: Azienda o ente
+  email: Email
+  telefono: Telefono (facoltativo)
+  provincia: Provincia
+  area: Servizio di interesse
+  messaggio: Messaggio
+guidaMessaggio: Descriveteci in breve l'attività e la richiesta, per esempio il tipo di impianto o l'adempimento in scadenza.
+privacy: Ho letto l'informativa sulla privacy
+newsletter: Desidero ricevere occasionalmente da Geo Studio Engineering comunicazioni su novità normative, servizi ed eventi
+bottone: Inviate la richiesta
+errori:
+  obbligatorio: Questo campo è obbligatorio
+  email: Inserite un indirizzo email valido
+  privacy: Per inviare la richiesta dovete dichiarare di aver letto l'informativa sulla privacy
+recapiti:
+  - Geo Studio Engineering S.r.l.
+  - via Madonna 420, 37051 Bovolone (VR)
+  - Tel. 045 7101045
+  - info@geo-studio.it
+  - P. IVA 03982960233
+candidature: Volete lavorare con noi? Inviate il vostro curriculum a [indirizzo da confermare].
+# da docs/brief-sito.md
+altroServizio: Altro
+notaDemo: "Versione dimostrativa: i dati non vengono inviati"

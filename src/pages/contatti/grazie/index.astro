@@ -1,0 +1,28 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import LinkFreccia from '../../../components/LinkFreccia.astro';
+
+const t = (await getEntry('speciali', 'grazie'))!.data;
+---
+<Base title={`${t.h1} | Geo Studio Engineering`}>
+  <section class="section">
+    <div class="container conferma">
+      <span class="cut-mark" aria-hidden="true"></span>
+      <h1 class="h1">{t.h1}</h1>
+      <p class="lead">{t.testo}</p>
+      <ul class="link">
+        {(t.link as { label: string; href: string }[]).map((l) => <li><LinkFreccia href={l.href}>{l.label}</LinkFreccia></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .conferma { display: grid; gap: var(--space-6); padding-block: var(--space-8); }
+  @media (min-width: 1080px) {
+    .conferma { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
+    .conferma > * { grid-column: 1 / span 8; }
+  }
+  .link { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); }
+</style>
