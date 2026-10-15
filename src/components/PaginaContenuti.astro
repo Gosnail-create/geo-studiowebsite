@@ -35,7 +35,8 @@ const cta = linkContatti(pagina.origine, pagina.servizio);
 
 const LARGHI = new Set(['servizi', 'card', 'corsi', 'tabella', 'blog']);
 const layoutDi = (s: (typeof sezioni)[number]) => (s.blocchi.some((b) => LARGHI.has(b.tipo)) ? 'stack' : 'split');
-const sfondo = (i: number) => ((i + (dopoHero ? 1 : 0)) % 2 === 0 ? 'sunken' : 'surface') as 'sunken' | 'surface';
+// Fondi a coppie: due sezioni consecutive sulla stessa superficie, separate solo dallo spazio.
+const sfondo = (i: number) => (Math.floor((i + (dopoHero ? 1 : 0)) / 2) % 2 === 0 ? 'sunken' : 'surface') as 'sunken' | 'surface';
 const idDi = (titolo: string) => titolo.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
 ---
@@ -83,7 +84,7 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
           case 'tabella': return <Tabella intestazioni={b.intestazioni} righe={b.righe} didascalia={s.titolo} />;
           case 'pannello': return <PannelloDati voci={b.voci} />;
           case 'segnaposto': return <Segnaposto text={b.testo.replace(/^\[|\]$/g, '')} />;
-          case 'rendering': return <Figura {...rendering[b.chiave]} />;
+          case 'rendering': return <Figura {...rendering[b.chiave]} eager />;
           case 'link': return <p><LinkFreccia href={b.href}>{b.label}</LinkFreccia></p>;
           case 'blog': return <BlogGrid />;
           case 'mappa': return <MappaSede />;

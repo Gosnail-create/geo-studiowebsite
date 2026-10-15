@@ -24,4 +24,6 @@ const { voci } = Astro.props;
     background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg);
     padding: var(--space-6); display: grid; gap: var(--space-4); align-content: start; height: 100%;
   }
+  @media (min-width: 768px) { .card { padding: var(--space-8); } }
+  @media (min-width: 1080px) { .card { padding: var(--space-10); } }
 </style>

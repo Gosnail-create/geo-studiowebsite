@@ -30,6 +30,7 @@ const headingId = id ? `${id}-titolo` : undefined;
 
 <style>
   .sez { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 768px) { .sez { gap: var(--space-8); } }
   .sez-head { display: grid; gap: var(--space-2); align-content: start; }
   .sez-full { margin-top: var(--space-6); }
   .sez-body > :global(*) + :global(:not(p)) { margin-top: var(--space-8); }
@@ -39,7 +40,6 @@ const headingId = id ? `${id}-titolo` : undefined;
     .sez--split .sez-body { grid-column: 5 / span 8; }
     .sez--stack .sez-head { grid-column: 1 / span 8; }
     .sez--stack .sez-body { grid-column: 1 / -1; }
-    .sez--stack .sez-body > :global(p) { max-width: calc(100% * 8 / 12); }
     .sez-full { grid-column: 1 / -1; }
   }
 </style>

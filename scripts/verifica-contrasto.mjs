@@ -30,6 +30,17 @@ const coppie = [
   ['surface-raised', 'brand', 4.5, 'intestazioni di tabella, filtro attivo'],
   ['on-accent', 'accent', 4.5, 'bottone principale'],
   ...scuri.flatMap((f) => [['on-brand-deep', f, 4.5, 'testo su grafite'], ['on-brand-deep-muted', f, 4.5, 'testo secondario su grafite'], ['accent-on-deep', f, 4.5, 'valori dei pannelli']]),
+  // acciaio come superficie e stati selezionati (revisione del 15 ottobre 2026)
+  ['on-brand', 'brand', 4.5, 'testo su acciaio'],
+  ['on-brand-muted', 'brand', 4.5, 'testo secondario ed etichette su acciaio'],
+  ['accent-on-brand', 'brand', 4.5, 'numeri e filetti su acciaio'],
+  ['on-brand', 'brand-2', 4.5, 'testo su acciaio di secondo livello'],
+  ['brand', 'brand-tint', 4.5, 'voce attiva del menu, tessera scelta'],
+  ['ink', 'brand-tint', 4.5, 'testo su tessera scelta'],
+  ['ink-muted', 'brand-tint', 4.5, 'descrizione su voce attiva'],
+  ['on-accent', 'accent-hover', 4.5, 'bottone lime al passaggio del mouse'],
+  ['accent-on-brand', 'brand', 3, 'anello di focus su acciaio'],
+  ['brand', 'surface-sunken', 3, 'bordo dei campi attivi'],
   // controlli e focus
   ...chiari.map((f) => ['line-strong', f, 3, 'bordi dei campi']),
   ...chiari.map((f) => ['focus', f, 3, 'anello di focus']),

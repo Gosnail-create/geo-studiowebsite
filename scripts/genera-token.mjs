@@ -25,6 +25,9 @@ for (const group of tokens.type.groups) {
     add(`${s.name}-line`, s.lineHeight);
     add(`${s.name}-weight`, String(s.fontWeight));
     add(`${s.name}-tracking`, s.letterSpacing ?? 'normal');
+    // varianti per schermi stretti (sotto 768px) e intermedi (1024-1280px), dove definite
+    if (s.fontSizeMobile) { add(`${s.name}-size-mobile`, s.fontSizeMobile); add(`${s.name}-line-mobile`, s.lineHeightMobile); }
+    if (s.fontSizeMedium) { add(`${s.name}-size-medium`, s.fontSizeMedium); add(`${s.name}-line-medium`, s.lineHeightMedium); }
   }
 }
 
@@ -33,6 +36,8 @@ for (const t of tokens.spacing.tokens) add(t.name, t.value);
 for (const t of tokens.radius.tokens) add(t.name, t.value);
 for (const t of tokens.shadow.tokens) add(t.name, t.value);
 for (const t of tokens.angle.tokens) add(t.name, t.value);
+lines.push('  /* misure */');
+for (const t of tokens.size?.tokens ?? []) add(t.name, t.value);
 
 const css = `/* File generato da scripts/genera-token.mjs: non modificare a mano. */\n:root {\n${lines.join('\n')}\n}\n`;
 mkdirSync(dirname(out), { recursive: true });
