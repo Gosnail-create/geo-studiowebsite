@@ -6,8 +6,8 @@
   "scripts": {
     "token": "node scripts/genera-token.mjs",
     "dev": "npm run token && astro dev",
-    "build": "npm run token && npm run verifica && astro check && astro build",
-    "verifica": "node scripts/verifica-testi.mjs",
+    "build": "npm run token && npm run verifica && astro check && astro build && node scripts/verifica-sito.mjs",
+    "verifica": "node scripts/verifica-testi.mjs && node scripts/verifica-contrasto.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
