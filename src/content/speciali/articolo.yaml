@@ -1,0 +1,9 @@
+# Articolo di esempio del blog: modello di pagina con segnaposto dichiarati
+# (docs/brief-sito.md, "Blog nella demo"). Titolo provvisorio dal brief, nessun testo inventato.
+titolo: Cos'è il biometano e come si produce
+aggiornato: Aggiornato il [data per esteso]
+area: Energie rinnovabili
+riquadro:
+  titolo: Questo tema riguarda la vostra azienda?
+  testo: I nostri tecnici possono verificare la vostra situazione e indicarvi gli adempimenti necessari.
+  bottone: Parlatene con un nostro tecnico

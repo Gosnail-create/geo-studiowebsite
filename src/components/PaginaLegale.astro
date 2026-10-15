@@ -1,0 +1,28 @@
+---
+// Pagina legale della demo: titolo e segnaposto dichiarato, nessun testo inventato.
+import Base from '../layouts/Base.astro';
+import Segnaposto from './Segnaposto.astro';
+
+interface Props {
+  titolo: string;
+}
+const { titolo } = Astro.props;
+---
+<Base title={`${titolo} | Geo Studio Engineering`}>
+  <section class="section">
+    <div class="container legale">
+      <span class="cut-mark" aria-hidden="true"></span>
+      <h1 class="h1">{titolo}</h1>
+      <Segnaposto text="Testo in preparazione" />
+      <slot />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legale { display: grid; gap: var(--space-6); padding-block: var(--space-8); }
+  @media (min-width: 1080px) {
+    .legale { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
+    .legale > :global(*) { grid-column: 1 / span 8; }
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+// Articolo di esempio: mostra il modello di pagina (riga di aggiornamento, indice, corpo,
+// riquadro del servizio collegato con CTA). Testo dell'articolo in preparazione.
+import { getEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import BlogCover from '../../../components/BlogCover.astro';
+import Segnaposto from '../../../components/Segnaposto.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import Testo from '../../../components/Testo.astro';
+import { rendering } from '../../../data/rendering';
+import { linkContatti } from '../../../lib/cta';
+
+const t = (await getEntry('speciali', 'articolo'))!.data;
+// Servizio collegato: la card "Impianti a biometano" dell'hub Energie rinnovabili.
+const hub = (await getEntry('pagine', 'energie-rinnovabili'))!.data;
+const card = hub.sezioni.flatMap((s) => s.blocchi).flatMap((b) => (b.tipo === 'card' ? b.voci : []))
+  .find((v) => v.titolo === 'Impianti a biometano')!;
+const cta = linkContatti('articolo', 'energie-rinnovabili');
+---
+<Base title={`${t.titolo} | Blog | Geo Studio`}>
+  <article>
+    <header class="section testata">
+      <div class="container testata-grid">
+        <div class="testata-testo">
+          <p><a class="label torna" href="/blog/">Blog</a></p>
+          <span class="tag">Bozza</span>
+          <h1 class="h1">{t.titolo}</h1>
+          <p class="riga small"><Testo text={t.aggiornato} /> · Area: {t.area}</p>
+        </div>
+        <div class="testata-cover"><BlogCover area={t.area} /></div>
+      </div>
+    </header>
+
+    <div class="section section--sunken">
+      <div class="container corpo">
+        <nav class="indice" aria-labelledby="indice-titolo">
+          <h2 class="label" id="indice-titolo">Indice</h2>
+          <Segnaposto text="Indice generato dai titoli dell'articolo" />
+        </nav>
+        <div class="testo">
+          <Segnaposto text="Testo in preparazione" />
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="riquadro-titolo">
+      <div class="container riquadro-grid">
+        <div class="collegato">
+          <ServiceCard titolo={card.titolo} testo={card.testo} href={card.href} immagine={rendering.vistaLaterale} />
+        </div>
+        <div class="riquadro on-deep">
+          <span class="cut-mark" aria-hidden="true"></span>
+          <h2 class="h2" id="riquadro-titolo">{t.riquadro.titolo}</h2>
+          <p class="lead">{t.riquadro.testo}</p>
+          <a class="btn btn-primary" href={cta}>{t.riquadro.bottone}</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .testata { padding-bottom: var(--space-12); }
+  .testata-grid, .corpo, .riquadro-grid { display: grid; gap: var(--space-8); }
+  .testata-testo { display: grid; gap: var(--space-4); justify-items: start; }
+  .torna { text-decoration: none; color: var(--brand); }
+  .torna:hover { text-decoration: underline; }
+  .tag {
+    font-family: var(--label-family); font-size: var(--label-size); line-height: var(--label-line); font-weight: var(--label-weight);
+    color: var(--ink); border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); padding: 0 var(--space-2);
+  }
+  .indice { display: grid; gap: var(--space-3); align-content: start; }
+  .riquadro { border-radius: var(--radius-lg); padding: var(--space-8) var(--space-6); display: grid; gap: var(--space-4); justify-items: start; align-content: center; }
+  .riquadro .btn { margin-top: var(--space-4); }
+  @media (min-width: 1080px) {
+    .testata-grid, .corpo, .riquadro-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
+    .testata-testo { grid-column: 1 / span 7; }
+    .testata-cover { grid-column: 9 / span 4; }
+    .indice { grid-column: 1 / span 3; position: sticky; top: var(--space-24); }
+    .testo { grid-column: 5 / span 8; }
+    .collegato { grid-column: 1 / span 4; }
+    .riquadro { grid-column: 5 / span 8; padding: var(--space-12); }
+  }
+</style>

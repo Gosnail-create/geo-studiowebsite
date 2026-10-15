@@ -157,7 +157,7 @@ export function stringheAttese(pagina) {
 
 // Annotazioni tra parentesi che nei testi di servizio descrivono il sito multilingue.
 const ANNOTAZIONI = [' (nelle altre lingue: Paese)', ' (solo in italiano)'];
-const PREFISSI_ELENCO = ['Campi: ', 'Messaggi di errore: ', 'Link: ', 'Colonna recapiti: '];
+const PREFISSI_ELENCO = ['Campi: ', 'Messaggi di errore: ', 'Link: ', 'Colonna recapiti: ', 'Filtri per area: '];
 const PREFISSI_VALORE = ['H1: ', 'Testo guida del campo Messaggio: ', 'Casella obbligatoria: ', 'Casella facoltativa: ', 'Bottone: ', 'Blocco candidature: '];
 // Parole che nei testi indicano un componente e non un testo da pubblicare.
 const SEGNALI = new Set(['mappa']);
@@ -174,6 +174,10 @@ export function leggiTestiServizio(percorso) {
       r = r.trim();
       if (!r) continue;
       for (const a of ANNOTAZIONI) r = r.replace(a, '');
+      // modello della riga in testa agli articoli e note sulle altre lingue: non sono testi da pubblicare
+      if (r.startsWith('Riga in testa a ogni articolo: ') || r.startsWith('Nelle versioni ')) continue;
+      const riquadro = r.match(/^Riquadro in fondo a ogni articolo: (.+?\?) (.+) Bottone: (.+)\.$/);
+      if (riquadro) { attese.push(riquadro[1], riquadro[2], riquadro[3]); continue; }
       const meta = r.match(/^Title: (.+?)\. Description: (.+)$/);
       if (meta) { attese.push(meta[1], meta[2]); continue; }
       const pe = PREFISSI_ELENCO.find((p) => r.startsWith(p));
@@ -182,7 +186,7 @@ export function leggiTestiServizio(percorso) {
       if (pv) { const v = r.slice(pv.length); attese.push(pv === 'Blocco candidature: ' || pv === 'Testo guida del campo Messaggio: ' ? v : senzaPunto(v)); continue; }
       attese.push(r);
     }
-    out[titolo.trim()] = attese;
+    out[titolo.trim()] = { attese, testo: righe.join('\n') };
   }
   return out;
 }

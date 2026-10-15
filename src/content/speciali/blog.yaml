@@ -1,0 +1,18 @@
+# Contenuti della pagina elenco del blog, da docs/testi-it.md (sezione "Blog").
+# Gli articoli (titoli provvisori in bozza) sono in src/data/blog.ts, dal brief.
+title: Blog | Approfondimenti tecnici e normativi | Geo Studio
+description: Articoli su sicurezza sul lavoro, prevenzione incendi, ambiente, sistemi di gestione, formazione, impianti ed energie rinnovabili, scritti dai tecnici di Geo Studio.
+h1: Approfondimenti tecnici e normativi
+testo: In queste pagine i nostri tecnici spiegano le norme e i casi pratici che incontrano ogni giorno nelle aziende. Le regole cambiano spesso, e per questo ogni articolo riporta la data dell'ultimo aggiornamento e il servizio a cui si collega.
+foto: tavole-progetto-architettonico
+filtriTitolo: Filtri per area
+filtri:
+  - Tutti
+  - Sicurezza sul lavoro
+  - Prevenzione incendi
+  - Ambiente
+  - Sistemi di gestione
+  - Formazione
+  - Impianti
+  - Energie rinnovabili
+  - Notizie

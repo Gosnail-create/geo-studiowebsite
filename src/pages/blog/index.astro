@@ -1,0 +1,64 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import Segnaposto from '../../components/Segnaposto.astro';
+import { articoli } from '../../data/blog';
+import { foto, type NomeFoto } from '../../data/immagini';
+
+const t = (await getEntry('speciali', 'blog'))!.data;
+const filtri = t.filtri as string[];
+---
+<Base title={t.title} description={t.description}>
+  <Hero titolo={t.h1} testo={[t.testo]} foto={foto(t.foto as NomeFoto)} />
+
+  <section class="section section--sunken" aria-labelledby="filtri-titolo">
+    <div class="container blog">
+      <h2 class="visually-hidden" id="filtri-titolo">{t.filtriTitolo}</h2>
+      <div class="filtri" role="group" aria-labelledby="filtri-titolo">
+        {filtri.map((f, i) => (
+          <button type="button" class="filtro" data-filtro={i === 0 ? '' : f} aria-pressed={i === 0 ? 'true' : 'false'}>{f}</button>
+        ))}
+      </div>
+      <div id="elenco-articoli">
+        <CardGrid colonne={3}>
+          {articoli.map((a) => <li data-area={a.area}><BlogCard articolo={a} livello="h2" /></li>)}
+        </CardGrid>
+      </div>
+      <div id="nessun-articolo" hidden>
+        <Segnaposto text="Articoli in preparazione" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const bottoni = [...document.querySelectorAll<HTMLButtonElement>('.filtro')];
+  const voci = [...document.querySelectorAll<HTMLElement>('#elenco-articoli li[data-area]')];
+  const vuoto = document.getElementById('nessun-articolo')!;
+  bottoni.forEach((b) => b.addEventListener('click', () => {
+    const area = b.dataset.filtro ?? '';
+    bottoni.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    let visibili = 0;
+    voci.forEach((v) => {
+      const mostra = !area || v.dataset.area === area;
+      v.hidden = !mostra;
+      if (mostra) visibili++;
+    });
+    vuoto.hidden = visibili > 0;
+  }));
+</script>
+
+<style>
+  .blog { display: grid; gap: var(--space-8); }
+  .filtri { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .filtro {
+    font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--ui-weight);
+    color: var(--ink); background: var(--surface-raised); border: 1.5px solid var(--line-strong);
+    border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); cursor: pointer;
+  }
+  .filtro:hover { border-color: var(--ink); }
+  .filtro[aria-pressed='true'] { background: var(--brand); border-color: var(--brand); color: var(--surface-raised); }
+</style>
