@@ -1,0 +1,13 @@
+<!-- @dsCard group="Base" height=250 subtitle="Bottoni e badge di stato" -->
+<style>
+  .stack { display: flex; flex-direction: column; gap: var(--space-4); }
+  .line { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; }
+  .deep { padding: var(--space-4) var(--space-8); margin: 0 calc(-1 * var(--space-8)); }
+</style>
+<div class="gs">
+  <div class="stack">
+    <div class="line"><a class="btn btn-primary" href="#">Richiedete un sopralluogo</a><a class="btn btn-secondary" href="#">Scaricate la scheda</a><a class="btn btn-ghost" href="#">Approfondite </a></div>
+    <div class="line"><span class="badge ok">Conforme</span><span class="badge warn">In scadenza</span><span class="badge danger">Non conforme</span></div>
+    <div class="line on-deep deep"><a class="btn btn-primary" href="#">Contatti</a><a class="btn btn-secondary" href="#">Area clienti</a></div>
+  </div>
+</div>

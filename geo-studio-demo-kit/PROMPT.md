@@ -1,0 +1,14 @@
+Devi costruire la demo navigabile del nuovo sito di Geo Studio Engineering nel repository https://github.com/Gosnail-create/geo-studiowebsite. La demo verrà pubblicata su Vercel e servirà a mostrare al cliente struttura, testi e design; il sito ufficiale sarà poi sviluppato in WordPress.
+
+Prima di scrivere codice leggi CLAUDE.md e tutti i file in docs/ e design-system/. Poi presentami in breve il piano (stack, struttura delle cartelle, componenti, come mappi i testi sulle pagine) e aspetta il mio via libera. Se qualcosa nei materiali è contraddittorio o manca, chiedimelo nello stesso messaggio, tutto in una volta.
+
+Dopo il via libera lavora per fasi. Alla fine di ogni fase esegui la build, fai un commit e il push sul branch principale, e dimmi cosa vedo online e cosa resta da fare.
+
+1. Base del progetto: Astro con TypeScript, variabili CSS generate da design-system/tokens.json, font self-hosted, layout con header, menu a tendina dei servizi, menu mobile, footer, selettore lingua con EN, DE ed ES disattivati, banner cookie (salva la scelta in localStorage), noindex su tutto (meta, robots.txt, vercel.json), pagina 404.
+2. Componenti: hero, card servizio, pannello dati, sezione con testo, accordion per le domande frequenti, fascia di chiusura con CTA, griglia di card, didascalia per immagini. Prendi come riferimento le anteprime in design-system/components/.
+3. Pagine: home, hub Servizi, le sette pagine di servizio, hub Energie rinnovabili con le quattro sottopagine, Chi siamo. Usa i testi di docs/testi-it.md senza modificarli e le immagini indicate in docs/immagini.md: scarica le foto stock in public/images con nomi leggibili, ottimizzale e registra i crediti in public/images/credits.md; usa i rendering di assets/rendering solo dove indicato.
+4. Contatti e conversione: pagina Contatti con il form descritto in docs/brief-sito.md, precompilazione del servizio dal parametro ?servizio= dei link delle CTA, validazione lato client, pagina /contatti/grazie/. Ogni CTA del sito deve puntare a /contatti/ con i parametri servizio e origine corretti.
+5. Blog e pagine legali: elenco del blog e un articolo di esempio come descritto nel brief, pagine Privacy policy, Cookie policy e Segnalazioni con segnaposto dichiarati.
+6. Verifica finale: controlla tutti i link interni, l'aspetto su mobile (360 px), tablet e desktop, il contrasto dei colori e la navigazione da tastiera, i metadati di ogni pagina e il noindex. Dammi l'elenco delle pagine con i loro URL e un elenco delle cose che non sei riuscito a fare o che richiedono una mia decisione.
+
+Regole che valgono sempre: i testi del cliente non si cambiano; niente dati o contenuti inventati; solo i token del design system; nessun servizio esterno che imposti cookie o tracci gli utenti. Se una scelta non è coperta dai materiali, prendi quella più semplice e coerente con il design system, e segnalala alla fine della fase.

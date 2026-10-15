@@ -1,0 +1,3 @@
+Card che presenta uno dei sette servizi con numero, nome, descrizione breve e link.
+
+Il consumatore fornisce il nome del servizio, una descrizione di massimo due righe e il link alla pagina del servizio. I servizi sono sette e si mostrano sempre tutti, con questi nomi e in quest'ordine: Progettazione impianti tecnologici; Energie rinnovabili; Sicurezza negli ambienti di lavoro; Consulenza ambientale; Prevenzione incendi; Sistemi di gestione; Formazione. Nella griglia a quattro colonne l'ottava cella è una card di contatto su `brand-deep`, l'unica scura della sezione. Le card stanno su `surface-raised` con bordo `line` e raggio `radius-lg`, senza ombra; il numero è in stile `label` e il piccolo parallelogramma `accent` richiama il logo.
