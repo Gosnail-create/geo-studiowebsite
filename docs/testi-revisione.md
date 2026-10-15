@@ -64,3 +64,13 @@ Area di testo: Raccontateci la situazione
 Bottone del primo passaggio: Continuate
 
 Ritorno al primo passaggio (etichetta proposta da Gosnail): Tornate al passaggio precedente
+
+Etichette della colonna dei recapiti:
+- Telefono
+- Email
+- Sede
+
+## Sostituzioni
+
+Testi di `testi-it.md` sostituiti dalla revisione (a sinistra il testo originale, a destra quello nuovo):
+- Messaggio → Raccontateci la situazione

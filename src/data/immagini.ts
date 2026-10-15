@@ -22,7 +22,6 @@ const alt: Record<string, string> = {
   'impianto-sprinkler-antincendio': 'Tubazioni rosse e valvole di un impianto sprinkler antincendio su una parete industriale',
   'verifica-documenti-magazzino': 'Due persone in magazzino esaminano un documento su una cartellina',
   'formatrice-corso-gruppo': 'Formatrice che spiega a un gruppo di partecipanti davanti a una lavagna a fogli',
-  'facciata-edificio-uffici': 'Facciata di un edificio per uffici con file regolari di finestre',
   'tavole-progetto-architettonico': 'Tavole di progetto architettonico sparse su un piano di lavoro',
   'tecnico-manutenzione-macchinario': 'Tecnico con elmetto che controlla un componente di un macchinario in officina',
   'tecnico-dpi-verifica-reparto': 'Tecnico con elmetto e gilet ad alta visibilità che compila una scheda di controllo in un capannone',

@@ -1,10 +1,13 @@
-# Contenuti della pagina Contatti, da docs/testi-it.md (sezione "Contatti") e docs/brief-sito.md (form).
-# I testi del cliente non si modificano.
+# Contenuti della pagina Contatti, da docs/testi-it.md (sezione "Contatti"), docs/brief-sito.md (form)
+# e docs/testi-revisione.md (modulo in due passaggi). I testi del cliente non si modificano.
 title: Contatti | Geo Studio Engineering, Bovolone (VR)
 description: Scriveteci per una consulenza su sicurezza, ambiente, prevenzione incendi, sistemi di gestione, formazione o progettazione di impianti. Tel. 045 7101045.
 h1: Parliamo del vostro progetto
 testo: "Compilate il modulo con qualche informazione sulla vostra azienda e su ciò di cui avete bisogno: un nostro tecnico vi ricontatterà per approfondire. Se preferite, potete chiamarci o scriverci direttamente ai recapiti qui accanto."
-foto: facciata-edificio-uffici
+testata:
+  etichetta: Contatti
+  titolo: Di cosa avete bisogno?
+  testo: Un nostro tecnico legge la richiesta e vi ricontatta per approfondire
 campi:
   nome: Nome e cognome
   azienda: Azienda o ente
@@ -12,8 +15,20 @@ campi:
   telefono: Telefono (facoltativo)
   provincia: Provincia
   area: Servizio di interesse
-  messaggio: Messaggio
+  settore: Settore dell'azienda
+  situazione: Raccontateci la situazione
+facoltativo: (facoltativo)
+nonSo: Non so ancora
+settori:
+  - Industria manifatturiera e metalmeccanica
+  - Chimica e farmaceutica
+  - Trasporti
+  - Servizi
+  - Agricoltura
+  - Altro
 guidaMessaggio: Descriveteci in breve l'attività e la richiesta, per esempio il tipo di impianto o l'adempimento in scadenza.
+continuate: Continuate
+indietro: Tornate al passaggio precedente
 privacy: Ho letto l'informativa sulla privacy
 newsletter: Desidero ricevere occasionalmente da Geo Studio Engineering comunicazioni su novità normative, servizi ed eventi
 bottone: Inviate la richiesta
@@ -27,7 +42,10 @@ recapiti:
   - Tel. 045 7101045
   - info@geo-studio.it
   - P. IVA 03982960233
+etichetteRecapiti:
+  telefono: Telefono
+  email: Email
+  sede: Sede
 candidature: Volete lavorare con noi? Inviate il vostro curriculum a [indirizzo da confermare].
 # da docs/brief-sito.md
-altroServizio: Altro
 notaDemo: "Versione dimostrativa: i dati non vengono inviati"

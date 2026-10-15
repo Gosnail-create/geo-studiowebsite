@@ -15,7 +15,6 @@ Foto stock provvisorie, da sostituire con foto reali del cliente. Licenze: Unspl
 | impianto-sprinkler-antincendio | Prevenzione incendi | Loc Ho | https://www.pexels.com/photo/industrial-fire-sprinkler-system-pipes-37352142/ |
 | verifica-documenti-magazzino | Sistemi di gestione | Centre for Ageing Better | https://www.pexels.com/photo/employees-looking-at-the-clipboard-while-standing-near-metal-shelves-13804490/ |
 | formatrice-corso-gruppo | Formazione | Centre for Ageing Better | https://unsplash.com/photos/a-woman-explaining-something-to-a-group-of-people-XH8chLuj02g |
-| facciata-edificio-uffici | Contatti | Jan van der Wolf | https://www.pexels.com/photo/exterior-of-a-building-19368932/ |
 | tavole-progetto-architettonico | Blog (testata) | Marina Zvada | https://unsplash.com/photos/architectural-blueprints-spread-out-on-a-surface-fNxmdlYHRm8 |
 
 ## Aggiunte con la revisione del 15 ottobre 2026

@@ -1,6 +1,6 @@
 ---
-// Modulo contatti della demo (docs/brief-sito.md, "Il form"): validazione lato client,
-// precompilazione del servizio da ?servizio=, poi /contatti/grazie/. Non invia dati.
+// Modulo contatti in due passaggi (brief di revisione del 15 ottobre 2026, punto 7).
+// Validazione lato client, precompilazione da ?servizio=, poi /contatti/grazie/. Non invia dati.
 import Icon from './Icon.astro';
 import { province } from '../data/province';
 import { servizi } from '../data/servizi';
@@ -9,85 +9,141 @@ interface Props {
   testi: Record<string, any>;
 }
 const { testi } = Astro.props;
-const { campi, errori } = testi;
+const { campi, errori, testata } = testi;
 const [primaPrivacy, dopoPrivacy] = (testi.privacy as string).split('informativa sulla privacy');
+const tessere = [...servizi.map((s) => ({ valore: s.slug, nome: s.nome })), { valore: 'non-so', nome: testi.nonSo as string }];
 ---
-<form class="modulo" id="modulo-contatti" method="post" action="/contatti/grazie/" novalidate
-  data-err-obbligatorio={errori.obbligatorio} data-err-email={errori.email} data-err-privacy={errori.privacy}>
+<div class="modulo-card">
+  <header class="testata on-brand">
+    <div class="testata-testo">
+      <p class="label">{testata.etichetta}</p>
+      <h2 class="titolo" id="modulo-titolo">{testata.titolo}</h2>
+      <p class="frase">{testata.testo}</p>
+    </div>
+    <ol class="passaggi" aria-label="Passaggi del modulo">
+      <li class="passo-dot attivo" data-dot="1" aria-current="step"><span>1</span><span class="visually-hidden"> di 2</span></li>
+      <li class="linea" aria-hidden="true"></li>
+      <li class="passo-dot" data-dot="2"><span>2</span><span class="visually-hidden"> di 2</span></li>
+    </ol>
+  </header>
 
-  <input type="hidden" name="lingua" value="it" />
-  <input type="hidden" name="origine" value="" />
-  <input type="hidden" name="pagina_origine" value="" />
-  <input type="hidden" name="utm_source" value="" />
-  <input type="hidden" name="utm_medium" value="" />
-  <input type="hidden" name="utm_campaign" value="" />
-  <input type="hidden" name="utm_term" value="" />
-  <input type="hidden" name="utm_content" value="" />
+  <form class="modulo" id="modulo-contatti" method="post" action="/contatti/grazie/" novalidate aria-labelledby="modulo-titolo"
+    data-err-obbligatorio={errori.obbligatorio} data-err-email={errori.email} data-err-privacy={errori.privacy}>
 
-  <div class="griglia">
-    <div class="campo">
-      <label for="f-nome">{campi.nome}</label>
-      <input id="f-nome" name="nome" type="text" autocomplete="name" required aria-describedby="e-nome" />
-      <p class="errore" id="e-nome" hidden></p>
-    </div>
-    <div class="campo">
-      <label for="f-azienda">{campi.azienda}</label>
-      <input id="f-azienda" name="azienda" type="text" autocomplete="organization" required aria-describedby="e-azienda" />
-      <p class="errore" id="e-azienda" hidden></p>
-    </div>
-    <div class="campo">
-      <label for="f-email">{campi.email}</label>
-      <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email" />
-      <p class="errore" id="e-email" hidden></p>
-    </div>
-    <div class="campo">
-      <label for="f-telefono">{campi.telefono}</label>
-      <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" />
-    </div>
-    <div class="campo">
-      <label for="f-provincia">{campi.provincia}</label>
-      <select id="f-provincia" name="provincia" required aria-describedby="e-provincia">
-        <option value=""></option>
-        {province.map((p) => <option value={p.sigla}>{p.nome}</option>)}
-      </select>
-      <p class="errore" id="e-provincia" hidden></p>
-    </div>
-    <div class="campo">
-      <label for="f-servizio">{campi.area}</label>
-      <select id="f-servizio" name="servizio" required aria-describedby="e-servizio">
-        <option value=""></option>
-        {servizi.map((s) => <option value={s.slug}>{s.nome}</option>)}
-        <option value="altro">{testi.altroServizio}</option>
-      </select>
-      <p class="errore" id="e-servizio" hidden></p>
-    </div>
-    <div class="campo largo">
-      <label for="f-messaggio">{campi.messaggio}</label>
-      <p class="guida small" id="g-messaggio">{testi.guidaMessaggio}</p>
-      <textarea id="f-messaggio" name="messaggio" rows="6" required aria-describedby="g-messaggio e-messaggio"></textarea>
-      <p class="errore" id="e-messaggio" hidden></p>
-    </div>
-  </div>
+    <input type="hidden" name="lingua" value="it" />
+    <input type="hidden" name="origine" value="" />
+    <input type="hidden" name="pagina_origine" value="" />
+    <input type="hidden" name="utm_source" value="" />
+    <input type="hidden" name="utm_medium" value="" />
+    <input type="hidden" name="utm_campaign" value="" />
+    <input type="hidden" name="utm_term" value="" />
+    <input type="hidden" name="utm_content" value="" />
 
-  <div class="caselle">
-    <div class="campo">
-      <label class="casella" for="f-privacy">
-        <input id="f-privacy" name="privacy" type="checkbox" required aria-describedby="e-privacy" />
-        <span>{primaPrivacy}<a href="/privacy-policy/">informativa sulla privacy</a>{dopoPrivacy}</span>
-      </label>
-      <p class="errore" id="e-privacy" hidden></p>
-    </div>
-    <label class="casella" for="f-newsletter">
-      <input id="f-newsletter" name="newsletter" type="checkbox" />
-      <span>{testi.newsletter}</span>
-    </label>
-  </div>
+    <!-- passaggio 1 -->
+    <div class="passaggio" data-passo="1">
+      <fieldset class="tessere" aria-describedby="e-servizi">
+        <legend class="etichetta">{campi.area}</legend>
+        <div class="tessere-grid">
+          {tessere.map((t) => (
+            <label class="tessera">
+              <span class="casella">
+                <input type="checkbox" name="servizi" value={t.valore} />
+                <Icon name="check" class="icon spunta" />
+              </span>
+              <span class="tessera-nome">{t.nome}</span>
+            </label>
+          ))}
+        </div>
+        <p class="errore" id="e-servizi" hidden></p>
+      </fieldset>
 
-  <div class="invio">
-    <button class="btn btn-primary" type="submit">{testi.bottone}</button>
-    <p class="small nota"><Icon name="info" class="icon icon-sm" />{testi.notaDemo}</p>
-  </div>
-</form>
+      <div class="griglia">
+        <div class="campo">
+          <label class="etichetta" for="f-provincia">{campi.provincia}</label>
+          <span class="select">
+            <select id="f-provincia" name="provincia" required aria-describedby="e-provincia">
+              <option value=""></option>
+              {province.map((p) => <option value={p.sigla}>{p.nome}</option>)}
+            </select>
+            <Icon name="chevron-down" class="icon freccia" />
+          </span>
+          <p class="errore" id="e-provincia" hidden></p>
+        </div>
+        <div class="campo">
+          <label class="etichetta" for="f-settore">{campi.settore} <span class="facoltativo">{testi.facoltativo}</span></label>
+          <span class="select">
+            <select id="f-settore" name="settore">
+              <option value=""></option>
+              {(testi.settori as string[]).map((s) => <option value={s}>{s}</option>)}
+            </select>
+            <Icon name="chevron-down" class="icon freccia" />
+          </span>
+        </div>
+        <div class="campo largo">
+          <label class="etichetta" for="f-situazione">{campi.situazione}</label>
+          <textarea id="f-situazione" name="messaggio" rows="5" required aria-describedby="g-situazione e-situazione"></textarea>
+          <p class="aiuto" id="g-situazione">{testi.guidaMessaggio}</p>
+          <p class="errore" id="e-situazione" hidden></p>
+        </div>
+      </div>
+
+      <div class="invio">
+        <button class="btn btn-primary btn-lg btn-arrow" type="button" data-avanti>{testi.continuate}<Icon name="arrow-right" class="icon icon-sm" /></button>
+      </div>
+    </div>
+
+    <!-- passaggio 2 -->
+    <div class="passaggio" data-passo="2" hidden>
+      <div class="griglia">
+        <div class="campo">
+          <label class="etichetta" for="f-nome">{campi.nome}</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required aria-describedby="e-nome" />
+          <p class="errore" id="e-nome" hidden></p>
+        </div>
+        <div class="campo">
+          <label class="etichetta" for="f-azienda">{campi.azienda}</label>
+          <input id="f-azienda" name="azienda" type="text" autocomplete="organization" required aria-describedby="e-azienda" />
+          <p class="errore" id="e-azienda" hidden></p>
+        </div>
+        <div class="campo">
+          <label class="etichetta" for="f-email">{campi.email}</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email" />
+          <p class="errore" id="e-email" hidden></p>
+        </div>
+        <div class="campo">
+          <label class="etichetta" for="f-telefono">{campi.telefono}</label>
+          <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" />
+        </div>
+      </div>
+
+      <div class="caselle">
+        <div class="campo">
+          <label class="consenso" for="f-privacy">
+            <span class="casella">
+              <input id="f-privacy" name="privacy" type="checkbox" required aria-describedby="e-privacy" />
+              <Icon name="check" class="icon spunta" />
+            </span>
+            <span>{primaPrivacy}<a href="/privacy-policy/">informativa sulla privacy</a>{dopoPrivacy}</span>
+          </label>
+          <p class="errore" id="e-privacy" hidden></p>
+        </div>
+        <label class="consenso" for="f-newsletter">
+          <span class="casella">
+            <input id="f-newsletter" name="newsletter" type="checkbox" />
+            <Icon name="check" class="icon spunta" />
+          </span>
+          <span>{testi.newsletter}</span>
+        </label>
+      </div>
+
+      <div class="invio">
+        <button class="btn btn-primary btn-lg" type="submit">{testi.bottone}</button>
+        <button class="btn btn-ghost" type="button" data-indietro>{testi.indietro}</button>
+      </div>
+      <p class="small nota"><Icon name="info" class="icon icon-sm" />{testi.notaDemo}</p>
+    </div>
+  </form>
+</div>
 
 <script>
   const form = document.getElementById('modulo-contatti') as HTMLFormElement;
@@ -97,11 +153,13 @@ const [primaPrivacy, dopoPrivacy] = (testi.privacy as string).split('informativa
     privacy: form.dataset.errPrivacy ?? '',
   };
   const params = new URLSearchParams(location.search);
+  const passi = [...form.querySelectorAll<HTMLElement>('[data-passo]')];
+  const dots = [...document.querySelectorAll<HTMLElement>('[data-dot]')];
+  const tessere = [...form.querySelectorAll<HTMLInputElement>('input[name="servizi"]')];
 
   // Precompilazione dai parametri del link della CTA e campi nascosti.
-  const servizio = form.elements.namedItem('servizio') as HTMLSelectElement;
   const richiesto = params.get('servizio');
-  if (richiesto && [...servizio.options].some((o) => o.value === richiesto)) servizio.value = richiesto;
+  tessere.forEach((t) => { if (t.value === richiesto) t.checked = true; });
   const nascosto = (n: string, v: string) => { (form.elements.namedItem(n) as HTMLInputElement).value = v; };
   nascosto('origine', params.get('origine') ?? '');
   try {
@@ -111,36 +169,65 @@ const [primaPrivacy, dopoPrivacy] = (testi.privacy as string).split('informativa
   ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach((k) => nascosto(k, params.get(k) ?? ''));
 
   // Validazione.
-  const campi = [...form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[required]')];
+  type Campo = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
   const emailValida = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-
-  const errore = (el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): string => {
+  const errore = (el: Campo): string => {
     if (el instanceof HTMLInputElement && el.type === 'checkbox') return el.checked ? '' : msg.privacy;
     const v = el.value.trim();
     if (!v) return msg.obbligatorio;
     if (el instanceof HTMLInputElement && el.type === 'email' && !emailValida(v)) return msg.email;
     return '';
   };
-
-  const mostra = (el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) => {
+  const box = (id: string, testo: string) => {
+    const b = document.getElementById(id);
+    if (b) { b.textContent = testo; b.hidden = !testo; }
+  };
+  const mostra = (el: Campo) => {
     const testo = errore(el);
-    const box = document.getElementById(`e-${el.name}`);
     el.setAttribute('aria-invalid', String(Boolean(testo)));
-    if (box) { box.textContent = testo; box.hidden = !testo; }
+    box(`e-${el.id.replace('f-', '')}`, testo);
     return !testo;
   };
+  const mostraTessere = () => {
+    const ok = tessere.some((t) => t.checked);
+    tessere.forEach((t) => t.setAttribute('aria-invalid', String(!ok)));
+    box('e-servizi', ok ? '' : msg.obbligatorio);
+    return ok;
+  };
 
-  let tentato = false;
-  campi.forEach((el) => {
+  const tentato = new Set<number>();
+  const richiesti = (n: number) => [...passi[n - 1]!.querySelectorAll<Campo>('[required]')];
+  [1, 2].forEach((n) => richiesti(n).forEach((el) => {
     const evento = el instanceof HTMLSelectElement || (el instanceof HTMLInputElement && el.type === 'checkbox') ? 'change' : 'input';
-    el.addEventListener(evento, () => { if (tentato) mostra(el); });
-    el.addEventListener('blur', () => { if (tentato) mostra(el); });
+    el.addEventListener(evento, () => { if (tentato.has(n)) mostra(el); });
+  }));
+  tessere.forEach((t) => t.addEventListener('change', () => { if (tentato.has(1)) mostraTessere(); }));
+
+  const vai = (n: number, focus: HTMLElement | null) => {
+    passi.forEach((p, i) => { p.hidden = i !== n - 1; });
+    dots.forEach((d) => {
+      const attivo = Number(d.dataset.dot) === n;
+      d.classList.toggle('attivo', attivo);
+      if (attivo) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
+    });
+    focus?.focus();
+  };
+
+  form.querySelector('[data-avanti]')!.addEventListener('click', () => {
+    tentato.add(1);
+    const okTessere = mostraTessere();
+    const invalidi = richiesti(1).filter((el) => !mostra(el));
+    if (!okTessere) { tessere[0]!.focus(); return; }
+    if (invalidi.length) { invalidi[0]!.focus(); return; }
+    vai(2, document.getElementById('f-nome'));
   });
+  form.querySelector('[data-indietro]')!.addEventListener('click', () => vai(1, tessere[0]!));
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    tentato = true;
-    const invalidi = campi.filter((el) => !mostra(el));
+    if (passi[1]!.hidden) { (form.querySelector('[data-avanti]') as HTMLButtonElement).click(); return; }
+    tentato.add(2);
+    const invalidi = richiesti(2).filter((el) => !mostra(el));
     if (invalidi.length) { invalidi[0]!.focus(); return; }
     // Demo: nessun dato viene inviato o salvato.
     location.assign('/contatti/grazie/');
@@ -148,36 +235,95 @@ const [primaPrivacy, dopoPrivacy] = (testi.privacy as string).split('informativa
 </script>
 
 <style>
-  .modulo {
-    background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg);
-    padding: var(--space-6); display: grid; gap: var(--space-6);
+  .modulo-card { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+
+  .testata {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--space-6);
+    padding: var(--space-6);
   }
-  @media (min-width: 768px) { .modulo { padding: var(--space-8); } }
+  @media (min-width: 768px) { .testata { padding: var(--space-8) var(--space-10); } }
+  .testata-testo { display: grid; gap: var(--space-2); }
+  .titolo {
+    font-family: var(--title-md-family); font-size: var(--title-md-size); line-height: var(--title-md-line);
+    font-weight: var(--title-md-weight); color: var(--on-brand);
+  }
+  .frase { color: var(--on-brand-muted); }
+  .passaggi { list-style: none; padding: 0; margin: 0; display: flex; align-items: center; gap: var(--space-2); }
+  .passo-dot {
+    width: var(--step-dot); height: var(--step-dot); border-radius: var(--radius-pill);
+    display: grid; place-items: center; border: 1.5px solid var(--on-brand-muted); color: var(--on-brand-muted);
+    font-family: var(--small-family); font-size: var(--small-size); font-weight: var(--label-weight);
+  }
+  .passo-dot.attivo { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .linea { width: var(--space-8); height: 2px; background: var(--on-brand-muted); }
+
+  .modulo { padding: var(--space-6); }
+  @media (min-width: 768px) { .modulo { padding: var(--space-8) var(--space-10) var(--space-10); } }
+  .passaggio { display: grid; gap: var(--space-8); }
+
+  .etichetta, legend.etichetta {
+    font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--label-weight); color: var(--ink);
+  }
+  .facoltativo { font-weight: var(--body-weight); color: var(--ink-muted); }
+  .aiuto { font-size: var(--small-size); line-height: var(--small-line); color: var(--ink-muted); }
+
+  .tessere { border: 0; padding: 0; margin: 0; display: grid; gap: var(--space-3); }
+  .tessere legend { padding: 0; margin-bottom: var(--space-3); }
+  .tessere-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 1080px) { .tessere-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .tessera {
+    min-height: var(--tile-min-h); display: grid; gap: var(--space-2); align-content: start; cursor: pointer;
+    padding: var(--space-3); border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-raised);
+    font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--ui-weight);
+  }
+  .tessera:hover { border-color: var(--brand); }
+  .tessera:has(input:checked) { background: var(--brand-tint); border: 2px solid var(--brand); padding: calc(var(--space-3) - 0.5px); }
+  .tessera:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .tessera:has(input:checked) .tessera-nome { color: var(--brand); }
+
+  /* casella ridisegnata: input reale, spunta sovrapposta */
+  .casella { position: relative; width: var(--check-size); height: var(--check-size); flex: none; display: inline-block; }
+  .casella input {
+    appearance: none; -webkit-appearance: none; margin: 0; width: 100%; height: 100%; cursor: pointer;
+    border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-raised);
+  }
+  .casella input:checked { background: var(--brand); border-color: var(--brand); }
+  .casella input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .casella input[aria-invalid='true'] { border-color: var(--state-danger); }
+  .casella :global(.spunta) {
+    position: absolute; inset: 0; margin: auto; width: 75%; height: 75%; color: var(--surface-raised);
+    pointer-events: none; display: none; stroke-width: 3;
+  }
+  .casella input:checked + :global(.spunta) { display: block; }
+
   .griglia { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) {
-    .griglia { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .largo { grid-column: 1 / -1; }
-  }
+  @media (min-width: 640px) { .griglia { grid-template-columns: repeat(2, minmax(0, 1fr)); } .largo { grid-column: 1 / -1; } }
   .campo { display: grid; gap: var(--space-2); align-content: start; }
-  label { font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--label-weight); color: var(--ink); }
-  .guida { margin-top: calc(-1 * var(--space-1)); }
-  input:not([type='checkbox']), select, textarea {
+
+  input:not([type='checkbox']):not([type='hidden']), select, textarea {
     width: 100%; font: inherit; font-size: var(--body-size); line-height: var(--body-line); color: var(--ink);
-    background: var(--surface-raised); border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm);
-    padding: var(--space-2) var(--space-3); min-height: var(--space-12);
+    background: var(--surface-sunken); border: 1px solid var(--line-strong); border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4); min-height: var(--control-h);
   }
   textarea { resize: vertical; }
-  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
-  [aria-invalid='true'] { border-color: var(--state-danger) !important; }
+  input:not([type='checkbox']):focus, select:focus, textarea:focus {
+    outline: none; background: var(--surface-raised); border-color: var(--brand); box-shadow: inset 0 0 0 1px var(--brand);
+  }
+  [aria-invalid='true']:not([type='checkbox']) { border-color: var(--state-danger); box-shadow: inset 0 0 0 1px var(--state-danger); }
+
+  .select { position: relative; display: block; }
+  .select select { appearance: none; -webkit-appearance: none; padding-right: var(--space-12); cursor: pointer; }
+  .select :global(.freccia) {
+    position: absolute; right: var(--space-4); top: 50%; transform: translateY(-50%); color: var(--brand); pointer-events: none;
+  }
+
   .errore { color: var(--state-danger); font-size: var(--small-size); line-height: var(--small-line); font-weight: var(--label-weight); }
 
   .caselle { display: grid; gap: var(--space-4); }
-  .casella { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); align-items: start; font-weight: var(--body-weight); }
-  .casella input {
-    width: var(--space-6); height: var(--space-6); margin: 0; accent-color: var(--brand);
-  }
-  .casella input[aria-invalid='true'] { outline: 2px solid var(--state-danger); outline-offset: 1px; }
+  .consenso { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); align-items: start; cursor: pointer; }
+  .consenso .casella { margin-top: var(--space-1); }
 
   .invio { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); }
+  .invio .btn-primary { min-height: var(--control-h); }
   .nota { display: inline-flex; align-items: center; gap: var(--space-2); }
 </style>

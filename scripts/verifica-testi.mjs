@@ -40,9 +40,13 @@ const PRESTITI = { servizi: new Set(cardHome) };
 // Testi della revisione del 15 ottobre 2026: voci di elenco, righe "Chiave: valore",
 // coppie separate da " · ".
 const REVISIONE = new Set();
+// Sostituzioni ("- vecchio → nuovo"): il testo originale conta come presente se c'è il nuovo.
+const SOSTITUZIONI = new Map();
 for (const riga of readFileSync(resolve(root, 'docs/testi-revisione.md'), 'utf8').split(/\r?\n/)) {
   const r = riga.trim();
   if (!r || r.startsWith('#')) continue;
+  const sost = r.match(/^- (.+) → (.+)$/);
+  if (sost) { SOSTITUZIONI.set(sost[1], sost[2]); REVISIONE.add(sost[2]); continue; }
   const v = r.startsWith('- ') ? r.slice(2) : r.includes(': ') ? r.slice(r.indexOf(': ') + 2) : '';
   if (!v) continue;
   REVISIONE.add(v);
@@ -51,7 +55,8 @@ for (const riga of readFileSync(resolve(root, 'docs/testi-revisione.md'), 'utf8'
 
 // Frasi di un paragrafo: si divide dopo ". " seguito da maiuscola.
 const frasi = (t) => t.split(/(?<=\.) (?=[A-ZÀ-Ú])/);
-const presente = (a, unite) => unite.includes(a) || frasi(a).every((f) => unite.includes(f));
+const presente = (a, unite) => unite.includes(a) || frasi(a).every((f) => unite.includes(f))
+  || (SOSTITUZIONI.has(a) && unite.includes(SOSTITUZIONI.get(a)));
 const ammesso = (p, attese, extra) => attese.some((a) => a.includes(p)) || ETICHETTE_UI.has(p) || REVISIONE.has(p) || extra?.has(p);
 
 const errori = [];
@@ -88,12 +93,12 @@ for (const [titolo, files] of Object.entries(SPECIALI)) {
   const { attese, testo } = servizio[titolo];
   const perFile = files.map((f) => [f, stringhe(parse(readFileSync(resolve(cartellaSpeciali, `${f}.yaml`), 'utf8')), '', [])]);
   const unite = perFile.flatMap(([, p]) => p).join('\u0000');
-  for (const a of attese) if (!unite.includes(a)) errori.push(`${files.join('+')}: testo mancante o modificato:
+  for (const a of attese) if (!presente(a, unite)) errori.push(`${files.join('+')}: testo mancante o modificato:
     «${a}»`);
   for (const [f, presenti] of perFile) {
     contaSpeciali++;
     for (const p of presenti) {
-      if (!attese.includes(p) && !testo.includes(p) && !brief.includes(p)) errori.push(`${f}: testo non presente in testi-it.md né nel brief:
+      if (!attese.includes(p) && !testo.includes(p) && !brief.includes(p) && !REVISIONE.has(p)) errori.push(`${f}: testo non presente in testi-it.md né nel brief:
     «${p}»`);
     }
   }

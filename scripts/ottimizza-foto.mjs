@@ -26,7 +26,6 @@ const foto = {
   'incendi-1.jpg': 'impianto-sprinkler-antincendio',
   'gestione-1.jpg': 'verifica-documenti-magazzino',
   'formazione-1.jpg': 'formatrice-corso-gruppo',
-  'contatti-1.jpg': 'facciata-edificio-uffici',
   'blog-1.jpg': 'tavole-progetto-architettonico',
   // revisione del 15 ottobre 2026
   'px-37668423.jpg': 'tecnico-manutenzione-macchinario',
