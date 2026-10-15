@@ -1,0 +1,74 @@
+---
+// Selettore lingua: solo l'italiano è attivo, EN, DE ed ES sono "in arrivo" (docs/brief-sito.md).
+import Icon from './Icon.astro';
+import { lingue } from '../data/sito';
+
+interface Props {
+  variant: 'menu' | 'inline';
+  id: string;
+}
+const { variant, id } = Astro.props;
+---
+{variant === 'menu' ? (
+  <div class="lang">
+    <button class="lang-toggle ui" type="button" aria-expanded="false" aria-controls={id} data-disclosure>
+      <Icon name="globe" class="icon icon-sm" />
+      <span><span class="visually-hidden">Lingua: </span>IT</span>
+      <Icon name="chevron-down" class="icon icon-sm chevron" />
+    </button>
+    <ul class="lang-list" id={id} hidden>
+      {lingue.map((l) => (
+        <li>
+          {l.attiva ? (
+            <a href="/" lang="it" aria-current="true"><span class="code">{l.codice}</span> {l.nome}</a>
+          ) : (
+            <span class="disabled" aria-disabled="true">
+              <span class="code">{l.codice}</span> <span lang={l.codice.toLowerCase()}>{l.nome}</span> · in arrivo
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+) : (
+  <div class="lang-inline">
+    <p class="label" id={`${id}-titolo`}>Lingua</p>
+    <ul aria-labelledby={`${id}-titolo`}>
+      {lingue.map((l) => (
+        <li>
+          {l.attiva ? (
+            <a href="/" lang="it" aria-current="true">{l.codice}</a>
+          ) : (
+            <span class="disabled" aria-disabled="true"><span lang={l.codice.toLowerCase()}>{l.codice}</span> <span class="small">in arrivo</span></span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  .lang { position: relative; }
+  .lang-toggle {
+    display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-2);
+    border: 0; background: none; color: var(--ink); cursor: pointer; border-radius: var(--radius-sm);
+  }
+  .lang-toggle[aria-expanded='true'] :global(.chevron) { transform: rotate(180deg); }
+  .lang-list {
+    position: absolute; right: 0; top: calc(100% + var(--space-2)); z-index: 30; min-width: max-content;
+    list-style: none; padding: var(--space-2); background: var(--surface-raised);
+    border: 1px solid var(--line); border-radius: var(--radius-lg);
+  }
+  .lang-list a, .lang-list .disabled {
+    display: block; padding: var(--space-2) var(--space-3); font-family: var(--ui-family);
+    font-size: var(--ui-size); line-height: var(--ui-line); border-radius: var(--radius-sm);
+  }
+  .lang-list a { color: var(--ink); text-decoration: none; font-weight: var(--label-weight); }
+  .lang-list a:hover { background: var(--surface-sunken); }
+  .lang-list .disabled { color: var(--ink-muted); cursor: not-allowed; }
+  .code { display: inline-block; min-width: var(--space-8); }
+
+  .lang-inline ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin-top: var(--space-2); }
+  .lang-inline a { font-weight: var(--label-weight); color: var(--ink); }
+  .lang-inline .disabled { color: var(--ink-muted); }
+</style>

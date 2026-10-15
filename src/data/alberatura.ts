@@ -1,0 +1,25 @@
+// Alberatura della demo (docs/brief-sito.md). Serve alle pagine provvisorie
+// e alla verifica finale dei link.
+export const alberatura = [
+  { url: '/', nome: 'Home' },
+  { url: '/servizi/', nome: 'Servizi' },
+  { url: '/servizi/progettazione-impianti-tecnologici/', nome: 'Progettazione impianti tecnologici' },
+  { url: '/servizi/energie-rinnovabili/', nome: 'Energie rinnovabili' },
+  { url: '/servizi/energie-rinnovabili/impianto-fotovoltaico/', nome: 'Impianti fotovoltaici' },
+  { url: '/servizi/energie-rinnovabili/impianto-mini-eolico/', nome: 'Impianti mini-eolici' },
+  { url: '/servizi/energie-rinnovabili/impianto-a-biometano/', nome: 'Impianti a biometano' },
+  { url: '/servizi/energie-rinnovabili/impianto-idroelettrico/', nome: 'Impianti idroelettrici' },
+  { url: '/servizi/sicurezza-negli-ambienti-di-lavoro/', nome: 'Sicurezza negli ambienti di lavoro' },
+  { url: '/servizi/ambiente/', nome: 'Consulenza ambientale' },
+  { url: '/servizi/prevenzione-incendi/', nome: 'Prevenzione incendi' },
+  { url: '/servizi/sistemi-di-gestione/', nome: 'Sistemi di gestione' },
+  { url: '/servizi/formazione/', nome: 'Formazione' },
+  { url: '/chi-siamo/', nome: 'Chi siamo' },
+  { url: '/blog/', nome: 'Blog' },
+  { url: '/blog/esempio-articolo/', nome: 'Articolo di esempio' },
+  { url: '/contatti/', nome: 'Contatti' },
+  { url: '/contatti/grazie/', nome: 'Conferma invio' },
+  { url: '/privacy-policy/', nome: 'Privacy policy' },
+  { url: '/cookie-policy/', nome: 'Cookie policy' },
+  { url: '/segnalazioni/', nome: 'Segnalazioni' },
+] as const;

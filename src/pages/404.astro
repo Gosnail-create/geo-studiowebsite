@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="La pagina che cercate non esiste più | Geo Studio Engineering">
+  <section class="section">
+    <div class="container errore">
+      <span class="cut-mark" aria-hidden="true"></span>
+      <h1 class="h1">La pagina che cercate non esiste più</h1>
+      <p class="lead">Forse è stata spostata con il rinnovo del sito. Potete partire dalla home o cercare fra i servizi.</p>
+      <ul class="link">
+        <li><a class="btn btn-ghost" href="/">Tornate alla home</a></li>
+        <li><a class="btn btn-ghost" href="/servizi/">Vedete i servizi</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .errore { display: grid; gap: var(--space-6); max-width: calc(800px + 2 * var(--space-8)); padding-block: var(--space-8); }
+  .link { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); }
+  .link .btn::after { content: "→"; }
+</style>
