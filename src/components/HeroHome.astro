@@ -1,0 +1,111 @@
+---
+// Hero della home (brief di revisione, punto 4): split 7fr/5fr alto almeno l'80% della
+// finestra, foto a filo del bordo destro con il taglio del logo, fascia dati in acciaio.
+import type { Foto } from '../data/immagini';
+import LinkFreccia from './LinkFreccia.astro';
+
+interface Props {
+  etichetta?: string;
+  titolo: string;
+  testo: string[];
+  bottone: { label: string; href: string };
+  link?: { label: string; href: string };
+  foto: Foto;
+  dati?: { valore: string; descrizione: string }[];
+}
+const { etichetta, titolo, testo, bottone, link, foto, dati = [] } = Astro.props;
+const srcset = foto.larghezze.map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ');
+const largh = foto.larghezze[foto.larghezze.length - 1]!;
+---
+<section class="hero-home" aria-labelledby="hero-titolo">
+  <div class="hh-grid">
+    <div class="hh-testo">
+      {etichetta && <p class="label">{etichetta}</p>}
+      <h1 class="display-xl" id="hero-titolo">{titolo}</h1>
+      {testo.map((p) => <p class="lead misura">{p}</p>)}
+      <div class="azioni">
+        <a class="btn btn-primary btn-lg" href={bottone.href}>{bottone.label}</a>
+        {link && <LinkFreccia href={link.href}>{link.label}</LinkFreccia>}
+      </div>
+    </div>
+    <div class="hh-foto">
+      <img src={`/images/${foto.nome}-1024.webp`} srcset={srcset} sizes="(min-width: 1080px) 45vw, 100vw"
+        width={largh} height={Math.round((foto.height / foto.width) * largh)} alt={foto.alt}
+        loading="eager" fetchpriority="high" decoding="async" />
+      <span class="taglio" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+{dati.length > 0 && (
+  <div class="container fascia-wrap">
+    <dl class="fascia on-brand">
+      {dati.map((d) => (
+        <div class="dato">
+          <dt class="valore">{d.valore}</dt>
+          <dd class="descrizione">{d.descrizione}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+)}
+
+<style>
+  .hero-home { background: var(--surface); }
+  .hh-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .hh-foto { position: relative; order: -1; height: var(--hero-photo-h-mobile); }
+  .hh-foto img { width: 100%; height: 100%; object-fit: cover; }
+  .hh-testo {
+    display: grid; gap: var(--space-4); justify-items: start; align-content: center;
+    padding: var(--space-12) var(--space-4) var(--space-16);
+  }
+  .hh-testo .label { margin-bottom: calc(-1 * var(--space-1)); }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-8); margin-top: var(--space-4); }
+  .taglio {
+    position: absolute; left: var(--space-4); bottom: calc(-1 * var(--cut-mark-lg-h) / 2);
+    width: var(--cut-mark-lg-w); height: var(--cut-mark-lg-h); background: var(--accent);
+    transform: skewX(calc(var(--cut-angle) - 90deg));
+  }
+  @media (min-width: 768px) {
+    .hh-testo { padding-inline: var(--space-8); }
+    .taglio { left: var(--space-8); }
+  }
+
+  /* desktop: il testo si allinea al contenitore, la foto arriva al bordo destro della finestra */
+  @media (min-width: 1080px) {
+    .hh-grid {
+      min-height: max(80vh, var(--hero-min-h));
+      grid-template-columns:
+        minmax(var(--space-8), 1fr)
+        minmax(0, calc(var(--content-max) * 7 / 12))
+        minmax(0, calc(var(--content-max) * 5 / 12))
+        minmax(var(--space-8), 1fr);
+    }
+    .hh-testo {
+      grid-column: 2; padding: var(--space-24) var(--space-16) var(--space-32) 0;
+    }
+    .hh-foto { grid-column: 3 / -1; order: 0; height: auto; }
+    .hh-foto img { position: absolute; inset: 0; border-bottom-left-radius: var(--radius-lg); }
+    .taglio { left: 0; bottom: 33%; transform: translateX(-50%) skewX(calc(var(--cut-angle) - 90deg)); }
+  }
+
+  /* fascia dati in acciaio */
+  .fascia {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6);
+    margin: var(--space-8) 0 0; border-radius: var(--radius-lg); padding: var(--space-6);
+  }
+  .dato { display: grid; gap: var(--space-1); align-content: start; padding-left: var(--space-4); border-left: 2px solid var(--accent-on-brand); }
+  .valore {
+    font-family: var(--data-md-family); font-size: var(--h3-size); line-height: var(--h3-line);
+    font-weight: var(--data-md-weight); color: var(--on-brand);
+  }
+  @media (min-width: 768px) { .valore { font-size: var(--data-md-size); line-height: var(--data-md-line); } }
+  .descrizione {
+    margin: 0; font-family: var(--caption-family); font-size: var(--caption-size); line-height: var(--caption-line);
+    color: var(--on-brand-muted);
+  }
+  @media (min-width: 1080px) {
+    .fascia-wrap { position: relative; z-index: 1; margin-top: calc(-1 * var(--band-overlap)); }
+    .fascia { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: var(--space-8) var(--space-10); margin: 0; }
+  }
+</style>

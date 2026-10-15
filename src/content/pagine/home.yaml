@@ -5,16 +5,29 @@ origine: home
 hero:
   titolo: Un riferimento tecnico per gli obblighi e gli impianti della vostra azienda
   testo:
-    - Dal 1990 Geo Studio Engineering affianca imprese ed enti negli adempimenti di sicurezza, ambiente e prevenzione incendi, nei sistemi di gestione e nella formazione del personale, e progetta impianti tecnologici e da fonti rinnovabili. Un unico gruppo di tecnici segue il lavoro dal primo sopralluogo fino alle pratiche con gli enti e alle verifiche degli anni successivi.
+    - Dal 1990 Geo Studio Engineering affianca imprese ed enti negli adempimenti di sicurezza, ambiente e prevenzione incendi, nei sistemi di gestione e nella formazione del personale, e progetta impianti tecnologici e da fonti rinnovabili.
   etichetta: Consulenza tecnica e progettazione dal 1990
   bottone: Parlate con un nostro tecnico
   link:
     label: Scoprite i servizi
     href: /servizi/
   foto: tecnico-ispezione-macchinari
+  # fascia dati sotto la hero (docs/testi-revisione.md)
+  dati:
+    - valore: "1990"
+      descrizione: anno di fondazione
+    - valore: ISO 9001
+      descrizione: sistema qualità certificato
+    - valore: "7"
+      descrizione: servizi in due divisioni
+    - valore: Bovolone
+      descrizione: sede, provincia di Verona
 sezioni:
   - titolo: Perché conviene avere un solo interlocutore tecnico
     blocchi:
+      # seconda frase della hero, spostata qui (docs/testi-revisione.md)
+      - tipo: p
+        testo: Un unico gruppo di tecnici segue il lavoro dal primo sopralluogo fino alle pratiche con gli enti e alle verifiche degli anni successivi.
       - tipo: p
         testo: In un'azienda produttiva gli obblighi tecnici arrivano quasi sempre insieme. L'ampliamento di un capannone, per esempio, porta con sé la revisione della pratica antincendio, l'aggiornamento del documento di valutazione dei rischi, spesso un nuovo impianto elettrico e talvolta una diversa autorizzazione alle emissioni. Se ogni parte è affidata a un consulente diverso, le informazioni si disperdono e i tempi si allungano, perché nessuno ha davanti il quadro completo. Da noi progettisti di impianti e consulenti per qualità, ambiente e sicurezza lavorano nello stesso studio e sugli stessi incarichi. Per voi questo significa un referente unico, documenti coerenti fra loro e un solo calendario in cui tenere sotto controllo scadenze e rinnovi.
   - titolo: Di cosa ci occupiamo

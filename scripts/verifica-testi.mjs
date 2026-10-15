@@ -2,8 +2,9 @@
 // docs/testi-it.md, nei due sensi:
 // 1. ogni testo del cliente compare identico nel file della pagina;
 // 2. ogni testo del file della pagina viene dai testi del cliente (niente testi inventati).
-// Fanno eccezione solo i campi tecnici (link, chiavi di immagini) e le poche etichette
-// d'interfaccia elencate in ETICHETTE_UI, decise con Gosnail.
+// Fanno eccezione solo i campi tecnici (link, chiavi di immagini), le poche etichette
+// d'interfaccia elencate in ETICHETTE_UI e i testi approvati in docs/testi-revisione.md.
+// Un paragrafo può essere diviso fra più blocchi purché ogni frase resti identica.
 import { readFileSync, readdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -36,6 +37,23 @@ const cardHome = pagine.home.sezioni.flatMap((s) => s.blocchi)
   .flatMap((b) => b.righe.flat());
 const PRESTITI = { servizi: new Set(cardHome) };
 
+// Testi della revisione del 15 ottobre 2026: voci di elenco, righe "Chiave: valore",
+// coppie separate da " · ".
+const REVISIONE = new Set();
+for (const riga of readFileSync(resolve(root, 'docs/testi-revisione.md'), 'utf8').split(/\r?\n/)) {
+  const r = riga.trim();
+  if (!r || r.startsWith('#')) continue;
+  const v = r.startsWith('- ') ? r.slice(2) : r.includes(': ') ? r.slice(r.indexOf(': ') + 2) : '';
+  if (!v) continue;
+  REVISIONE.add(v);
+  v.split(' · ').forEach((x) => REVISIONE.add(x));
+}
+
+// Frasi di un paragrafo: si divide dopo ". " seguito da maiuscola.
+const frasi = (t) => t.split(/(?<=\.) (?=[A-ZÀ-Ú])/);
+const presente = (a, unite) => unite.includes(a) || frasi(a).every((f) => unite.includes(f));
+const ammesso = (p, attese, extra) => attese.some((a) => a.includes(p)) || ETICHETTE_UI.has(p) || REVISIONE.has(p) || extra?.has(p);
+
 const errori = [];
 const file = readdirSync(cartella).filter((f) => f.endsWith('.yaml'));
 
@@ -48,10 +66,10 @@ for (const [chiave, pagina] of Object.entries(pagine)) {
   const unite = presenti.join('\u0000');
 
   for (const a of attese) {
-    if (!presenti.includes(a) && !unite.includes(a)) errori.push(`${chiave}: testo mancante o modificato:\n    «${a}»`);
+    if (!presente(a, unite)) errori.push(`${chiave}: testo mancante o modificato:\n    «${a}»`);
   }
   for (const p of presenti) {
-    if (!insiemeAttese.has(p) && !ETICHETTE_UI.has(p) && !PRESTITI[chiave]?.has(p)) errori.push(`${chiave}: testo non presente in testi-it.md:\n    «${p}»`);
+    if (!insiemeAttese.has(p) && !ammesso(p, attese, PRESTITI[chiave])) errori.push(`${chiave}: testo non presente in testi-it.md:\n    «${p}»`);
   }
 }
 

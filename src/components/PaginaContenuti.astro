@@ -4,6 +4,7 @@
 import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Hero from './Hero.astro';
+import HeroHome from './HeroHome.astro';
 import Sezione from './Sezione.astro';
 import Testo from './Testo.astro';
 import Passi from './Passi.astro';
@@ -41,16 +42,27 @@ const idDi = (titolo: string) => titolo.toLowerCase().normalize('NFD').replace(/
 const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
 ---
 <Base title={pagina.title} description={pagina.description}>
-  <Hero
-    etichetta={hero.etichetta}
-    titolo={hero.titolo}
-    testo={hero.testo}
-    home={pagina.origine === 'home'}
-    bottone={hero.bottone ? { label: hero.bottone, href: cta } : undefined}
-    link={hero.link}
-    foto={hero.foto ? fotoStock(hero.foto as NomeFoto) : undefined}
-    immagine={hero.rendering ? rendering[hero.rendering] : undefined}
-  />
+  {pagina.origine === 'home' ? (
+    <HeroHome
+      etichetta={hero.etichetta}
+      titolo={hero.titolo}
+      testo={hero.testo}
+      bottone={{ label: hero.bottone!, href: cta }}
+      link={hero.link}
+      foto={fotoStock(hero.foto as NomeFoto)}
+      dati={hero.dati}
+    />
+  ) : (
+    <Hero
+      etichetta={hero.etichetta}
+      titolo={hero.titolo}
+      testo={hero.testo}
+      bottone={hero.bottone ? { label: hero.bottone, href: cta } : undefined}
+      link={hero.link}
+      foto={hero.foto ? fotoStock(hero.foto as NomeFoto) : undefined}
+      immagine={hero.rendering ? rendering[hero.rendering] : undefined}
+    />
+  )}
 
   {dopoHero && (
     <section class="section section--sunken" aria-label={hero.titolo}>
