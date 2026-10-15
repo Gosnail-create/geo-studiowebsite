@@ -1,0 +1,31 @@
+---
+// Pannello dati su brand-deep: valori in IBM Plex Mono, descrizioni in Red Hat Text.
+import Testo from './Testo.astro';
+
+interface Props {
+  voci: { valore: string; descrizione: string }[];
+  titolo?: string;
+}
+const { voci, titolo } = Astro.props;
+---
+<div class="pannello on-deep">
+  {titolo && <p class="label">{titolo}</p>}
+  <dl class="voci" style={`--colonne: ${voci.length}`}>
+    {voci.map((v) => (
+      <div class="voce">
+        <dt class="data-lg valore"><Testo text={v.valore} /></dt>
+        <dd class="descrizione"><Testo text={v.descrizione} /></dd>
+      </div>
+    ))}
+  </dl>
+</div>
+
+<style>
+  .pannello { border-radius: var(--radius-lg); padding: var(--space-6); display: grid; gap: var(--space-4); }
+  .voci { display: grid; gap: var(--space-6); margin: 0; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 640px) { .voci { grid-template-columns: repeat(var(--colonne), minmax(0, 1fr)); } }
+  .voce { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-3); border-top: 2px solid var(--accent-on-deep); }
+  .valore { color: var(--accent-on-deep); }
+  .descrizione { margin: 0; color: var(--on-brand-deep); }
+  @media (min-width: 768px) { .pannello { padding: var(--space-8); } }
+</style>

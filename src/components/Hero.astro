@@ -1,0 +1,62 @@
+---
+// Testata di pagina (design-system/components/Hero.html): sempre su surface,
+// testo a sinistra e fotografia a destra. Mai grafite a tutto schermo.
+import type { ImageMetadata } from 'astro';
+import Figura from './Figura.astro';
+import FotoSegnaposto from './FotoSegnaposto.astro';
+import LinkFreccia from './LinkFreccia.astro';
+
+interface Props {
+  etichetta?: string;
+  titolo: string;
+  testo?: string[];
+  bottone?: { label: string; href: string };
+  link?: { label: string; href: string };
+  immagine?: { src: ImageMetadata; alt: string; didascalia?: string };
+  fotoSegnaposto?: string;
+  home?: boolean;
+}
+const { etichetta, titolo, testo = [], bottone, link, immagine, fotoSegnaposto, home = false } = Astro.props;
+const haMedia = Boolean(immagine || fotoSegnaposto);
+---
+<section class:list={['hero', { 'hero--media': haMedia }]}>
+  <div class="container hero-grid">
+    <div class="hero-testo">
+      {etichetta && <p class="label">{etichetta}</p>}
+      <h1 class={home ? 'display' : 'h1'}>{titolo}</h1>
+      {testo.map((p) => <p class="lead">{p}</p>)}
+      <slot />
+      {(bottone || link) && (
+        <div class="azioni">
+          {bottone && <a class="btn btn-primary" href={bottone.href}>{bottone.label}</a>}
+          {link && <LinkFreccia href={link.href}>{link.label}</LinkFreccia>}
+        </div>
+      )}
+    </div>
+    {haMedia && (
+      <div class="hero-media">
+        {immagine ? (
+          <Figura src={immagine.src} alt={immagine.alt} didascalia={immagine.didascalia} ratio="4 / 3" eager
+            sizes="(min-width: 1080px) 520px, 100vw" />
+        ) : (
+          <FotoSegnaposto descrizione={fotoSegnaposto!} />
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: var(--space-12) var(--space-16); }
+  .hero-grid { display: grid; gap: var(--space-8); align-items: center; }
+  .hero-testo { display: grid; gap: var(--space-4); }
+  .hero-testo .label { margin-bottom: calc(-1 * var(--space-1)); }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); margin-top: var(--space-4); }
+  @media (min-width: 1080px) {
+    .hero { padding-block: var(--space-16) var(--space-24); }
+    .hero-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-12); }
+    .hero-testo { grid-column: 1 / span 8; }
+    .hero--media .hero-testo { grid-column: 1 / span 7; }
+    .hero--media .hero-media { grid-column: 8 / span 5; }
+  }
+</style>

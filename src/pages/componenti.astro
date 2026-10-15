@@ -1,0 +1,148 @@
+---
+// Catalogo interno dei componenti (fase 2), con testi presi da docs/testi-it.md.
+// Non compare nel menu né nell'alberatura del sito.
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Sezione from '../components/Sezione.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CardGrid from '../components/CardGrid.astro';
+import CardContatto from '../components/CardContatto.astro';
+import PannelloDati from '../components/PannelloDati.astro';
+import Passi from '../components/Passi.astro';
+import Elenco from '../components/Elenco.astro';
+import Tabella from '../components/Tabella.astro';
+import Faq from '../components/Faq.astro';
+import FasciaChiusura from '../components/FasciaChiusura.astro';
+import Figura from '../components/Figura.astro';
+import Segnaposto from '../components/Segnaposto.astro';
+import { servizi } from '../data/servizi';
+import { linkContatti } from '../lib/cta';
+import { rendering } from '../data/rendering';
+
+const testiCard = [
+  'Impianti elettrici, termici, idraulici e di climatizzazione per edifici civili e industriali, classificazione delle aree ATEX e verifiche periodiche degli impianti di messa a terra.',
+  'Fotovoltaico, mini-eolico, biometano e idroelettrico: dallo studio di fattibilità alla progettazione, alle autorizzazioni e al supporto in cantiere.',
+  'Documento di valutazione dei rischi, misure strumentali di rumore, vibrazioni e agenti fisici, incarichi di RSPP esterno secondo il D.Lgs. 81/2008.',
+  'Autorizzazioni per emissioni e rifiuti, pratiche sulle acque, valutazioni di impatto acustico e requisiti acustici degli edifici.',
+  'Progetti, SCIA e rinnovi presso i Vigili del Fuoco, piani di emergenza, formazione degli addetti e prove di evacuazione.',
+  'Qualità, ambiente, salute e sicurezza e sicurezza alimentare secondo le norme ISO, standard della filiera agroalimentare e modelli organizzativi 231.',
+  'Corsi obbligatori per lavoratori, preposti, dirigenti e datori di lavoro, addetti alle emergenze, conduttori di attrezzature e alimentaristi.',
+];
+---
+<Base title="Catalogo componenti | Demo Geo Studio Engineering">
+  <div class="container avviso">
+    <Segnaposto text="Pagina interna della demo: mostra i componenti della fase 2 con i testi del cliente. Non fa parte del sito." />
+  </div>
+
+  <Hero
+    home
+    etichetta="Consulenza tecnica e progettazione dal 1990"
+    titolo="Un riferimento tecnico per gli obblighi e gli impianti della vostra azienda"
+    testo={['Dal 1990 Geo Studio Engineering affianca imprese ed enti negli adempimenti di sicurezza, ambiente e prevenzione incendi, nei sistemi di gestione e nella formazione del personale, e progetta impianti tecnologici e da fonti rinnovabili. Un unico gruppo di tecnici segue il lavoro dal primo sopralluogo fino alle pratiche con gli enti e alle verifiche degli anni successivi.']}
+    bottone={{ label: 'Parlate con un nostro tecnico', href: linkContatti('home') }}
+    link={{ label: 'Scoprite i servizi', href: '/servizi/' }}
+    fotoSegnaposto="tecnico al lavoro in un capannone (stock provvisoria, fase 3)"
+  />
+
+  <Sezione
+    id="servizi"
+    layout="stack"
+    sfondo="sunken"
+    titolo="Di cosa ci occupiamo"
+    testo={['Le nostre attività si raccolgono in sette aree. Potete affidarci un singolo adempimento oppure l\'intera gestione tecnica, e decidere più avanti se allargare l\'incarico.']}
+  >
+    <CardGrid colonne={4} slot="full">
+      {servizi.map((s, i) => (
+        <li>
+          <ServiceCard
+            numero={String(i + 1).padStart(2, '0')}
+            titolo={s.nome}
+            testo={testiCard[i]!}
+            href={s.url}
+            immagine={s.slug === 'energie-rinnovabili' ? rendering.vistaLaterale : undefined}
+          />
+        </li>
+      ))}
+      <li><CardContatto label="Parlate con un nostro tecnico" href={linkContatti('home')} /></li>
+    </CardGrid>
+  </Sezione>
+
+  <Sezione
+    id="metodo"
+    titolo="Come lavoriamo"
+    testo={['Che si tratti di un documento di valutazione dei rischi o di un impianto a biometano, ogni incarico segue lo stesso percorso di fondo. Partiamo dal luogo e dalle persone, perché le carte da sole non dicono come si lavora davvero in un reparto. Le soluzioni arrivano dopo, e restano sotto controllo anche quando l\'incarico iniziale è concluso.']}
+  >
+    <Passi
+      titoloInline
+      voci={[
+        'Sopralluogo e analisi. Conosciamo l\'attività, gli ambienti, gli impianti e gli obblighi che la riguardano.',
+        'Progetto o valutazione. Definiamo le soluzioni tecniche, le misure e i documenti necessari.',
+        'Pratiche e attuazione. Presentiamo le pratiche agli enti competenti e vi affianchiamo nell\'applicazione.',
+        'Verifica nel tempo. Teniamo sotto controllo scadenze, rinnovi e cambiamenti normativi.',
+      ]}
+    />
+  </Sezione>
+
+  <Sezione id="chi-siamo" sfondo="sunken" titolo="Chi siamo"
+    testo={['Geo Studio Engineering lavora dal 1990 con aziende artigiane, piccole e medie imprese, grandi gruppi ed enti pubblici di tutta Italia. Lo studio ha sede a Bovolone, in provincia di Verona, ed è organizzato in due divisioni: una progetta gli impianti tecnologici, l\'altra segue qualità, ambiente, salute e sicurezza, l\'area che in azienda si chiama QHSE. I settori che conosciamo meglio sono l\'industria manifatturiera e metalmeccanica, la chimica e la farmaceutica, i trasporti, i servizi e l\'agricoltura. Il nostro sistema di gestione per la qualità è certificato ISO 9001 da oltre quindici anni, e lo applichiamo prima di tutto a noi stessi.']}
+  >
+    <PannelloDati voci={[
+      { valore: '1990', descrizione: 'anno di fondazione' },
+      { valore: 'ISO 9001', descrizione: 'sistema qualità certificato' },
+      { valore: '2 divisioni', descrizione: 'impianti e QHSE' },
+    ]} />
+    <PannelloDati voci={[{ valore: 'ISO 9001', descrizione: '[ente di certificazione, numero e scadenza del certificato da ricevere dal cliente]' }]} />
+  </Sezione>
+
+  <Sezione id="valutazioni" titolo="Le valutazioni specifiche e le misure strumentali"
+    testo={['Alcuni rischi richiedono una valutazione dedicata, spesso basata su misure eseguite con strumenti e software tecnici. È il caso del rumore e delle vibrazioni nelle lavorazioni meccaniche, del rischio chimico e delle polveri nelle verniciature e nelle lavorazioni del legno, della movimentazione manuale dei carichi in magazzino. In base all\'attività ci occupiamo di queste valutazioni.']}
+  >
+    <Elenco colonne={2} voci={[
+      'Rumore',
+      'Vibrazioni meccaniche, al sistema mano-braccio e al corpo intero',
+      'Campi elettromagnetici',
+      'Radiazioni ottiche artificiali',
+      'Microclima',
+      'Rischio chimico ed esposizione a polveri',
+      'Stress lavoro-correlato',
+      'Movimentazione manuale dei carichi',
+      'Movimenti ripetitivi degli arti superiori',
+      'Rischio sismico, dove pertinente',
+      'Piani di emergenza ed evacuazione',
+      'Sicurezza nei cantieri temporanei o mobili, secondo il Titolo IV del D.Lgs. 81/2008',
+    ]} />
+  </Sezione>
+
+  <Sezione id="processo" sfondo="sunken" titolo="Dalla biomassa al biometano"
+    testo={['Il processo comincia nei digestori, grandi serbatoi chiusi e riscaldati in cui le matrici organiche vengono decomposte da batteri in assenza di ossigeno. Questa digestione anaerobica produce biogas, una miscela composta in prevalenza da metano e anidride carbonica.']}
+  >
+    <Figura {...rendering.vistaAerea} />
+  </Sezione>
+
+  <Sezione id="norme" layout="stack" titolo="Le norme e gli standard che seguiamo">
+    <Tabella slot="full" didascalia="Norme e standard dei sistemi di gestione"
+      intestazioni={['Ambito', 'Norma o standard', 'Che cosa riguarda']}
+      righe={[
+        ['Qualità', 'ISO 9001:2026', 'Organizzazione dei processi, misura delle prestazioni, soddisfazione del cliente'],
+        ['Ambiente', 'ISO 14001:2026', 'Aspetti ambientali dell\'attività, controllo degli impatti, obiettivi di miglioramento'],
+        ['Salute e sicurezza', 'ISO 45001', 'Prevenzione di infortuni e malattie professionali, controllo dei rischi'],
+      ]}
+    />
+  </Sezione>
+
+  <Faq sfondo="sunken" voci={[
+    { domanda: 'Ogni quanto vanno verificati gli impianti di messa a terra?', risposta: 'Il DPR 462/2001 prevede una verifica ogni due anni per cantieri, locali medici e ambienti a maggior rischio di incendio, ogni cinque anni per tutti gli altri luoghi di lavoro. La verifica deve essere eseguita da un organismo abilitato o dagli enti pubblici competenti, e l\'obbligo di richiederla spetta al datore di lavoro.' },
+    { domanda: 'Quando serve la classificazione delle aree ATEX?', risposta: 'Serve ogni volta che nell\'attività possono formarsi miscele esplosive di gas, vapori o polveri combustibili con l\'aria, anche solo occasionalmente. Accade spesso in verniciature, falegnamerie, mulini e mangimifici, impianti di biogas e depositi di solventi.' },
+    { domanda: 'Seguite anche la direzione lavori?', risposta: 'Sì, quando l\'incarico lo prevede seguiamo il cantiere fino al collaudo, coordinando le imprese installatrici.' },
+  ]} />
+
+  <FasciaChiusura
+    titolo="Avete un adempimento da gestire o un impianto da progettare?"
+    testo="Raccontateci in poche righe di cosa si tratta. Un nostro tecnico vi ricontatta per capire la situazione e proporvi il percorso più adatto."
+    bottone={{ label: 'Parlate con un nostro tecnico', href: linkContatti('home') }}
+  />
+</Base>
+
+<style>
+  .avviso { padding-top: var(--space-8); }
+</style>

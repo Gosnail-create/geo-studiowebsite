@@ -1,0 +1,38 @@
+---
+// Immagine con didascalia facoltativa, raggio radius-lg.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  didascalia?: string;
+  widths?: number[];
+  sizes?: string;
+  ratio?: string;
+  eager?: boolean;
+}
+const {
+  src, alt, didascalia, ratio,
+  widths = [480, 800, 1200, 1600],
+  sizes = '(min-width: 1080px) 600px, 100vw',
+  eager = false,
+} = Astro.props;
+---
+<figure class="figura">
+  <Image
+    src={src}
+    alt={alt}
+    widths={widths.filter((w) => w <= src.width)}
+    sizes={sizes}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+    style={ratio ? `aspect-ratio: ${ratio}` : undefined}
+  />
+  {didascalia && <figcaption class="small">{didascalia}</figcaption>}
+</figure>
+
+<style>
+  .figura { display: grid; gap: var(--space-2); }
+  .figura :global(img) { width: 100%; object-fit: cover; border-radius: var(--radius-lg); background: var(--sand); }
+</style>

@@ -1,0 +1,20 @@
+---
+// Ottava cella della griglia dei servizi: unica card su brand-deep, solo con il bottone.
+interface Props {
+  label: string;
+  href: string;
+}
+const { label, href } = Astro.props;
+---
+<div class="card-contatto on-deep">
+  <span class="cut-mark" aria-hidden="true"></span>
+  <a class="btn btn-primary" href={href}>{label}</a>
+</div>
+
+<style>
+  .card-contatto {
+    border-radius: var(--radius-lg); padding: var(--space-6); height: 100%;
+    display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: var(--space-8);
+  }
+  .card-contatto .btn { white-space: normal; }
+</style>

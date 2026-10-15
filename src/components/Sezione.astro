@@ -1,0 +1,42 @@
+---
+// Sezione di testo con H2. "split": titolo a sinistra (4 colonne) e testo a destra (8);
+// "stack": titolo e testo su 8 colonne, poi lo slot "full" a tutta larghezza (griglie, tabelle).
+import Testo from './Testo.astro';
+
+interface Props {
+  id?: string;
+  etichetta?: string;
+  titolo: string;
+  testo?: string[];
+  layout?: 'split' | 'stack';
+  sfondo?: 'surface' | 'sunken';
+}
+const { id, etichetta, titolo, testo = [], layout = 'split', sfondo = 'surface' } = Astro.props;
+const headingId = id ? `${id}-titolo` : undefined;
+---
+<section id={id} class:list={['section', { 'section--sunken': sfondo === 'sunken' }]} aria-labelledby={headingId}>
+  <div class:list={['container', 'sez', `sez--${layout}`]}>
+    <div class="sez-head">
+      {etichetta && <p class="label">{etichetta}</p>}
+      <h2 class="h2" id={headingId}>{titolo}</h2>
+    </div>
+    <div class="sez-body prose">
+      {testo.map((p) => <p><Testo text={p} /></p>)}
+      <slot />
+    </div>
+    {Astro.slots.has('full') && <div class="sez-full"><slot name="full" /></div>}
+  </div>
+</section>
+
+<style>
+  .sez { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
+  .sez-head { display: grid; gap: var(--space-2); align-content: start; }
+  .sez-full { margin-top: var(--space-6); }
+  @media (min-width: 1080px) {
+    .sez { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .sez--split .sez-head { grid-column: 1 / span 4; }
+    .sez--split .sez-body { grid-column: 5 / span 8; }
+    .sez--stack .sez-head, .sez--stack .sez-body { grid-column: 1 / span 8; }
+    .sez-full { grid-column: 1 / -1; }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+// Tabella su surface-raised, intestazioni in brand. Su mobile ogni riga diventa un blocco.
+interface Props {
+  intestazioni: string[];
+  righe: string[][];
+  didascalia?: string;
+}
+const { intestazioni, righe, didascalia } = Astro.props;
+---
+<div class="tabella-wrap">
+  <table class="tabella">
+    {didascalia && <caption class="visually-hidden">{didascalia}</caption>}
+    <thead>
+      <tr>{intestazioni.map((h) => <th scope="col">{h}</th>)}</tr>
+    </thead>
+    <tbody>
+      {righe.map((r) => (
+        <tr>
+          {r.map((c, i) => (i === 0
+            ? <th scope="row" data-col={intestazioni[i]}>{c}</th>
+            : <td data-col={intestazioni[i]}>{c}</td>))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .tabella-wrap { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+  .tabella { width: 100%; border-collapse: collapse; font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); }
+  thead th {
+    background: var(--brand); color: var(--surface-raised); text-align: left; padding: var(--space-3) var(--space-4);
+    font-size: var(--label-size); line-height: var(--label-line); font-weight: var(--label-weight);
+    letter-spacing: var(--label-tracking); text-transform: uppercase;
+  }
+  tbody th, tbody td { text-align: left; vertical-align: top; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--line); font-weight: var(--body-weight); }
+  tbody th { font-weight: var(--label-weight); }
+  tbody tr:nth-child(even) { background: var(--surface); }
+
+  @media (max-width: 767px) {
+    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .tabella, tbody, tr, th, td { display: block; }
+    tbody tr { padding: var(--space-3) var(--space-4); border-top: 1px solid var(--line); }
+    tbody tr:first-child { border-top: 0; }
+    tbody th, tbody td { padding: var(--space-1) 0; border-top: 0; }
+    tbody td::before {
+      content: attr(data-col); display: block; color: var(--ink-muted);
+      font-size: var(--label-size); line-height: var(--label-line); font-weight: var(--label-weight);
+      letter-spacing: var(--label-tracking); text-transform: uppercase;
+    }
+  }
+</style>

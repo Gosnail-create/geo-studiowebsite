@@ -1,0 +1,20 @@
+---
+// Elenco puntato con il piccolo segno obliquo al posto del pallino.
+interface Props {
+  voci: string[];
+  colonne?: 1 | 2;
+}
+const { voci, colonne = 1 } = Astro.props;
+---
+<ul class:list={['elenco', { due: colonne === 2 }]}>
+  {voci.map((v) => <li><span class="cut-mark" aria-hidden="true"></span><span>{v}</span></li>)}
+</ul>
+
+<style>
+  .elenco { list-style: none; padding: 0; display: grid; gap: var(--space-2) var(--space-8); }
+  @media (min-width: 768px) { .elenco.due { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .elenco li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); align-items: baseline; }
+  .elenco .cut-mark { width: var(--space-3); }
+  :global(.prose) .elenco { padding-left: 0; }
+  :global(.prose) .elenco li + li { margin-top: 0; }
+</style>

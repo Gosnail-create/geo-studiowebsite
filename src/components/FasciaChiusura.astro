@@ -1,0 +1,31 @@
+---
+// Fascia di chiusura su brand-deep con H2, testo e bottone principale.
+interface Props {
+  titolo: string;
+  testo: string;
+  bottone: { label: string; href: string };
+}
+const { titolo, testo, bottone } = Astro.props;
+---
+<section class="section" aria-labelledby="chiusura-titolo">
+  <div class="container">
+    <div class="chiusura on-deep">
+      <span class="cut-mark" aria-hidden="true"></span>
+      <h2 class="h2" id="chiusura-titolo">{titolo}</h2>
+      <p class="lead">{testo}</p>
+      <a class="btn btn-primary" href={bottone.href}>{bottone.label}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .chiusura {
+    border-radius: var(--radius-lg); padding: var(--space-8) var(--space-6);
+    display: grid; gap: var(--space-4); justify-items: start;
+  }
+  .chiusura .btn { margin-top: var(--space-4); }
+  @media (min-width: 1080px) {
+    .chiusura { padding: var(--space-16); grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
+    .chiusura > * { grid-column: 1 / span 8; }
+  }
+</style>

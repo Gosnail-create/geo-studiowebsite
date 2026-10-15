@@ -1,0 +1,17 @@
+---
+// Rende una stringa dei testi: le parti tra parentesi quadre sono segnaposto
+// dichiarati (CLAUDE.md, Regole sui contenuti) e restano visibili come tali.
+interface Props {
+  text: string;
+}
+const parti = Astro.props.text.split(/(\[[^\]]+\])/g).filter(Boolean);
+---
+{parti.map((p) => (p.startsWith('[') && p.endsWith(']') ? <span class="segnaposto-inline">{p}</span> : p))}
+
+<style>
+  .segnaposto-inline {
+    background: var(--surface-sunken); color: var(--ink); border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-sm); padding: 0 var(--space-1); box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  :global(.on-deep) .segnaposto-inline { background: var(--brand-deep-2); color: var(--on-brand-deep); border-color: var(--on-brand-deep-muted); }
+</style>

@@ -1,0 +1,33 @@
+---
+// Elenco numerato di passi. Con titoloInline la prima frase (fino al primo punto)
+// diventa il titolo del passo, senza cambiare il testo.
+interface Props {
+  voci: string[];
+  titoloInline?: boolean;
+}
+const { voci, titoloInline = false } = Astro.props;
+const parti = voci.map((v) => {
+  const i = v.indexOf('. ');
+  return titoloInline && i > 0 ? { titolo: v.slice(0, i + 1), resto: v.slice(i + 2) } : { titolo: '', resto: v };
+});
+---
+<ol class="passi">
+  {parti.map((p, i) => (
+    <li class="passo">
+      <span class="numero data" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+      <p>{p.titolo && <strong class="titolo">{p.titolo} </strong>}{p.resto}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .passi { list-style: none; padding: 0; display: grid; }
+  .passo {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-4); align-items: start;
+    padding-block: var(--space-4); border-top: 1px solid var(--line);
+  }
+  .numero { color: var(--accent-ink); padding-top: var(--space-1); }
+  .titolo { font-family: var(--font-head); font-weight: var(--h3-weight); color: var(--ink); }
+  :global(.prose) .passi { padding-left: 0; }
+  :global(.prose) .passo + .passo { margin-top: 0; }
+</style>

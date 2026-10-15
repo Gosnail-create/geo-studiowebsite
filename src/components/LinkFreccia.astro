@@ -1,0 +1,10 @@
+---
+// Link con freccia per i rimandi interni (btn-ghost del design system).
+import Icon from './Icon.astro';
+interface Props {
+  href: string;
+  class?: string;
+}
+const { href, class: cls } = Astro.props;
+---
+<a class:list={['btn', 'btn-ghost', cls]} href={href}><slot /><Icon name="arrow-right" class="icon icon-sm" /></a>

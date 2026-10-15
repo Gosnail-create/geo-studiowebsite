@@ -1,0 +1,28 @@
+---
+// Segnaposto fotografico del design system (.photo): mai immagini inventate.
+interface Props {
+  descrizione: string;
+  ratio?: string;
+}
+const { descrizione, ratio = '4 / 3' } = Astro.props;
+---
+<div class="photo" style={`aspect-ratio: ${ratio}`} role="img" aria-label={`Segnaposto fotografico: ${descrizione}`}>
+  <span>Foto: {descrizione}</span>
+</div>
+
+<style>
+  .photo {
+    border-radius: var(--radius-lg); background: var(--sand); position: relative; overflow: hidden;
+    display: flex; align-items: flex-end; width: 100%;
+  }
+  .photo::before {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(calc(180deg - var(--cut-angle)), transparent 0 18px, var(--surface-raised) 18px 20px);
+    opacity: 0.3;
+  }
+  .photo span {
+    position: relative; z-index: 1; margin: var(--space-3); padding: var(--space-1) var(--space-2);
+    font-size: var(--small-size); line-height: var(--small-line); color: var(--ink);
+    background: var(--surface-raised); border-radius: var(--radius-sm);
+  }
+</style>
