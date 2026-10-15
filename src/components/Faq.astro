@@ -45,5 +45,5 @@ const { titolo = 'Domande frequenti', voci, sfondo = 'surface' } = Astro.props;
   summary :global(.segno) { color: var(--brand); }
   summary :global(.meno), .voce[open] summary :global(.piu) { display: none; }
   .voce[open] summary :global(.meno) { display: block; }
-  .risposta { padding-bottom: var(--space-6); color: var(--ink); }
+  .risposta { padding-bottom: var(--space-6); color: var(--ink); max-width: var(--measure); }
 </style>

@@ -15,7 +15,7 @@ npm run build    # token, verifiche, build statica in dist/
 `npm run build` si ferma se una verifica fallisce:
 
 1. `scripts/genera-token.mjs` genera `src/styles/tokens.css` da `design-system/tokens.json`.
-2. `scripts/verifica-testi.mjs` controlla che i contenuti siano identici a `docs/testi-it.md` e che non contengano testi aggiunti.
+2. `scripts/verifica-testi.mjs` controlla che i contenuti siano identici a `docs/testi-it.md` e che non contengano testi aggiunti. Accetta anche i testi approvati con la revisione del 15 ottobre 2026, raccolti in `docs/testi-revisione.md` (comprese le sostituzioni, come "Messaggio" → "Raccontateci la situazione").
 3. `scripts/verifica-contrasto.mjs` calcola il contrasto WCAG delle coppie di token usate.
 4. `astro check` e `astro build`.
 5. `scripts/verifica-sito.mjs` controlla sul sito generato pagine dell'alberatura, link interni, ancore, title, noindex, un solo H1, ordine dei titoli, alt delle immagini, assenza di risorse esterne, robots.txt e intestazione X-Robots-Tag.

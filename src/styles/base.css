@@ -158,7 +158,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn-primary::before, .btn-arrow .icon, .btn-ghost .icon { transition: none; }
-  .btn-primary:hover { transform: none; }
+  .btn-primary:hover { transform: none; box-shadow: none; }
   .btn-primary::before { display: none; }
   .btn-arrow:hover .icon, .btn-ghost:hover .icon { transform: none; }
 }

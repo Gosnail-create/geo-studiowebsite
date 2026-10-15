@@ -10,7 +10,7 @@ const t = (await getEntry('speciali', 'grazie'))!.data;
     <div class="container conferma">
       <span class="cut-mark" aria-hidden="true"></span>
       <h1 class="h1">{t.h1}</h1>
-      <p class="lead">{t.testo}</p>
+      <p class="lead misura">{t.testo}</p>
       <ul class="link">
         {(t.link as { label: string; href: string }[]).map((l) => <li><LinkFreccia href={l.href}>{l.label}</LinkFreccia></li>)}
       </ul>
