@@ -51,7 +51,7 @@ const { variant, id } = Astro.props;
   .lang { position: relative; }
   .lang-toggle {
     display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-2);
-    border: 0; background: none; color: var(--ink); cursor: pointer; border-radius: var(--radius-sm);
+    border: 0; background: none; color: inherit; font: inherit; cursor: pointer; border-radius: var(--radius-sm);
   }
   .lang-toggle[aria-expanded='true'] :global(.chevron) { transform: rotate(180deg); }
   .lang-list {

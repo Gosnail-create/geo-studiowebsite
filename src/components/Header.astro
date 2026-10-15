@@ -1,60 +1,90 @@
 ---
+// Barra di servizio, testata e pannello Servizi (brief di revisione del 15 ottobre 2026, punto 3).
 import { Image } from 'astro:assets';
 import logoColore from '../../assets/logo/geostudio-logo-colore.png';
 import Icon from './Icon.astro';
 import LangSwitcher from './LangSwitcher.astro';
-import { servizi } from '../data/servizi';
-import { navigazione } from '../data/sito';
+import { servizi, divisioni } from '../data/servizi';
+import { azienda } from '../data/sito';
+import { foto } from '../data/immagini';
 import { linkContatti } from '../lib/cta';
 
 const path = Astro.url.pathname;
 const corrente = (url: string) => (path === url ? 'page' : undefined);
 const inServizi = path.startsWith('/servizi/');
-const ctaHeader = linkContatti('header');
+const cta = linkContatti('header');
+const linkedin = azienda.social.find((s) => s.nome === 'LinkedIn')!;
+const colonne = (['impianti', 'qhse'] as const).map((d) => ({ titolo: divisioni[d], voci: servizi.filter((s) => s.divisione === d) }));
+const fotoPannello = foto('tecnici-progetto-planimetria');
+const vociMenu = [
+  { nome: 'Chi siamo', url: '/chi-siamo/' },
+  { nome: 'Blog', url: '/blog/' },
+];
 ---
-<header class="site-header">
+<div class="utility on-brand">
+  <div class="container utility-inner small">
+    <a href={azienda.telefonoHref}><Icon name="phone" class="icon icon-sm" />{azienda.telefono}</a>
+    <a href={`mailto:${azienda.email}`}><Icon name="mail" class="icon icon-sm" />{azienda.email}</a>
+    <a href={linkedin.url} target="_blank" rel="noopener noreferrer">{linkedin.nome}<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <LangSwitcher variant="menu" id="lingue-barra" />
+  </div>
+</div>
+
+<header class="site-header" id="testata">
   <div class="container bar">
     <a class="logo" href="/">
-      <Image src={logoColore} alt="Geo Studio Engineering, home" height={48} densities={[1, 2]} loading="eager" />
+      <Image src={logoColore} alt="Geo Studio Engineering, home" height={120} densities={[1]} loading="eager" />
     </a>
 
     <nav class="nav-desktop" aria-label="Principale">
       <ul class="nav-list">
-        <li class="has-sub">
-          <a href="/servizi/" class:list={['nav-link', { attivo: inServizi }]} aria-current={corrente('/servizi/')}>Servizi</a>
-          <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="menu-servizi" data-disclosure>
-            <Icon name="chevron-down" class="icon icon-sm chevron" />
-            <span class="visually-hidden">Aree di servizio</span>
+        <li class="voce-servizi">
+          <button class:list={['nav-link', 'servizi-toggle', { attivo: inServizi }]} type="button"
+            aria-expanded="false" aria-controls="pannello-servizi" data-pannello>
+            Servizi <Icon name="chevron-down" class="icon icon-sm chevron" />
           </button>
-          <div class="dropdown" id="menu-servizi" hidden>
-            <ul class="dropdown-list">
-              {servizi.map((s) => (
-                <li>
-                  <a href={s.url} aria-current={corrente(s.url)}>{s.nome}</a>
-                  {s.tecnologie && (
-                    <ul class="dropdown-sub">
-                      {s.tecnologie.map((t) => (
-                        <li><a href={t.url} aria-current={corrente(t.url)}>{t.nome}</a></li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
+          <div class="pannello" id="pannello-servizi" hidden>
+            <div class="container pannello-grid">
+              {colonne.map((c, i) => (
+                <div class="colonna">
+                  <p class="label titolo-colonna" id={`colonna-${i}`}>{c.titolo}</p>
+                  <ul class="voci" aria-labelledby={`colonna-${i}`}>
+                    {c.voci.map((s) => (
+                      <li>
+                        <a class="voce" href={s.url} aria-current={corrente(s.url)}>
+                          <span class="voce-nome">{s.nome}</span>
+                          <span class="voce-desc">{s.breve}</span>
+                        </a>
+                        {s.tecnologie && (
+                          <ul class="pillole">
+                            {s.tecnologie.map((t) => <li><a class="pillola" href={t.url} aria-current={corrente(t.url)}>{t.pillola}</a></li>)}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+              <aside class="riquadro on-brand" aria-label="Dal 1990, a Bovolone">
+                <img src={`/images/${fotoPannello.nome}-640.webp`} alt="" width="640" height={Math.round(640 * fotoPannello.height / fotoPannello.width)} loading="eager" decoding="async" />
+                <div class="riquadro-testo">
+                  <p class="label">Dal 1990, a Bovolone</p>
+                  <p>Un unico gruppo di tecnici segue il lavoro dal primo sopralluogo fino alle pratiche con gli enti e alle verifiche degli anni successivi.</p>
+                  <a class="btn btn-primary" href={cta}>Parlate con un nostro tecnico</a>
+                </div>
+              </aside>
+            </div>
           </div>
         </li>
-        {navigazione.map((v) => (
+        {vociMenu.map((v) => (
           <li><a href={v.url} class:list={['nav-link', { attivo: path.startsWith(v.url) }]} aria-current={corrente(v.url)}>{v.nome}</a></li>
         ))}
       </ul>
     </nav>
 
-    <div class="bar-end">
-      <LangSwitcher variant="menu" id="lingue-desktop" />
-      <a class="btn btn-secondary btn-sm" href={ctaHeader}>Richiedete una consulenza</a>
-    </div>
+    <a class="btn btn-primary cta-testata" href={cta}>Parlate con un nostro tecnico</a>
 
-    <button class="menu-toggle ui" type="button" aria-expanded="false" aria-controls="menu-mobile" data-disclosure data-mobile>
+    <button class="menu-toggle ui" type="button" aria-expanded="false" aria-controls="menu-mobile" data-mobile>
       <Icon name="menu" class="icon apri" />
       <Icon name="x" class="icon chiudi" />
       Menu
@@ -64,101 +94,154 @@ const ctaHeader = linkContatti('header');
   <div class="mobile-panel" id="menu-mobile" hidden>
     <nav class="container" aria-label="Principale, versione mobile">
       <ul class="m-list">
-        <li>
-          <a href="/servizi/" class="m-link" aria-current={corrente('/servizi/')}>Servizi</a>
-          <ul class="m-sub">
-            {servizi.map((s) => (
-              <li>
-                <a href={s.url} aria-current={corrente(s.url)}>{s.nome}</a>
-                {s.tecnologie && (
-                  <ul class="m-sub2">
-                    {s.tecnologie.map((t) => (
-                      <li><a href={t.url} aria-current={corrente(t.url)}>{t.nome}</a></li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </li>
-        {navigazione.map((v) => (
-          <li><a href={v.url} class="m-link" aria-current={corrente(v.url)}>{v.nome}</a></li>
+        {colonne.map((c, i) => (
+          <li>
+            <button class="m-gruppo" type="button" aria-expanded="false" aria-controls={`m-gruppo-${i}`} data-fisarmonica>
+              {c.titolo}<Icon name="chevron-down" class="icon chevron" />
+            </button>
+            <ul class="m-sub" id={`m-gruppo-${i}`} hidden>
+              {c.voci.map((s) => (
+                <li>
+                  <a href={s.url} aria-current={corrente(s.url)}>{s.nome}</a>
+                  {s.tecnologie && (
+                    <ul class="pillole">
+                      {s.tecnologie.map((t) => <li><a class="pillola" href={t.url} aria-current={corrente(t.url)}>{t.pillola}</a></li>)}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </li>
         ))}
+        <li><a href="/servizi/" class="m-link" aria-current={corrente('/servizi/')}>Servizi</a></li>
+        {vociMenu.map((v) => <li><a href={v.url} class="m-link" aria-current={corrente(v.url)}>{v.nome}</a></li>)}
+        <li><a href="/contatti/" class="m-link" aria-current={corrente('/contatti/')}>Contatti</a></li>
       </ul>
       <div class="m-end">
+        <p class="m-recapiti">
+          <a href={azienda.telefonoHref}>Tel. {azienda.telefono}</a>
+          <a href={`mailto:${azienda.email}`}>{azienda.email}</a>
+        </p>
         <LangSwitcher variant="inline" id="lingue-mobile" />
-        <a class="btn btn-secondary" href={ctaHeader}>Richiedete una consulenza</a>
+        <a class="btn btn-primary btn-lg" href={cta}>Parlate con un nostro tecnico</a>
       </div>
     </nav>
   </div>
 </header>
 
 <script>
-  // Menu a tendina, selettore lingua e menu mobile: pulsanti con aria-expanded.
-  const toggles = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-disclosure]'));
-  const panelOf = (b: HTMLButtonElement) => document.getElementById(b.getAttribute('aria-controls') ?? '');
+  const header = document.getElementById('testata')!;
+  const toggle = header.querySelector<HTMLButtonElement>('[data-pannello]')!;
+  const pannello = document.getElementById('pannello-servizi')!;
+  const mobileBtn = header.querySelector<HTMLButtonElement>('[data-mobile]')!;
+  const mobile = document.getElementById('menu-mobile')!;
 
-  const setOpen = (b: HTMLButtonElement, open: boolean) => {
-    const panel = panelOf(b);
-    if (!panel) return;
-    b.setAttribute('aria-expanded', String(open));
-    panel.hidden = !open;
-    if (b.dataset.mobile !== undefined) document.body.classList.toggle('menu-aperto', open);
+  // Testata compatta dopo circa 80px di scorrimento.
+  const compatta = () => header.classList.toggle('compatta', window.scrollY > 80);
+  compatta();
+  window.addEventListener('scroll', compatta, { passive: true });
+
+  // Pannello Servizi: clic, passaggio del mouse, tastiera.
+  let apertoDaMouse = false;
+  const apri = (open: boolean) => {
+    if (!open) apertoDaMouse = false;
+    toggle.setAttribute('aria-expanded', String(open));
+    pannello.hidden = !open;
   };
-
-  const closeAll = (except?: HTMLButtonElement) => {
-    toggles.forEach((b) => { if (b !== except && b.getAttribute('aria-expanded') === 'true') setOpen(b, false); });
-  };
-
-  toggles.forEach((b) => {
-    b.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const open = b.getAttribute('aria-expanded') !== 'true';
-      closeAll(b);
-      setOpen(b, open);
-    });
+  // Se il pannello è già aperto dal passaggio del mouse, clic o Invio lo lasciano aperto.
+  toggle.addEventListener('click', () => {
+    const aperto = toggle.getAttribute('aria-expanded') === 'true';
+    if (aperto && apertoDaMouse) { apertoDaMouse = false; return; }
+    apri(!aperto);
   });
+
+  let timer: number | undefined;
+  const conMouse = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const entra = () => {
+    if (!conMouse.matches) return;
+    clearTimeout(timer);
+    if (toggle.getAttribute('aria-expanded') !== 'true') apertoDaMouse = true;
+    apri(true);
+  };
+  const esce = () => { if (!conMouse.matches) return; clearTimeout(timer); timer = window.setTimeout(() => apri(false), 200); };
+  [toggle.parentElement!, pannello].forEach((el) => { el.addEventListener('mouseenter', entra); el.addEventListener('mouseleave', esce); });
 
   document.addEventListener('click', (e) => {
     const t = e.target as Node;
-    toggles.forEach((b) => {
-      const panel = panelOf(b);
-      if (b.dataset.mobile === undefined && panel && !panel.contains(t)) setOpen(b, false);
+    if (!pannello.contains(t) && !toggle.contains(t)) apri(false);
+  });
+  header.addEventListener('focusout', (e) => {
+    const next = (e as FocusEvent).relatedTarget as Node | null;
+    if (next && (pannello.contains(next) || toggle.contains(next))) return;
+    if (toggle.getAttribute('aria-expanded') === 'true') apri(false);
+  });
+
+  // Menu mobile a tutto schermo con le divisioni a fisarmonica.
+  const apriMobile = (open: boolean) => {
+    mobileBtn.setAttribute('aria-expanded', String(open));
+    mobile.hidden = !open;
+    document.body.classList.toggle('menu-aperto', open);
+  };
+  mobileBtn.addEventListener('click', () => apriMobile(mobileBtn.getAttribute('aria-expanded') !== 'true'));
+  mobile.querySelectorAll<HTMLButtonElement>('[data-fisarmonica]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', String(open));
+      document.getElementById(b.getAttribute('aria-controls')!)!.hidden = !open;
+    });
+  });
+
+  // Selettore lingua nella barra di servizio.
+  document.querySelectorAll<HTMLButtonElement>('.lang-toggle').forEach((b) => {
+    const lista = document.getElementById(b.getAttribute('aria-controls')!)!;
+    const set = (open: boolean) => { b.setAttribute('aria-expanded', String(open)); lista.hidden = !open; };
+    b.addEventListener('click', (e) => { e.stopPropagation(); set(b.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('click', (e) => { if (!lista.contains(e.target as Node)) set(false); });
+    b.parentElement!.addEventListener('focusout', (e) => {
+      const next = (e as FocusEvent).relatedTarget as Node | null;
+      if (!next || !b.parentElement!.contains(next)) set(false);
     });
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    const open = toggles.find((b) => b.getAttribute('aria-expanded') === 'true' && b.dataset.mobile === undefined)
-      ?? toggles.find((b) => b.getAttribute('aria-expanded') === 'true');
-    if (open) { setOpen(open, false); open.focus(); }
+    const lingua = document.querySelector<HTMLButtonElement>('.lang-toggle[aria-expanded="true"]');
+    if (lingua) { lingua.click(); lingua.focus(); return; }
+    if (toggle.getAttribute('aria-expanded') === 'true') { apri(false); toggle.focus(); return; }
+    if (mobileBtn.getAttribute('aria-expanded') === 'true') { apriMobile(false); mobileBtn.focus(); }
   });
 
-  // Chiude i pannelli desktop quando il focus esce dal blocco che li contiene.
-  document.querySelectorAll<HTMLElement>('.has-sub, .lang').forEach((wrap) => {
-    wrap.addEventListener('focusout', (e) => {
-      const next = (e as FocusEvent).relatedTarget as Node | null;
-      if (next && wrap.contains(next)) return;
-      const b = wrap.querySelector<HTMLButtonElement>('[data-disclosure]');
-      if (b) setOpen(b, false);
-    });
-  });
-
-  window.matchMedia('(min-width: 1080px)').addEventListener('change', (mq) => {
-    if (mq.matches) toggles.filter((b) => b.dataset.mobile !== undefined).forEach((b) => setOpen(b, false));
-  });
+  window.matchMedia('(min-width: 1080px)').addEventListener('change', (mq) => { if (mq.matches) apriMobile(false); else apri(false); });
 </script>
 
 <style>
-  .site-header {
-    position: sticky; top: 0; z-index: 40; background: var(--surface);
-    border-bottom: 1px solid var(--line);
+  /* barra di servizio: solo desktop, scorre via con la pagina */
+  .utility { display: none; }
+  @media (min-width: 1080px) {
+    .utility { display: block; }
+    .utility-inner {
+      display: flex; justify-content: flex-end; align-items: center; gap: var(--space-6);
+      min-height: var(--utility-bar-h); color: var(--on-brand-muted);
+    }
+    .utility a { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--on-brand-muted); text-decoration: none; }
+    .utility a:hover { color: var(--on-brand); text-decoration: underline; }
+    .utility :global(.lang-toggle) { padding-block: 0; }
+    .utility :global(.lang-list) { color: var(--ink); }
   }
-  .bar { display: flex; align-items: center; gap: var(--space-6); min-height: var(--space-16); padding-block: var(--space-3); }
-  .logo { display: block; flex: none; border-radius: var(--radius-sm); }
-  .logo :global(img) { height: calc(var(--space-8) + var(--space-2)); width: auto; }
 
-  .nav-desktop, .bar-end { display: none; }
+  .site-header { position: sticky; top: 0; z-index: 40; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; gap: var(--space-8); height: var(--header-h-compact); transition: height .2s ease-out; }
+  .logo { display: block; flex: none; border-radius: var(--radius-sm); }
+  .logo :global(img) { height: var(--logo-h-compact); width: auto; transition: height .2s ease-out; }
+  @media (min-width: 1080px) {
+    .bar { height: var(--header-h); }
+    .logo :global(img) { height: var(--logo-h); }
+    .compatta .bar { height: var(--header-h-compact); }
+    .compatta .logo :global(img) { height: var(--logo-h-compact); }
+  }
+  @media (prefers-reduced-motion: reduce) { .bar, .logo :global(img) { transition: none; } }
+
+  .nav-desktop, .cta-testata { display: none; }
   .menu-toggle {
     margin-left: auto; display: inline-flex; align-items: center; gap: var(--space-2);
     padding: var(--space-2) var(--space-3); border: 1.5px solid var(--ink); border-radius: var(--radius-md);
@@ -166,58 +249,73 @@ const ctaHeader = linkContatti('header');
   }
   .menu-toggle :global(.chiudi), .menu-toggle[aria-expanded='true'] :global(.apri) { display: none; }
   .menu-toggle[aria-expanded='true'] :global(.chiudi) { display: block; }
-
   @media (min-width: 1080px) {
     .nav-desktop { display: block; margin-left: auto; }
-    .bar-end { display: flex; align-items: center; gap: var(--space-4); }
+    .cta-testata { display: inline-flex; }
     .menu-toggle, .mobile-panel { display: none; }
   }
 
-  .nav-list { display: flex; align-items: center; gap: var(--space-6); list-style: none; padding: 0; }
-  .nav-list > li { position: relative; display: flex; align-items: center; }
+  .nav-list { display: flex; align-items: center; gap: var(--space-8); list-style: none; padding: 0; }
   .nav-link {
-    font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--ui-weight);
-    color: var(--ink); text-decoration: none; padding-block: var(--space-2); border-bottom: 2px solid transparent;
+    display: inline-flex; align-items: center; gap: var(--space-1);
+    font-family: var(--body-family); font-size: var(--body-size); line-height: var(--body-line); font-weight: var(--ui-weight);
+    color: var(--ink); text-decoration: none; background: none; border: 0; cursor: pointer;
+    padding: var(--space-2) 0; border-bottom: 2px solid transparent;
   }
-  .nav-link:hover { border-bottom-color: var(--line-strong); }
-  .nav-link.attivo { border-bottom-color: var(--accent); }
+  .nav-link:hover { color: var(--brand); }
+  .nav-link.attivo, .servizi-toggle[aria-expanded='true'] { color: var(--brand); border-bottom-color: var(--brand); }
+  .servizi-toggle[aria-expanded='true'] :global(.chevron) { transform: rotate(180deg); }
 
-  .sub-toggle {
-    display: inline-flex; align-items: center; padding: var(--space-1); margin-left: var(--space-1);
-    border: 0; background: none; color: var(--ink); cursor: pointer; border-radius: var(--radius-sm);
+  /* pannello Servizi a tutta larghezza */
+  .pannello {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--surface-raised); box-shadow: var(--shadow-panel); border-top: 1px solid var(--line);
+    padding-block: var(--space-10);
   }
-  .sub-toggle[aria-expanded='true'] :global(.chevron) { transform: rotate(180deg); }
+  .pannello-grid { display: grid; grid-template-columns: 1fr 1fr var(--panel-aside-w); gap: var(--space-10); align-items: start; }
+  .titolo-colonna { padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); margin-bottom: var(--space-3); }
+  .voci, .pillole { list-style: none; padding: 0; }
+  .voce {
+    display: grid; gap: var(--space-1); padding: var(--space-3); border-radius: var(--radius-md);
+    text-decoration: none; color: var(--ink);
+  }
+  .voce:hover, .voce[aria-current='page'] { background: var(--brand-tint); }
+  .voce-nome { font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--label-weight); }
+  .voce:hover .voce-nome, .voce[aria-current='page'] .voce-nome { color: var(--brand); }
+  .voce-desc { font-size: var(--small-size); line-height: var(--small-line); color: var(--ink-muted); }
+  .pillole { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0 var(--space-3) var(--space-3); }
+  .pillola {
+    display: inline-block; padding: var(--space-1) var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-pill);
+    font-size: var(--small-size); line-height: var(--small-line); color: var(--ink); text-decoration: none;
+  }
+  .pillola:hover, .pillola[aria-current='page'] { background: var(--brand-tint); border-color: var(--brand); color: var(--brand); }
+  .riquadro { border-radius: var(--radius-lg); overflow: hidden; }
+  .riquadro img { width: 100%; height: var(--panel-photo-h); object-fit: cover; }
+  .riquadro-testo { display: grid; gap: var(--space-3); padding: var(--space-6); justify-items: start; }
+  .riquadro-testo p:not(.label) { color: var(--on-brand); }
 
-  .dropdown {
-    position: absolute; left: calc(-1 * var(--space-4)); top: calc(100% + var(--space-3)); z-index: 30;
-    width: max-content; max-width: calc(100vw - 2 * var(--space-4));
-    background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg);
-    padding: var(--space-3);
+  /* menu mobile a tutto schermo */
+  .mobile-panel {
+    position: fixed; left: 0; right: 0; top: var(--header-h-compact); bottom: 0; z-index: 39;
+    background: var(--surface); border-top: 1px solid var(--line); overflow-y: auto;
   }
-  .dropdown-list, .dropdown-sub { list-style: none; padding: 0; }
-  .dropdown-list a {
-    display: block; padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm);
-    font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--ui-weight);
-    color: var(--ink); text-decoration: none;
-  }
-  .dropdown-list a:hover { background: var(--surface-sunken); }
-  .dropdown-list a[aria-current='page'] { background: var(--surface-sunken); }
-  .dropdown-sub { margin: 0 0 var(--space-2) var(--space-3); padding-left: var(--space-3); border-left: 1px solid var(--line); }
-  .dropdown-sub a { font-weight: var(--body-weight); color: var(--ink-muted); }
-
-  .mobile-panel { border-top: 1px solid var(--line); max-height: calc(100vh - var(--space-16)); overflow-y: auto; }
-  .mobile-panel nav { padding-block: var(--space-4) var(--space-8); }
-  .m-list, .m-sub, .m-sub2 { list-style: none; padding: 0; }
+  .mobile-panel nav { padding-block: var(--space-4) var(--space-12); }
+  .m-list, .m-sub { list-style: none; padding: 0; }
   .m-list > li { border-bottom: 1px solid var(--line); }
-  .m-link {
-    display: block; padding-block: var(--space-3);
+  .m-gruppo, .m-link {
+    display: flex; justify-content: space-between; align-items: center; width: 100%; padding-block: var(--space-4);
     font-family: var(--font-head); font-size: var(--h3-size); line-height: var(--h3-line); font-weight: var(--h3-weight);
-    color: var(--ink); text-decoration: none;
+    color: var(--ink); text-decoration: none; background: none; border: 0; cursor: pointer; text-align: left;
   }
-  .m-sub { padding-bottom: var(--space-3); }
-  .m-sub a { display: block; padding-block: var(--space-2); color: var(--ink); text-decoration: none; }
-  .m-sub2 { margin-left: var(--space-2); padding-left: var(--space-4); border-left: 1px solid var(--line); }
-  .m-sub2 a { color: var(--ink-muted); }
-  .m-list a[aria-current='page'] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
-  .m-end { display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-6); align-items: flex-start; }
+  .m-gruppo[aria-expanded='true'] { color: var(--brand); }
+  .m-gruppo[aria-expanded='true'] :global(.chevron) { transform: rotate(180deg); }
+  .m-sub { padding-bottom: var(--space-4); display: grid; gap: var(--space-1); }
+  .m-sub > li > a { display: block; padding: var(--space-2) 0; color: var(--ink); text-decoration: none; font-weight: var(--ui-weight); }
+  .m-sub .pillole { padding: var(--space-1) 0 var(--space-2); }
+  .m-list a[aria-current='page'] { color: var(--brand); text-decoration: underline; text-decoration-thickness: 2px; }
+  .m-end { display: grid; gap: var(--space-6); margin-top: var(--space-8); justify-items: start; }
+  .m-recapiti { display: grid; gap: var(--space-2); }
+  .m-recapiti a { color: var(--ink); }
+
+  :global(body.menu-aperto) { overflow: hidden; }
 </style>

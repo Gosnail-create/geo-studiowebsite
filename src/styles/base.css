@@ -4,7 +4,7 @@
 
 [hidden] { display: none !important; }
 
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--space-24); }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h-compact) + var(--space-6)); }
 
 body {
   margin: 0;
