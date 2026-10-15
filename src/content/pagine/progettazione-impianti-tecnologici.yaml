@@ -38,3 +38,7 @@ chiusura:
   titolo: State progettando un nuovo impianto o dovete adeguare quello esistente?
   testo: Inviateci le informazioni di cui disponete, anche solo una descrizione dell'edificio e dell'attività. Vi diremo quali verifiche servono e come impostare il progetto.
   bottone: Richiedete una valutazione del progetto
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: quadro-elettrico-cablaggi

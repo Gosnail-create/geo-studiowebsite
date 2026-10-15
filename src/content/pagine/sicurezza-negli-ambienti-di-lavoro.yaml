@@ -57,3 +57,7 @@ chiusura:
   titolo: Il vostro DVR è aggiornato?
   testo: Che dobbiate redigerlo da zero o rivederlo dopo un cambiamento in azienda, un sopralluogo è il modo più rapido per capire da dove partire.
   bottone: Richiedete un sopralluogo
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: tecnico-dpi-verifica-reparto

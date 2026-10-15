@@ -38,3 +38,7 @@ chiusura:
   titolo: Pensate che il vostro sito sia abbastanza ventoso?
   testo: Indicateci dove si trova e quali consumi volete coprire. Valuteremo insieme se ha senso approfondire con uno studio di fattibilità.
   bottone: Valutate il vostro impianto con noi
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 1
+  foto: borgo-pale-eoliche

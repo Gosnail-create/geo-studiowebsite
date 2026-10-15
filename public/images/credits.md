@@ -4,7 +4,6 @@ Foto stock provvisorie, da sostituire con foto reali del cliente. Licenze: Unspl
 
 | File | Pagina | Autore | Fonte |
 | --- | --- | --- | --- |
-| tecnico-ispezione-macchinari | Home (testata) | TECNIC Bioprocess Solutions | https://unsplash.com/photos/a-man-inspects-machinery-in-a-factory-VFrbWve7eAs |
 | tecnici-progetto-planimetria | Chi siamo | Ivan S | https://www.pexels.com/photo/people-looking-at-a-blueprint-8962803/ |
 | collettori-impianto-riscaldamento | Progettazione impianti tecnologici | Pavel Danilyuk | https://www.pexels.com/photo/steel-underground-heating-manifolds-7937299/ |
 | azienda-agricola-eolico-fotovoltaico | Energie rinnovabili | Sergej ***** (@strannik-sk) | https://www.pexels.com/photo/sustainable-farm-with-wind-turbine-and-solar-panels-34401311/ |
@@ -18,6 +17,30 @@ Foto stock provvisorie, da sostituire con foto reali del cliente. Licenze: Unspl
 | formatrice-corso-gruppo | Formazione | Centre for Ageing Better | https://unsplash.com/photos/a-woman-explaining-something-to-a-group-of-people-XH8chLuj02g |
 | facciata-edificio-uffici | Contatti | Jan van der Wolf | https://www.pexels.com/photo/exterior-of-a-building-19368932/ |
 | tavole-progetto-architettonico | Blog (testata) | Marina Zvada | https://unsplash.com/photos/architectural-blueprints-spread-out-on-a-surface-fNxmdlYHRm8 |
+
+## Aggiunte con la revisione del 15 ottobre 2026
+
+| File | Pagina | Autore | Fonte |
+| --- | --- | --- | --- |
+| tecnico-manutenzione-macchinario | Home (testata) | abdo alshreef | https://www.pexels.com/photo/engineer-inspecting-machinery-in-industrial-setting-37668423/ |
+| quadro-elettrico-cablaggi | Card Progettazione impianti tecnologici; fascia della pagina | ranjeet . | https://www.pexels.com/photo/an-electrical-panel-with-wires-and-switches-28265032/ |
+| tecnico-dpi-verifica-reparto | Card Sicurezza negli ambienti di lavoro; fascia della pagina | Ihsan Adityawarman | https://www.pexels.com/photo/construction-supervisor-28196491/ |
+| campionamento-ambientale-dpi | Card Consulenza ambientale | Gustavo Fring | https://www.pexels.com/photo/person-in-ppe-on-a-dumpsite-holding-an-erlenmeyer-flask-8770241/ |
+| prelievo-campioni-ambientali | Fascia Consulenza ambientale | Gustavo Fring | https://www.pexels.com/photo/man-collecting-chemical-samples-using-pipette-and-flask-8770235/ |
+| estintori-deposito | Card Prevenzione incendi; fascia della pagina | lucas hegaard | https://www.pexels.com/photo/fire-extinguishers-in-industrial-setting-copenhagen-29106030/ |
+| verifica-magazzino-gilet | Card Sistemi di gestione; fascia della pagina | James Richardson | https://www.pexels.com/photo/warehouse-team-in-safety-gear-discussing-work-36122947/ |
+| aula-formazione-riunione | Card Formazione; fascia della pagina | Campaign Creators | https://unsplash.com/photos/man-standing-in-front-of-people-sitting-beside-table-with-laptop-computers-gMsnXqILjp4 |
+| sopralluogo-tecnico-cartellina | Home, Come lavoriamo | RDNE Stock project | https://www.pexels.com/photo/a-bearded-man-in-safety-vest-looking-at-the-window-while-holding-a-clipboard-8293639/ |
+| tecnici-cantiere-tavola-progetto | Home e pagina Chi siamo, accanto al testo | Mikael Blomkvist | https://www.pexels.com/photo/a-man-and-woman-wearing-safety-helmets-8961146/ |
+| gruppo-tecnici-reparto | Fascia della home | Sergey Sergeev | https://www.pexels.com/photo/industrial-engineers-collaborating-in-factory-32845690/ |
+| gruppo-revisione-progetti | Fascia di Chi siamo | ThisisEngineering | https://unsplash.com/photos/people-reviewing-architectural-blueprints-in-workspace-SyRlD4s_amw |
+| copertura-fotovoltaica-aerea | Card e fascia Impianti fotovoltaici | RDNE Stock project | https://www.pexels.com/photo/an-aerial-shot-of-solar-panels-on-a-rooftop-8783541/ |
+| borgo-pale-eoliche | Fascia Impianti mini-eolici | Jean-Paul Wettstein | https://www.pexels.com/photo/charming-swiss-village-with-wind-turbines-29341613/ |
+| aerogeneratore-campo-grano | Card Impianti mini-eolici; copertina blog Energie rinnovabili | Mike van Schoonderwalt | https://www.pexels.com/photo/wind-turbine-on-a-cropland-5511487/ |
+| centrale-idroelettrica-diga | Card e fascia Impianti idroelettrici | Joel SIMEON | https://www.pexels.com/photo/eguzon-dam-hydroelectric-power-station-at-sunset-38524700/ |
+| lavori-in-quota-fune | Copertina blog Sicurezza sul lavoro | Boys in Bristol Photography | https://www.pexels.com/photo/industrial-worker-repairing-high-rise-building-29946966/ |
+
+La foto della hero della home usata fino alla revisione (Unsplash VFrbWve7eAs, TECNIC Bioprocess Solutions) è stata tolta: mostrava il logo e la scritta del fotografo-azienda. Scartate fra i candidati: foto con loghi o scritte evidenti su abiti e cartelli, persone che guardano in camera, una foto in bianco e nero.
 
 ## Riserve usate al posto della prima scelta
 

@@ -22,6 +22,7 @@ import BlogGrid from './BlogGrid.astro';
 import MappaSede from './MappaSede.astro';
 import Faq from './Faq.astro';
 import FasciaChiusura from './FasciaChiusura.astro';
+import FasciaFoto from './FasciaFoto.astro';
 import { foto as fotoStock, type NomeFoto } from '../data/immagini';
 import { rendering } from '../data/rendering';
 import { servizi } from '../data/servizi';
@@ -31,7 +32,7 @@ interface Props {
   pagina: CollectionEntry<'pagine'>['data'];
 }
 const { pagina } = Astro.props;
-const { hero, dopoHero, sezioni, faq, chiusura } = pagina;
+const { hero, dopoHero, sezioni, faq, chiusura, fascia } = pagina;
 const cta = linkContatti(pagina.origine, pagina.servizio);
 
 const LARGHI = new Set(['servizi', 'card', 'corsi', 'tabella', 'blog']);
@@ -75,7 +76,8 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
                 <li>
                   <ServiceCard numero={String(n + 1).padStart(2, '0')} titolo={v.titolo} testo={v.testo}
                     href={srv?.url} linkLabel={b.linkLabel} livello="h2"
-                    immagine={srv?.slug === 'energie-rinnovabili' ? rendering.vistaLaterale : undefined} />
+                    immagine={srv?.slug === 'energie-rinnovabili' ? rendering.vistaLaterale : undefined}
+                    foto={srv?.foto ? fotoStock(srv.foto as NomeFoto) : undefined} />
                 </li>
               );
             })}
@@ -87,7 +89,11 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
   )}
 
   {sezioni.map((s, i) => (
+    <Fragment>
     <Sezione id={idDi(s.titolo)} titolo={s.titolo} layout={layoutDi(s)} sfondo={sfondo(i)}>
+      {s.blocchi.filter((b) => b.tipo === 'foto').map((b) => b.tipo === 'foto' && (
+        <Figura slot="aside" foto={fotoStock(b.foto as NomeFoto)} ratio="4 / 3" sizes="(min-width: 1080px) 400px, 100vw" />
+      ))}
       {s.blocchi.map((b) => {
         switch (b.tipo) {
           case 'p': return <p><Testo text={b.testo} /></p>;
@@ -106,7 +112,8 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
               {b.voci.map((v) => (
                 <li>
                   <ServiceCard titolo={v.titolo} testo={v.testo} href={v.href}
-                    immagine={v.rendering ? rendering[v.rendering] : undefined} />
+                    immagine={v.rendering ? rendering[v.rendering] : undefined}
+                    foto={v.foto ? fotoStock(v.foto as NomeFoto) : undefined} />
                 </li>
               ))}
             </CardGrid>
@@ -119,7 +126,8 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
                   <li>
                     <ServiceCard numero={String(n + 1).padStart(2, '0')} titolo={v.titolo} testo={v.testo}
                       href={srv?.url} linkLabel={b.linkLabel}
-                      immagine={srv?.slug === 'energie-rinnovabili' ? rendering.vistaLaterale : undefined} />
+                      immagine={srv?.slug === 'energie-rinnovabili' ? rendering.vistaLaterale : undefined}
+                    foto={srv?.foto ? fotoStock(srv.foto as NomeFoto) : undefined} />
                   </li>
                 );
               })}
@@ -130,6 +138,10 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
         }
       })}
     </Sezione>
+    {fascia && fascia.dopo === i + 1 && (
+      <FasciaFoto foto={fascia.foto ? fotoStock(fascia.foto as NomeFoto) : undefined} rendering={fascia.rendering} galleria={fascia.galleria} />
+    )}
+    </Fragment>
   ))}
 
   {faq && <Faq voci={faq} sfondo={sfondo(sezioni.length)} />}

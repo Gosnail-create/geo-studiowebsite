@@ -83,3 +83,7 @@ chiusura:
   titolo: Dovete pianificare i corsi dell'anno o recuperare scadenze arretrate?
   testo: Inviateci l'elenco delle mansioni e la situazione attuale degli attestati. Vi proporremo un calendario e i percorsi adatti.
   bottone: Organizzate la formazione del personale
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: aula-formazione-riunione

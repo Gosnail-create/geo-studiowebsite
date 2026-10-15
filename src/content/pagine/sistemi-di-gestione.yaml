@@ -73,3 +73,7 @@ chiusura:
   titolo: Quale sistema di gestione serve alla vostra azienda?
   testo: C'è chi deve rispondere a un cliente che chiede la certificazione e chi vuole mettere ordine nei propri processi. Parliamone e costruiamo il percorso adatto.
   bottone: Valutate il percorso verso la certificazione
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: verifica-magazzino-gilet

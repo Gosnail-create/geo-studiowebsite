@@ -37,3 +37,7 @@ chiusura:
   titolo: Avete un corso d'acqua o un salto da valorizzare?
   testo: Indicateci la località e quello che sapete della risorsa idrica. Ne ricaveremo una prima valutazione e l'elenco dei dati da raccogliere.
   bottone: Valutate il vostro impianto con noi
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 1
+  foto: centrale-idroelettrica-diga

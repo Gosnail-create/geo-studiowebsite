@@ -1,5 +1,6 @@
 ---
-// Fascia di chiusura su brand-deep con H2, testo e bottone principale.
+// Fascia di chiusura in acciaio (brand) con H2, testo e bottone principale. Sotto resta
+// la carta della sezione, così non tocca il footer grafite.
 interface Props {
   titolo: string;
   testo: string;
@@ -9,7 +10,7 @@ const { titolo, testo, bottone } = Astro.props;
 ---
 <section class="section" aria-labelledby="chiusura-titolo">
   <div class="container">
-    <div class="chiusura on-deep">
+    <div class="chiusura on-brand">
       <span class="cut-mark" aria-hidden="true"></span>
       <h2 class="h2" id="chiusura-titolo">{titolo}</h2>
       <p class="lead">{testo}</p>

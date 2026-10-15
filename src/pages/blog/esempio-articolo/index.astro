@@ -3,7 +3,9 @@
 // riquadro del servizio collegato con CTA). Testo dell'articolo in preparazione.
 import { getEntry } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import BlogCover from '../../../components/BlogCover.astro';
+import Figura from '../../../components/Figura.astro';
+import { articoli } from '../../../data/blog';
+import { foto, type NomeFoto } from '../../../data/immagini';
 import Segnaposto from '../../../components/Segnaposto.astro';
 import ServiceCard from '../../../components/ServiceCard.astro';
 import Testo from '../../../components/Testo.astro';
@@ -16,6 +18,7 @@ const hub = (await getEntry('pagine', 'energie-rinnovabili'))!.data;
 const card = hub.sezioni.flatMap((s) => s.blocchi).flatMap((b) => (b.tipo === 'card' ? b.voci : []))
   .find((v) => v.titolo === 'Impianti a biometano')!;
 const cta = linkContatti('articolo', 'energie-rinnovabili');
+const copertina = articoli.find((a) => a.href === '/blog/esempio-articolo/')!.foto;
 ---
 <Base title={`${t.titolo} | Blog | Geo Studio`}>
   <article>
@@ -27,7 +30,7 @@ const cta = linkContatti('articolo', 'energie-rinnovabili');
           <h1 class="h1">{t.titolo}</h1>
           <p class="riga small"><Testo text={t.aggiornato} /> · Area: {t.area}</p>
         </div>
-        <div class="testata-cover"><BlogCover area={t.area} /></div>
+        <div class="testata-cover"><Figura foto={foto(copertina as NomeFoto)} ratio="16 / 9" eager sizes="(min-width: 1080px) 400px, 100vw" /></div>
       </div>
     </header>
 
@@ -48,7 +51,7 @@ const cta = linkContatti('articolo', 'energie-rinnovabili');
         <div class="collegato">
           <ServiceCard titolo={card.titolo} testo={card.testo} href={card.href} immagine={rendering.vistaLaterale} />
         </div>
-        <div class="riquadro on-deep">
+        <div class="riquadro on-brand">
           <span class="cut-mark" aria-hidden="true"></span>
           <h2 class="h2" id="riquadro-titolo">{t.riquadro.titolo}</h2>
           <p class="lead">{t.riquadro.testo}</p>

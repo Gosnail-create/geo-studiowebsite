@@ -11,7 +11,6 @@ export interface Foto {
 }
 
 const alt: Record<string, string> = {
-  'tecnico-ispezione-macchinari': 'Tecnico con una cartella di documenti che osserva un impianto di processo in un reparto produttivo',
   'tecnici-progetto-planimetria': 'Persone attorno a una planimetria stesa sul tavolo, una indica un punto del disegno',
   'collettori-impianto-riscaldamento': 'Collettori di un impianto di riscaldamento a pavimento con valvole, flussimetri e pompa di circolazione',
   'azienda-agricola-eolico-fotovoltaico': 'Azienda agricola con pannelli fotovoltaici sul tetto e una pala eolica dietro gli alberi',
@@ -25,6 +24,23 @@ const alt: Record<string, string> = {
   'formatrice-corso-gruppo': 'Formatrice che spiega a un gruppo di partecipanti davanti a una lavagna a fogli',
   'facciata-edificio-uffici': 'Facciata di un edificio per uffici con file regolari di finestre',
   'tavole-progetto-architettonico': 'Tavole di progetto architettonico sparse su un piano di lavoro',
+  'tecnico-manutenzione-macchinario': 'Tecnico con elmetto che controlla un componente di un macchinario in officina',
+  'tecnico-dpi-verifica-reparto': 'Tecnico con elmetto e gilet ad alta visibilità che compila una scheda di controllo in un capannone',
+  'sopralluogo-tecnico-cartellina': 'Tecnico con gilet ad alta visibilità che verifica un serramento durante un sopralluogo, con la cartellina in mano',
+  'campionamento-ambientale-dpi': "Tecnico in tuta protettiva e maschera che osserva un campione in una beuta durante un rilievo all'aperto",
+  'prelievo-campioni-ambientali': "Tecnico in tuta protettiva che preleva un campione con pipetta e beuta in un'area di deposito",
+  'verifica-magazzino-gilet': 'Tre persone con gilet ad alta visibilità che discutono in un magazzino di profilati metallici',
+  'tecnici-cantiere-tavola-progetto': 'Due tecnici con elmetto che consultano una tavola di progetto in cantiere',
+  'gruppo-tecnici-reparto': 'Tre tecnici con elmetto e tuta da lavoro che consultano un tablet in un reparto produttivo',
+  'lavori-in-quota-fune': 'Operatore con imbracatura e funi al lavoro sulla facciata di un edificio in mattoni',
+  'quadro-elettrico-cablaggi': 'Quadro elettrico aperto con interruttori, morsettiere e cablaggi',
+  'estintori-deposito': 'Estintori rossi in un deposito industriale',
+  'aula-formazione-riunione': 'Formatore in piedi davanti a un gruppo di partecipanti seduti attorno a un tavolo con i computer',
+  'gruppo-revisione-progetti': 'Persone che esaminano tavole di progetto su una scrivania con un computer portatile',
+  'copertura-fotovoltaica-aerea': 'Vista aerea di una grande copertura industriale con file di moduli fotovoltaici',
+  'borgo-pale-eoliche': 'Borgo di montagna tra i prati con due pale eoliche sulla collina',
+  'centrale-idroelettrica-diga': 'Centrale idroelettrica ai piedi di una diga, sulla riva di un fiume',
+  'aerogeneratore-campo-grano': 'Aerogeneratore in un campo di grano sotto un cielo con nuvole',
 };
 
 export function foto(nome: keyof typeof dimensioni): Foto {

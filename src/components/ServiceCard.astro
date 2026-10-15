@@ -1,8 +1,10 @@
 ---
-// Card di un servizio (design-system/components/ServiceCard.html): numero in stile label,
-// parallelogramma accent, titolo, testo e link. Piatta, su surface-raised.
+// Card di un servizio (design-system/components/ServiceCard.html, revisione del 15 ottobre 2026):
+// immagine in testa a filo della card, numero in stile label, parallelogramma accent,
+// titolo, testo e link. Piatta, su surface-raised.
+import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import Figura from './Figura.astro';
+import type { Foto } from '../data/immagini';
 import LinkFreccia from './LinkFreccia.astro';
 
 interface Props {
@@ -12,35 +14,50 @@ interface Props {
   href?: string;
   linkLabel?: string;
   immagine?: { src: ImageMetadata; alt: string; didascalia?: string };
+  foto?: Foto;
   livello?: 'h2' | 'h3';
 }
-const { numero, titolo, testo, href, linkLabel = 'Approfondite', immagine, livello = 'h3' } = Astro.props;
+const { numero, titolo, testo, href, linkLabel = 'Approfondite', immagine, foto, livello = 'h3' } = Astro.props;
 const Titolo = livello;
+const sizes = '(min-width: 1080px) 300px, (min-width: 640px) 50vw, 100vw';
 ---
 <article class="card">
+  {foto && (
+    <img class="media" src={`/images/${foto.nome}-640.webp`}
+      srcset={foto.larghezze.slice(0, 2).map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ')}
+      sizes={sizes} width="640" height={Math.round((640 * foto.height) / foto.width)} alt={foto.alt}
+      loading="lazy" decoding="async" />
+  )}
   {immagine && (
-    <Figura src={immagine.src} alt={immagine.alt} didascalia={immagine.didascalia} ratio="16 / 9"
-      widths={[480, 800]} sizes="(min-width: 1080px) 400px, 100vw" />
+    <figure class="figura-media">
+      <Image class="media" src={immagine.src} alt={immagine.alt} widths={[480, 800]} sizes={sizes} />
+      {immagine.didascalia && <figcaption class="small">{immagine.didascalia}</figcaption>}
+    </figure>
   )}
-  {numero && (
-    <div class="top">
-      <span class="label">{numero}</span>
-      <span class="cut-mark" aria-hidden="true"></span>
-    </div>
-  )}
-  <Titolo class="h3">{titolo}</Titolo>
-  <p class="testo">{testo}</p>
-  {href && <LinkFreccia href={href} class="link">{linkLabel}<span class="visually-hidden">: {titolo}</span></LinkFreccia>}
+  <div class="corpo">
+    {numero && (
+      <div class="top">
+        <span class="label">{numero}</span>
+        <span class="cut-mark" aria-hidden="true"></span>
+      </div>
+    )}
+    <Titolo class="h3">{titolo}</Titolo>
+    <p class="testo">{testo}</p>
+    {href && <LinkFreccia href={href} class="link">{linkLabel}<span class="visually-hidden">: {titolo}</span></LinkFreccia>}
+  </div>
 </article>
 
 <style>
   .card {
     background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg);
-    padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); height: 100%;
+    overflow: hidden; display: flex; flex-direction: column; height: 100%;
   }
-  @media (min-width: 768px) { .card { padding: var(--space-8); } }
-  @media (min-width: 1080px) { .card { padding: var(--space-10); } }
+  .card :global(.media) { width: 100%; height: var(--panel-photo-h); object-fit: cover; display: block; }
+  .figura-media figcaption { padding: var(--space-2) var(--space-6) 0; }
+  .corpo { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
+  @media (min-width: 768px) { .corpo { padding: var(--space-8); } .figura-media figcaption { padding-inline: var(--space-8); } }
+  @media (min-width: 1080px) { .corpo { padding: var(--space-10); } .figura-media figcaption { padding-inline: var(--space-10); } }
   .top { display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); }
   .testo { color: var(--ink-muted); }
-  .card :global(.link) { margin-top: auto; align-self: flex-start; }
+  .corpo :global(.link) { margin-top: auto; align-self: flex-start; }
 </style>

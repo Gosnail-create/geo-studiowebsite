@@ -1,7 +1,8 @@
 ---
 // Card di un articolo del blog in bozza: copertina d'area, etichetta "Bozza", titolo.
 import type { Articolo } from '../data/blog';
-import BlogCover from './BlogCover.astro';
+import Figura from './Figura.astro';
+import { foto, type NomeFoto } from '../data/immagini';
 
 interface Props {
   articolo: Articolo;
@@ -11,7 +12,7 @@ const { articolo, livello = 'h3' } = Astro.props;
 const Titolo = livello;
 ---
 <article class="blog-card" data-area={articolo.area}>
-  <BlogCover area={articolo.area} />
+  <Figura foto={foto(articolo.foto as NomeFoto)} ratio="16 / 9" sizes="(min-width: 1080px) 380px, (min-width: 640px) 50vw, 100vw" />
   <div class="meta">
     <span class="tag">Bozza</span>
     <span class="label">{articolo.area}</span>

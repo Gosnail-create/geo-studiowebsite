@@ -14,6 +14,8 @@ sezioni:
         testo: Lo studio è nato nel 1990 e da allora è cresciuto insieme alle norme che segue. Nei primi anni la sicurezza sul lavoro era regolata dal D.Lgs. 626/1994, la prevenzione incendi da decreti che oggi non esistono più e le energie rinnovabili erano un tema per pochi; nel frattempo sono arrivati il testo unico sulla sicurezza, il codice di prevenzione incendi, le norme ISO sui sistemi di gestione e una lunga serie di incentivi e procedure per gli impianti da fonti rinnovabili. Abbiamo attraversato questi cambiamenti accanto ai nostri clienti, aggiornando ogni volta competenze, strumenti e metodo. In questi anni abbiamo lavorato con aziende artigiane, piccole e medie imprese, società di capitali e grandi gruppi, oltre che con enti statali e istituti scolastici, bancari e assicurativi.
   - titolo: Due divisioni, un solo gruppo di lavoro
     blocchi:
+      - tipo: foto
+        foto: tecnici-cantiere-tavola-progetto
       - tipo: p
         testo: "La prima divisione progetta impianti tecnologici: elettrici, termoidraulici, di climatizzazione, in atmosfere esplosive e da fonti rinnovabili, compresi impianti complessi come quelli a biometano. La seconda segue qualità, ambiente, salute e sicurezza negli ambienti di lavoro, l'area che in azienda si indica con la sigla QHSE, e la formazione del personale. Le due divisioni condividono clienti, progetti e scadenze, perché molti incarichi le chiamano in causa entrambe: un nuovo stabilimento richiede impianti, pratica antincendio, valutazione dei rischi e autorizzazioni ambientali, e funziona meglio quando tutto nasce da un unico progetto. Nel gruppo lavorano professionisti e tecnici specializzati, ciascuno con competenze specifiche nella propria materia, e il loro lavoro non finisce con la consegna di un documento."
   - titolo: Il nostro modo di lavorare
@@ -50,3 +52,7 @@ chiusura:
   titolo: Volete conoscerci meglio?
   testo: Raccontateci il vostro progetto o l'adempimento che dovete affrontare. Vi diremo come possiamo aiutarvi e chi, nel nostro gruppo, se ne occuperà.
   bottone: Parlate con un nostro tecnico
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: gruppo-revisione-progetti

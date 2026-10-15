@@ -40,3 +40,7 @@ chiusura:
   titolo: Quali adempimenti ambientali riguardano la vostra attività?
   testo: Ogni attività produttiva ha obblighi ambientali propri. Descriveteci il vostro impianto e vi aiuteremo a individuare le autorizzazioni e le valutazioni necessarie.
   bottone: Verificate i vostri adempimenti ambientali
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: prelievo-campioni-ambientali

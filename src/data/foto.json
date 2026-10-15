@@ -1,13 +1,4 @@
 {
-  "tecnico-ispezione-macchinari": {
-    "width": 2400,
-    "height": 1600,
-    "larghezze": [
-      640,
-      1024,
-      1600
-    ]
-  },
   "tecnici-progetto-planimetria": {
     "width": 2400,
     "height": 1600,
@@ -119,6 +110,159 @@
   "tavole-progetto-architettonico": {
     "width": 2400,
     "height": 3200,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "tecnico-manutenzione-macchinario": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "tecnico-dpi-verifica-reparto": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "sopralluogo-tecnico-cartellina": {
+    "width": 2400,
+    "height": 3600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "campionamento-ambientale-dpi": {
+    "width": 2400,
+    "height": 1661,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "prelievo-campioni-ambientali": {
+    "width": 2400,
+    "height": 1661,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "verifica-magazzino-gilet": {
+    "width": 2400,
+    "height": 1602,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "tecnici-cantiere-tavola-progetto": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "gruppo-tecnici-reparto": {
+    "width": 2400,
+    "height": 1597,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "lavori-in-quota-fune": {
+    "width": 2400,
+    "height": 3600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "quadro-elettrico-cablaggi": {
+    "width": 2400,
+    "height": 1634,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "estintori-deposito": {
+    "width": 2400,
+    "height": 3600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "aula-formazione-riunione": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "gruppo-revisione-progetti": {
+    "width": 2400,
+    "height": 3598,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "copertura-fotovoltaica-aerea": {
+    "width": 2400,
+    "height": 1599,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "borgo-pale-eoliche": {
+    "width": 2400,
+    "height": 1599,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "centrale-idroelettrica-diga": {
+    "width": 2400,
+    "height": 1802,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "aerogeneratore-campo-grano": {
+    "width": 2400,
+    "height": 1600,
     "larghezze": [
       640,
       1024,

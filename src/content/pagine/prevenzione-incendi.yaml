@@ -42,3 +42,7 @@ chiusura:
   titolo: La vostra pratica antincendio è in regola?
   testo: Che si tratti di un'attività nuova, di una modifica o di un rinnovo in scadenza, vi aiutiamo a capire quali adempimenti vi riguardano e come affrontarli.
   bottone: Verificate i vostri adempimenti antincendio
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: estintori-deposito

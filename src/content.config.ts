@@ -13,7 +13,7 @@ const blocco = z.discriminatedUnion('tipo', [
   z.object({ tipo: z.literal('servizi'), voci: z.array(voce), linkLabel: z.string() }),
   z.object({
     tipo: z.literal('card'),
-    voci: z.array(voce.extend({ href: z.string(), rendering: z.enum(['ingresso', 'vistaAerea', 'vistaLaterale']).optional() })),
+    voci: z.array(voce.extend({ href: z.string(), rendering: z.enum(['ingresso', 'vistaAerea', 'vistaLaterale']).optional(), foto: z.string().optional() })),
   }),
   z.object({ tipo: z.literal('corsi'), voci: z.array(z.object({ area: z.string(), corsi: z.array(z.string()) })) }),
   z.object({ tipo: z.literal('pannello'), voci: z.array(z.object({ valore: z.string(), descrizione: z.string() })) }),
@@ -21,6 +21,8 @@ const blocco = z.discriminatedUnion('tipo', [
   z.object({ tipo: z.literal('segnaposto'), testo: z.string() }),
   z.object({ tipo: z.literal('link'), label: z.string(), href: z.string() }),
   z.object({ tipo: z.literal('blog') }),
+  // foto accanto al testo, nella colonna del titolo
+  z.object({ tipo: z.literal('foto'), foto: z.string() }),
   z.object({ tipo: z.literal('mappa') }),
 ]);
 
@@ -44,6 +46,13 @@ const pagine = defineCollection({
     // blocchi senza titolo subito dopo l'hero (la griglia dei servizi nell'hub)
     dopoHero: z.array(blocco).optional(),
     sezioni: z.array(z.object({ titolo: z.string(), blocchi: z.array(blocco) })),
+    // fascia fotografica a tutta larghezza dopo la sezione numero "dopo" (1 = dopo la prima)
+    fascia: z.object({
+      dopo: z.number(),
+      foto: z.string().optional(),
+      rendering: z.enum(['ingresso', 'vistaAerea', 'vistaLaterale']).optional(),
+      galleria: z.boolean().optional(),
+    }).optional(),
     faq: z.array(z.object({ domanda: z.string(), risposta: z.string() })).optional(),
     chiusura: z.object({ titolo: z.string(), testo: z.string(), bottone: z.string() }).optional(),
   }),

@@ -40,3 +40,7 @@ chiusura:
   titolo: Volete capire se la vostra azienda può produrre biometano?
   testo: Raccontateci quali matrici avete a disposizione e in quali quantità. Partiremo da lì per una prima analisi di fattibilità.
   bottone: Valutate il vostro impianto con noi
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  rendering: vistaLaterale

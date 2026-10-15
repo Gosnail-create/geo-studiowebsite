@@ -11,7 +11,7 @@ hero:
   link:
     label: Scoprite i servizi
     href: /servizi/
-  foto: tecnico-ispezione-macchinari
+  foto: tecnico-manutenzione-macchinario
   # fascia dati sotto la hero (docs/testi-revisione.md)
   dati:
     - valore: "1990"
@@ -53,6 +53,8 @@ sezioni:
         linkLabel: Approfondite
   - titolo: Come lavoriamo
     blocchi:
+      - tipo: foto
+        foto: sopralluogo-tecnico-cartellina
       - tipo: p
         testo: Che si tratti di un documento di valutazione dei rischi o di un impianto a biometano, ogni incarico segue lo stesso percorso di fondo. Partiamo dal luogo e dalle persone, perché le carte da sole non dicono come si lavora davvero in un reparto. Le soluzioni arrivano dopo, e restano sotto controllo anche quando l'incarico iniziale è concluso.
       - tipo: passi
@@ -64,6 +66,8 @@ sezioni:
         titoloInline: true
   - titolo: Chi siamo
     blocchi:
+      - tipo: foto
+        foto: tecnici-cantiere-tavola-progetto
       - tipo: p
         testo: "Geo Studio Engineering lavora dal 1990 con aziende artigiane, piccole e medie imprese, grandi gruppi ed enti pubblici di tutta Italia. Lo studio ha sede a Bovolone, in provincia di Verona, ed è organizzato in due divisioni: una progetta gli impianti tecnologici, l'altra segue qualità, ambiente, salute e sicurezza, l'area che in azienda si chiama QHSE. I settori che conosciamo meglio sono l'industria manifatturiera e metalmeccanica, la chimica e la farmaceutica, i trasporti, i servizi e l'agricoltura. Il nostro sistema di gestione per la qualità è certificato ISO 9001 da oltre quindici anni, e lo applichiamo prima di tutto a noi stessi."
       - tipo: pannello
@@ -89,3 +93,7 @@ chiusura:
   titolo: Avete un adempimento da gestire o un impianto da progettare?
   testo: Raccontateci in poche righe di cosa si tratta. Un nostro tecnico vi ricontatta per capire la situazione e proporvi il percorso più adatto.
   bottone: Parlate con un nostro tecnico
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: gruppo-tecnici-reparto

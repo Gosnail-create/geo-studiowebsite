@@ -15,7 +15,6 @@ if (!sorgente) {
 
 // file originale -> nome pubblicato
 const foto = {
-  'home-1.jpg': 'tecnico-ispezione-macchinari',
   'chi-siamo-1.jpg': 'tecnici-progetto-planimetria',
   'progettazione-1.jpg': 'collettori-impianto-riscaldamento',
   'rinnovabili-1.jpg': 'azienda-agricola-eolico-fotovoltaico',
@@ -29,6 +28,24 @@ const foto = {
   'formazione-1.jpg': 'formatrice-corso-gruppo',
   'contatti-1.jpg': 'facciata-edificio-uffici',
   'blog-1.jpg': 'tavole-progetto-architettonico',
+  // revisione del 15 ottobre 2026
+  'px-37668423.jpg': 'tecnico-manutenzione-macchinario',
+  'px-28196491.jpg': 'tecnico-dpi-verifica-reparto',
+  'px-8293639.jpg': 'sopralluogo-tecnico-cartellina',
+  'px-8770241.jpg': 'campionamento-ambientale-dpi',
+  'px-8770235.jpg': 'prelievo-campioni-ambientali',
+  'px-36122947.jpg': 'verifica-magazzino-gilet',
+  'px-8961146.jpg': 'tecnici-cantiere-tavola-progetto',
+  'px-32845690.jpg': 'gruppo-tecnici-reparto',
+  'px-29946966.jpg': 'lavori-in-quota-fune',
+  'progettazione-2.jpg': 'quadro-elettrico-cablaggi',
+  'incendi-2.jpg': 'estintori-deposito',
+  'formazione-2.jpg': 'aula-formazione-riunione',
+  'chi-siamo-2.jpg': 'gruppo-revisione-progetti',
+  'fotovoltaico-2.jpg': 'copertura-fotovoltaica-aerea',
+  'rinnovabili-2.jpg': 'borgo-pale-eoliche',
+  'idroelettrico-2.jpg': 'centrale-idroelettrica-diga',
+  'minieolico-2.jpg': 'aerogeneratore-campo-grano',
 };
 
 const larghezze = [640, 1024, 1600];

@@ -39,3 +39,7 @@ chiusura:
   titolo: Volete sapere quanto può produrre il vostro tetto?
   testo: Inviateci l'indirizzo dell'immobile e, se le avete, le ultime bollette. Partiremo da lì per il sopralluogo e la prima valutazione.
   bottone: Valutate il vostro impianto con noi
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 2
+  foto: copertura-fotovoltaica-aerea

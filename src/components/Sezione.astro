@@ -19,6 +19,7 @@ const headingId = id ? `${id}-titolo` : undefined;
     <div class="sez-head">
       {etichetta && <p class="label">{etichetta}</p>}
       <h2 class="h2" id={headingId}>{titolo}</h2>
+      {Astro.slots.has('aside') && <div class="sez-aside"><slot name="aside" /></div>}
     </div>
     <div class="sez-body prose">
       {testo.map((p) => <p><Testo text={p} /></p>)}
@@ -32,6 +33,7 @@ const headingId = id ? `${id}-titolo` : undefined;
   .sez { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
   @media (min-width: 768px) { .sez { gap: var(--space-8); } }
   .sez-head { display: grid; gap: var(--space-2); align-content: start; }
+  .sez-aside { margin-top: var(--space-6); }
   .sez-full { margin-top: var(--space-6); }
   .sez-body > :global(*) + :global(:not(p)) { margin-top: var(--space-8); }
   @media (min-width: 1080px) {

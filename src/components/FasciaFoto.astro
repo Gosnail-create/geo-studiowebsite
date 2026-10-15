@@ -1,0 +1,46 @@
+---
+// Fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026, punto 5), oppure
+// piccola galleria dei tre rendering del biometano con la didascalia prevista.
+import { Image } from 'astro:assets';
+import type { Foto } from '../data/immagini';
+import { rendering } from '../data/rendering';
+
+type Chiave = keyof typeof rendering;
+interface Props {
+  foto?: Foto;
+  rendering?: Chiave;
+  galleria?: boolean;
+}
+const { foto, galleria } = Astro.props;
+const render = Astro.props.rendering ? rendering[Astro.props.rendering] : undefined;
+const tutti = [rendering.ingresso, rendering.vistaAerea, rendering.vistaLaterale];
+---
+{galleria ? (
+  <figure class="galleria container">
+    <div class="galleria-grid">
+      {tutti.map((r) => <Image src={r.src} alt={r.alt} widths={[480, 800]} sizes="(min-width: 1080px) 400px, 100vw" />)}
+    </div>
+    <figcaption class="small">{rendering.ingresso.didascalia}</figcaption>
+  </figure>
+) : (
+  <figure class="fascia-foto">
+    {foto && (
+      <img src={`/images/${foto.nome}-1600.webp`}
+        srcset={foto.larghezze.map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ')} sizes="100vw"
+        width="1600" height={Math.round((1600 * foto.height) / foto.width)} alt={foto.alt} loading="lazy" decoding="async" />
+    )}
+    {render && <Image src={render.src} alt={render.alt} widths={[800, 1600, 2400]} sizes="100vw" />}
+    {render?.didascalia && <figcaption class="container small">{render.didascalia}</figcaption>}
+  </figure>
+)}
+
+<style>
+  .fascia-foto { display: grid; gap: var(--space-2); }
+  .fascia-foto :global(img) { width: 100%; height: var(--hero-photo-h-mobile); object-fit: cover; display: block; }
+  @media (min-width: 768px) { .fascia-foto :global(img) { height: var(--band-photo-h); } }
+
+  .galleria { display: grid; gap: var(--space-2); padding-block: var(--space-16); }
+  .galleria-grid { display: grid; gap: var(--space-4); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 768px) { .galleria-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .galleria-grid :global(img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
+</style>

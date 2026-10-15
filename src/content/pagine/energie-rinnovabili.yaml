@@ -20,6 +20,7 @@ sezioni:
           - titolo: Impianti fotovoltaici
             testo: Energia elettrica dal sole per abitazioni, aziende e impianti industriali, con soluzioni su misura o predefinite.
             href: /servizi/energie-rinnovabili/impianto-fotovoltaico/
+            foto: copertura-fotovoltaica-aerea
           - titolo: Impianti a biometano
             testo: Gas rinnovabile da effluenti zootecnici e sottoprodotti agricoli, con digestione anaerobica e upgrading del biogas.
             href: /servizi/energie-rinnovabili/impianto-a-biometano/
@@ -27,9 +28,11 @@ sezioni:
           - titolo: Impianti mini-eolici
             testo: Aerogeneratori di piccola taglia per i siti in cui il vento c'è davvero, verificato con i dati.
             href: /servizi/energie-rinnovabili/impianto-mini-eolico/
+            foto: aerogeneratore-campo-grano
           - titolo: Impianti idroelettrici
             testo: Energia dal salto o dal movimento dell'acqua, in progetti costruiti sul singolo sito.
             href: /servizi/energie-rinnovabili/impianto-idroelettrico/
+            foto: centrale-idroelettrica-diga
   - titolo: Prima i numeri, poi l'impianto
     blocchi:
       - tipo: p
@@ -43,3 +46,7 @@ chiusura:
   titolo: Avete un sito, una copertura o una risorsa da valorizzare?
   testo: Descriveteci il luogo e i vostri consumi. Vi aiuteremo a capire quale tecnologia ha senso e quali verifiche servono prima di investire.
   bottone: Valutate il vostro impianto con noi
+# fascia fotografica a tutta larghezza (revisione del 15 ottobre 2026)
+fascia:
+  dopo: 1
+  galleria: true

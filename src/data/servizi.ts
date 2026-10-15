@@ -16,6 +16,8 @@ export interface Servizio {
   divisione: 'impianti' | 'qhse';
   /** descrizione di una riga nel pannello Servizi (design-system/components/ServiceCard.html) */
   breve: string;
+  /** foto della card nella griglia dei servizi (l'area Energie rinnovabili usa un rendering) */
+  foto?: string;
   tecnologie?: Tecnologia[];
 }
 
@@ -24,6 +26,7 @@ export const divisioni = { impianti: 'Impianti tecnologici', qhse: 'QHSE' } as c
 export const servizi: Servizio[] = [
   {
     slug: 'progettazione-impianti-tecnologici',
+    foto: 'quadro-elettrico-cablaggi',
     nome: 'Progettazione impianti tecnologici',
     url: '/servizi/progettazione-impianti-tecnologici/',
     cta: 'Richiedete una valutazione del progetto',
@@ -46,6 +49,7 @@ export const servizi: Servizio[] = [
   },
   {
     slug: 'sicurezza-negli-ambienti-di-lavoro',
+    foto: 'tecnico-dpi-verifica-reparto',
     nome: 'Sicurezza negli ambienti di lavoro',
     url: '/servizi/sicurezza-negli-ambienti-di-lavoro/',
     cta: 'Richiedete un sopralluogo',
@@ -54,6 +58,7 @@ export const servizi: Servizio[] = [
   },
   {
     slug: 'ambiente',
+    foto: 'campionamento-ambientale-dpi',
     nome: 'Consulenza ambientale',
     url: '/servizi/ambiente/',
     cta: 'Verificate i vostri adempimenti ambientali',
@@ -62,6 +67,7 @@ export const servizi: Servizio[] = [
   },
   {
     slug: 'prevenzione-incendi',
+    foto: 'estintori-deposito',
     nome: 'Prevenzione incendi',
     url: '/servizi/prevenzione-incendi/',
     cta: 'Verificate i vostri adempimenti antincendio',
@@ -70,6 +76,7 @@ export const servizi: Servizio[] = [
   },
   {
     slug: 'sistemi-di-gestione',
+    foto: 'verifica-magazzino-gilet',
     nome: 'Sistemi di gestione',
     url: '/servizi/sistemi-di-gestione/',
     cta: 'Valutate il percorso verso la certificazione',
@@ -78,6 +85,7 @@ export const servizi: Servizio[] = [
   },
   {
     slug: 'formazione',
+    foto: 'aula-formazione-riunione',
     nome: 'Formazione',
     url: '/servizi/formazione/',
     cta: 'Organizzate la formazione del personale',
