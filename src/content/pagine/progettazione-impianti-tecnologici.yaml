@@ -1,0 +1,40 @@
+# Contenuti della pagina "progettazione-impianti-tecnologici", da docs/testi-it.md. I testi del cliente non si modificano.
+title: Progettazione impianti elettrici, termici e ATEX | Geo Studio
+description: Progettazione, direzione lavori e collaudo di impianti elettrici, termoidraulici e di climatizzazione, classificazione ATEX e verifiche periodiche degli impianti di messa a terra.
+origine: servizio
+servizio: progettazione-impianti-tecnologici
+hero:
+  titolo: Progettazione di impianti tecnologici per edifici civili e industriali
+  testo:
+    - "Progettiamo, dirigiamo e collaudiamo gli impianti che fanno funzionare un edificio o un reparto produttivo: elettrici, termici, idraulici, di climatizzazione e da fonti rinnovabili. Lavoriamo su nuove costruzioni, ampliamenti e riqualificazioni, con un'attenzione costante a tre aspetti che vanno tenuti insieme, la sicurezza, i consumi e la conformità alle norme."
+  etichetta: Progettazione impianti tecnologici
+  bottone: Richiedete una valutazione del progetto
+  foto: collettori-impianto-riscaldamento
+sezioni:
+  - titolo: Impianti elettrici e messa a terra
+    blocchi:
+      - tipo: p
+        testo: Un impianto elettrico industriale si progetta partendo dai carichi reali, dalla disposizione delle macchine e dai possibili ampliamenti, non soltanto dalla planimetria. Ci occupiamo della progettazione di impianti elettrici per edifici civili e industriali, dalla distribuzione in bassa tensione ai quadri, all'illuminazione ordinaria e di emergenza, e redigiamo il progetto nei casi in cui il DM 37/2008 lo richiede firmato da un professionista. In qualità di organismo abilitato eseguiamo inoltre le verifiche periodiche degli impianti di messa a terra previste dal DPR 462/2001. Il datore di lavoro deve farle eseguire ogni due anni nei cantieri, nei locali medici e negli ambienti a maggior rischio di incendio, ogni cinque anni negli altri casi, e conservare il verbale a disposizione degli organi di vigilanza.
+  - titolo: Impianti in atmosfere esplosive (ATEX)
+    blocchi:
+      - tipo: p
+        testo: Vernici e solventi, polveri di legno o di farine, gas combustibili e biogas possono formare, in certe condizioni, un'atmosfera esplosiva. In questi ambienti il Titolo XI del D.Lgs. 81/2008 impone al datore di lavoro di classificare le aree a rischio e di scegliere impianti e attrezzature adatti alla zona in cui vengono installati. Eseguiamo la classificazione delle aree secondo le norme tecniche per gas e polveri, verifichiamo gli impianti esistenti e progettiamo gli adeguamenti necessari, così che il reparto possa lavorare in sicurezza e il documento di valutazione dei rischi rifletta la situazione reale. In molte aziende la classificazione è il primo passo per mettere in regola un impianto di verniciatura, un silos o un deposito di prodotti infiammabili.
+  - titolo: Impianti termici, idraulici e di climatizzazione
+    blocchi:
+      - tipo: p
+        testo: Progettiamo impianti di riscaldamento, produzione di acqua calda, climatizzazione e raffreddamento, sia per gli uffici sia per i processi produttivi che richiedono temperature controllate. Quando il contesto lo consente proponiamo soluzioni geotermiche o alimentate da fonti rinnovabili, valutando costi di installazione e consumi negli anni (per gli impianti di produzione di energia rimandiamo alla pagina Energie rinnovabili). Redigiamo infine l'attestato di prestazione energetica (APE) degli edifici, richiesto in caso di vendita, locazione e per accedere a molte agevolazioni.
+  - titolo: Dal progetto al collaudo
+    blocchi:
+      - tipo: p
+        testo: Ogni incarico parte da un sopralluogo e dall'esame delle esigenze dell'edificio o del processo produttivo. Sviluppiamo poi il progetto, con gli elaborati necessari per le autorizzazioni e per la gara fra le imprese installatrici, e seguiamo il cantiere come direzione lavori quando l'incarico lo prevede. L'ultimo passaggio è il collaudo, con le verifiche che attestano che l'impianto realizzato corrisponde al progetto e funziona come previsto.
+faq:
+  - domanda: Ogni quanto vanno verificati gli impianti di messa a terra?
+    risposta: Il DPR 462/2001 prevede una verifica ogni due anni per cantieri, locali medici e ambienti a maggior rischio di incendio, ogni cinque anni per tutti gli altri luoghi di lavoro. La verifica deve essere eseguita da un organismo abilitato o dagli enti pubblici competenti, e l'obbligo di richiederla spetta al datore di lavoro.
+  - domanda: Quando serve la classificazione delle aree ATEX?
+    risposta: Serve ogni volta che nell'attività possono formarsi miscele esplosive di gas, vapori o polveri combustibili con l'aria, anche solo occasionalmente. Accade spesso in verniciature, falegnamerie, mulini e mangimifici, impianti di biogas e depositi di solventi.
+  - domanda: Seguite anche la direzione lavori?
+    risposta: Sì, quando l'incarico lo prevede seguiamo il cantiere fino al collaudo, coordinando le imprese installatrici.
+chiusura:
+  titolo: State progettando un nuovo impianto o dovete adeguare quello esistente?
+  testo: Inviateci le informazioni di cui disponete, anche solo una descrizione dell'edificio e dell'attività. Vi diremo quali verifiche servono e come impostare il progetto.
+  bottone: Richiedete una valutazione del progetto

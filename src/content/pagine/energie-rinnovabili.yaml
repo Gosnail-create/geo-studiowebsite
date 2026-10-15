@@ -1,0 +1,45 @@
+# Contenuti della pagina "energie-rinnovabili", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Impianti per energie rinnovabili: fotovoltaico, biometano, mini-eolico, idroelettrico | Geo Studio"
+description: Studi di fattibilità, progettazione, autorizzazioni e supporto alla realizzazione di impianti da fonti rinnovabili per privati, aziende agricole, imprese ed enti.
+origine: servizio
+servizio: energie-rinnovabili
+hero:
+  titolo: Impianti per energie rinnovabili
+  testo:
+    - Progettiamo impianti che producono energia dal sole, dal vento, dall'acqua e dalle biomasse, per privati, aziende agricole, imprese ed enti pubblici. Seguiamo ogni progetto dallo studio di fattibilità alla progettazione, dalle autorizzazioni al supporto in cantiere, con un unico interlocutore tecnico per tutto il percorso.
+  etichetta: Energie rinnovabili
+  bottone: Valutate il vostro impianto con noi
+  foto: azienda-agricola-eolico-fotovoltaico
+sezioni:
+  - titolo: Le quattro tecnologie che seguiamo
+    blocchi:
+      - tipo: p
+        testo: "Ogni fonte rinnovabile ha un suo campo di applicazione, e la prima cosa da capire è quale si adatta al vostro sito e ai vostri consumi. Il fotovoltaico è la scelta più diffusa per abitazioni, capannoni e aziende con consumi diurni, mentre il biometano interessa soprattutto le aziende agricole e zootecniche che dispongono di effluenti e sottoprodotti. Il mini-eolico e l'idroelettrico, invece, dipendono interamente dalle caratteristiche del luogo: un sito ventoso, un corso d'acqua con portata e salto sufficienti."
+      - tipo: card
+        voci:
+          - titolo: Impianti fotovoltaici
+            testo: Energia elettrica dal sole per abitazioni, aziende e impianti industriali, con soluzioni su misura o predefinite.
+            href: /servizi/energie-rinnovabili/impianto-fotovoltaico/
+          - titolo: Impianti a biometano
+            testo: Gas rinnovabile da effluenti zootecnici e sottoprodotti agricoli, con digestione anaerobica e upgrading del biogas.
+            href: /servizi/energie-rinnovabili/impianto-a-biometano/
+            rendering: vistaLaterale
+          - titolo: Impianti mini-eolici
+            testo: Aerogeneratori di piccola taglia per i siti in cui il vento c'è davvero, verificato con i dati.
+            href: /servizi/energie-rinnovabili/impianto-mini-eolico/
+          - titolo: Impianti idroelettrici
+            testo: Energia dal salto o dal movimento dell'acqua, in progetti costruiti sul singolo sito.
+            href: /servizi/energie-rinnovabili/impianto-idroelettrico/
+  - titolo: Prima i numeri, poi l'impianto
+    blocchi:
+      - tipo: p
+        testo: Un impianto da fonti rinnovabili è un investimento che si ripaga in molti anni, e per questo lo valutiamo sui dati prima di disegnarlo. Analizziamo il sito, i consumi, i vincoli urbanistici e ambientali, le possibilità di connessione alla rete e gli incentivi accessibili al momento, e solo dopo proponiamo una soluzione con costi e benefici stimati. Quando l'incarico lo prevede ci occupiamo anche della documentazione tecnica finale, del piano di manutenzione e degli aspetti legati alle garanzie, così che l'impianto mantenga nel tempo le prestazioni previste.
+faq:
+  - domanda: Quale fonte rinnovabile conviene alla mia azienda?
+    risposta: Dipende dal sito e dai consumi. Nella maggior parte dei casi si parte dal fotovoltaico, ma un'azienda zootecnica può valutare il biometano, e un sito con vento o acqua disponibili il mini-eolico o l'idroelettrico. Lo studio di fattibilità serve proprio a confrontare le alternative.
+  - domanda: Vi occupate anche degli incentivi?
+    risposta: Nello studio di fattibilità verifichiamo a quali incentivi e regimi di valorizzazione dell'energia l'impianto può accedere, e ne teniamo conto nella valutazione economica e nelle pratiche.
+chiusura:
+  titolo: Avete un sito, una copertura o una risorsa da valorizzare?
+  testo: Descriveteci il luogo e i vostri consumi. Vi aiuteremo a capire quale tecnologia ha senso e quali verifiche servono prima di investire.
+  bottone: Valutate il vostro impianto con noi

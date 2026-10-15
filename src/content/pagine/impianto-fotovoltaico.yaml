@@ -1,0 +1,41 @@
+# Contenuti della pagina "impianto-fotovoltaico", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Impianti fotovoltaici per aziende e privati: progetto e pratiche | Geo Studio"
+description: Analisi dei consumi, progettazione, pratiche di connessione alla rete, installazione e direzione lavori di impianti fotovoltaici, su misura o in soluzioni predefinite.
+origine: servizio
+servizio: energie-rinnovabili
+hero:
+  titolo: Impianti fotovoltaici progettati sui vostri consumi
+  testo:
+    - Un impianto fotovoltaico ben dimensionato vi permette di produrre in sede una parte dell'energia che consumate e di rendere più prevedibile il costo della bolletta. Lo progettiamo partendo dai consumi reali, dalla copertura o dall'area disponibile e dalle caratteristiche dell'edificio, sia per un'abitazione sia per un capannone industriale.
+  etichetta: Energie rinnovabili
+  bottone: Valutate il vostro impianto con noi
+  foto: tecnico-installazione-pannelli-fotovoltaici
+sezioni:
+  - titolo: Perché si parte dai consumi
+    blocchi:
+      - tipo: p
+        testo: "La convenienza di un impianto fotovoltaico dipende soprattutto da quanta energia prodotta riuscite a consumare nel momento in cui viene prodotta. Un'azienda che lavora di giorno, con macchine, celle frigorifere o impianti di climatizzazione accesi nelle ore di sole, usa direttamente gran parte della produzione e ne ricava il beneficio maggiore. Chi consuma soprattutto la sera, al contrario, deve valutare con attenzione un sistema di accumulo o le forme di valorizzazione dell'energia ceduta alla rete. Per questo il nostro lavoro comincia dalle bollette e, quando ci sono, dai dati orari del contatore: senza questi numeri il dimensionamento resta una stima."
+  - titolo: Soluzioni su misura e soluzioni predefinite
+    blocchi:
+      - tipo: p
+        testo: Per le aziende e per gli impianti di taglia maggiore sviluppiamo progetti su misura, che tengono conto della struttura della copertura, degli ombreggiamenti, della cabina e del punto di connessione. Accanto a questi proponiamo soluzioni impiantistiche predefinite, pensate per chi vuole avere subito un quadro chiaro di componenti, potenza e investimento senza rinunciare a un progetto verificato. In entrambi i casi valutiamo le possibilità di valorizzare l'energia prodotta e non consumata.
+  - titolo: Dal sopralluogo alla documentazione finale
+    blocchi:
+      - tipo: passi
+        voci:
+          - Sopralluogo e analisi dei consumi, per conoscere il sito e il fabbisogno energetico.
+          - Studio di fattibilità e progetto, con la soluzione tecnica e un preventivo dettagliato.
+          - Pratiche autorizzative e richiesta di connessione al gestore della rete.
+          - Installazione e direzione lavori, secondo quanto previsto dall'incarico e nel rispetto dei requisiti di sicurezza.
+          - Documentazione dell'impianto, indicazioni su manutenzione e garanzie.
+faq:
+  - domanda: Quanto spazio serve per un impianto fotovoltaico?
+    risposta: In genere, con i moduli in commercio oggi, servono indicativamente fra 5 e 7 metri quadrati per ogni kW di potenza installata. Lo spazio effettivo dipende però da orientamento, inclinazione e ombreggiamenti, che verifichiamo durante il sopralluogo.
+  - domanda: Serve un'autorizzazione per installarlo?
+    risposta: Dipende dalla taglia, dal tipo di installazione e dai vincoli dell'area. Per gli impianti sulle coperture la procedura è nella maggior parte dei casi semplificata, mentre impianti a terra o in zone vincolate richiedono titoli diversi; lo verifichiamo nello studio di fattibilità e gestiamo noi le pratiche.
+  - domanda: Conviene aggiungere le batterie?
+    risposta: Conviene quando una parte importante dei consumi avviene nelle ore in cui l'impianto non produce. Prima di deciderlo confrontiamo il profilo dei consumi con la produzione attesa, perché un accumulo sovradimensionato allunga il tempo di rientro dell'investimento.
+chiusura:
+  titolo: Volete sapere quanto può produrre il vostro tetto?
+  testo: Inviateci l'indirizzo dell'immobile e, se le avete, le ultime bollette. Partiremo da lì per il sopralluogo e la prima valutazione.
+  bottone: Valutate il vostro impianto con noi

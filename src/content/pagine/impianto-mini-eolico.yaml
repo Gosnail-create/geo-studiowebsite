@@ -1,0 +1,40 @@
+# Contenuti della pagina "impianto-mini-eolico", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Impianti mini-eolici: analisi del vento, progetto e autorizzazioni | Geo Studio"
+description: Valutazione del sito e della risorsa eolica, dimensionamento, progettazione, pratiche autorizzative, installazione e collaudo di impianti mini-eolici.
+origine: servizio
+servizio: energie-rinnovabili
+hero:
+  titolo: Impianti mini-eolici, a partire dai dati del vento
+  testo:
+    - Un impianto mini-eolico usa uno o più aerogeneratori di piccola taglia per produrre energia elettrica, e può essere una buona scelta per aziende agricole, imprese e altri soggetti con un sito esposto e consumi compatibili. Vi aiutiamo a capire se è il vostro caso con un'analisi del sito e della risorsa eolica, prima di qualsiasi scelta di acquisto.
+  etichetta: Energie rinnovabili
+  bottone: Valutate il vostro impianto con noi
+  foto: campo-aerogeneratori-piccola-taglia
+sezioni:
+  - titolo: Il vento va misurato, non stimato
+    blocchi:
+      - tipo: p
+        testo: La produzione di un aerogeneratore cresce molto rapidamente con la velocità del vento, e per questo bastano differenze che a occhio sembrano piccole per cambiare del tutto la convenienza di un progetto. Un sito che appare ventoso può avere un vento irregolare o turbolento per la presenza di edifici, alberi o rilievi, mentre una collina poco lontana può rendere molto di più. Partiamo quindi dalle banche dati disponibili per una prima stima e, quando il progetto lo giustifica, da misure anemometriche sul posto, all'altezza a cui lavorerà il rotore. Solo su questi dati confrontiamo le taglie di potenza e le tecnologie disponibili, e diciamo con chiarezza quando un sito non è adatto.
+  - titolo: Vincoli, connessione e autorizzazioni
+    blocchi:
+      - tipo: p
+        testo: Oltre al vento contano le caratteristiche del terreno, la distanza da abitazioni e strade, i vincoli paesaggistici e la possibilità di connettersi alla rete elettrica a costi ragionevoli. Li verifichiamo nello studio di fattibilità, insieme al regime autorizzativo che si applica all'impianto e agli incentivi o alle forme di valorizzazione dell'energia disponibili al momento.
+  - titolo: Le fasi del progetto
+    blocchi:
+      - tipo: passi
+        voci:
+          - Individuazione e valutazione del sito, con l'analisi della risorsa eolica.
+          - Studio di fattibilità e dimensionamento dell'impianto.
+          - Progettazione preliminare ed esecutiva.
+          - Pratiche autorizzative e adempimenti per la connessione alla rete.
+          - Fornitura e installazione delle componenti e delle opere previste dal progetto.
+          - Avviamento, collaudo e documentazione tecnica, secondo le prestazioni concordate.
+faq:
+  - domanda: Come capisco se il mio terreno è abbastanza ventoso?
+    risposta: Una prima indicazione arriva dalle mappe del vento disponibili per tutto il territorio nazionale, che consultiamo nello studio preliminare. Per decidere un investimento, però, servono misure sul posto o dati di un sito vicino e comparabile.
+  - domanda: In quanto tempo si ripaga un impianto mini-eolico?
+    risposta: Dipende quasi interamente dal vento disponibile e dal costo di installazione, per questo non diamo tempi di rientro prima di aver analizzato il sito. Una stima seria arriva con lo studio di fattibilità.
+chiusura:
+  titolo: Pensate che il vostro sito sia abbastanza ventoso?
+  testo: Indicateci dove si trova e quali consumi volete coprire. Valuteremo insieme se ha senso approfondire con uno studio di fattibilità.
+  bottone: Valutate il vostro impianto con noi

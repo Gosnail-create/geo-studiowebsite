@@ -1,0 +1,39 @@
+---
+// Riquadro della sede al posto di una mappa incorporata (nessun servizio esterno):
+// rimanda a Google Maps in una nuova scheda.
+import Icon from './Icon.astro';
+import { azienda } from '../data/sito';
+---
+<div class="mappa">
+  <div class="motivo" aria-hidden="true"></div>
+  <div class="scheda">
+    <Icon name="map-pin" class="icon pin" />
+    <div>
+      <p class="label">Mappa della sede</p>
+      <a href={azienda.mappaUrl} target="_blank" rel="noopener noreferrer">
+        {azienda.ragioneSociale}, {azienda.indirizzo}<span class="visually-hidden"> (Google Maps, si apre in una nuova scheda)</span>
+      </a>
+    </div>
+    <Icon name="external-link" class="icon icon-sm ext" />
+  </div>
+</div>
+
+<style>
+  .mappa {
+    position: relative; border-radius: var(--radius-lg); background: var(--sand); overflow: hidden;
+    aspect-ratio: 16 / 9; display: flex; align-items: flex-end; padding: var(--space-4);
+  }
+  .motivo {
+    position: absolute; inset: 0; opacity: 0.35;
+    background:
+      repeating-linear-gradient(calc(180deg - var(--cut-angle)), transparent 0 var(--space-8), var(--surface-raised) var(--space-8) calc(var(--space-8) + var(--space-1))),
+      repeating-linear-gradient(var(--cut-angle), transparent 0 var(--space-12), var(--surface-raised) var(--space-12) calc(var(--space-12) + var(--space-1)));
+  }
+  .scheda {
+    position: relative; display: flex; align-items: flex-start; gap: var(--space-3); width: 100%;
+    background: var(--surface-raised); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);
+  }
+  .scheda :global(.pin) { color: var(--brand); margin-top: var(--space-1); }
+  .scheda :global(.ext) { color: var(--brand); margin-left: auto; margin-top: var(--space-1); }
+  .scheda a { color: var(--ink); }
+</style>

@@ -1,0 +1,128 @@
+{
+  "tecnico-ispezione-macchinari": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "tecnici-progetto-planimetria": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "collettori-impianto-riscaldamento": {
+    "width": 2400,
+    "height": 1602,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "azienda-agricola-eolico-fotovoltaico": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "tecnico-installazione-pannelli-fotovoltaici": {
+    "width": 2400,
+    "height": 3200,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "campo-aerogeneratori-piccola-taglia": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "centrale-idroelettrica-torrente": {
+    "width": 2400,
+    "height": 1601,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "operai-lavorazione-carpenteria": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "gru-selezione-rottami-metallici": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "impianto-sprinkler-antincendio": {
+    "width": 2400,
+    "height": 1800,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "verifica-documenti-magazzino": {
+    "width": 2400,
+    "height": 1597,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "formatrice-corso-gruppo": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "facciata-edificio-uffici": {
+    "width": 2400,
+    "height": 1600,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  },
+  "tavole-progetto-architettonico": {
+    "width": 2400,
+    "height": 3200,
+    "larghezze": [
+      640,
+      1024,
+      1600
+    ]
+  }
+}

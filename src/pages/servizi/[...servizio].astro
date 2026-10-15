@@ -1,0 +1,18 @@
+---
+// Le sette pagine di servizio e le quattro sottopagine di Energie rinnovabili.
+import { getCollection } from 'astro:content';
+import PaginaContenuti from '../../components/PaginaContenuti.astro';
+
+export async function getStaticPaths() {
+  const SOTTOPAGINE = ['impianto-fotovoltaico', 'impianto-mini-eolico', 'impianto-a-biometano', 'impianto-idroelettrico'];
+  const ISTITUZIONALI = ['home', 'servizi', 'chi-siamo'];
+  const pagine = await getCollection('pagine', (p) => !ISTITUZIONALI.includes(p.id));
+  return pagine.map((p) => ({
+    params: { servizio: SOTTOPAGINE.includes(p.id) ? `energie-rinnovabili/${p.id}` : p.id },
+    props: { pagina: p.data },
+  }));
+}
+
+const { pagina } = Astro.props;
+---
+<PaginaContenuti pagina={pagina} />

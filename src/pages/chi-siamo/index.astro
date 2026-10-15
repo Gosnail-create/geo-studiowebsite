@@ -1,0 +1,6 @@
+---
+import { getEntry } from 'astro:content';
+import PaginaContenuti from '../../components/PaginaContenuti.astro';
+const pagina = (await getEntry('pagine', 'chi-siamo'))!;
+---
+<PaginaContenuti pagina={pagina.data} />

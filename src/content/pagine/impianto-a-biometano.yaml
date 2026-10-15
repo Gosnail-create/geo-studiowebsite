@@ -1,0 +1,42 @@
+# Contenuti della pagina "impianto-a-biometano", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Impianti a biometano per aziende agricole: fattibilità, progetto, autorizzazioni | Geo Studio"
+description: Analisi delle matrici, studio di fattibilità, progettazione, iter autorizzativo e supporto alla realizzazione di impianti a biometano per aziende agricole e operatori.
+origine: servizio
+servizio: energie-rinnovabili
+hero:
+  titolo: Impianti a biometano, dalle matrici organiche al gas rinnovabile
+  testo:
+    - Il biometano trasforma effluenti zootecnici, sottoprodotti agricoli e altre matrici organiche idonee in un gas rinnovabile, che può essere immesso nella rete o usato come carburante. Affianchiamo aziende agricole e operatori che vogliono sviluppare un impianto, dalla prima valutazione delle matrici fino alla progettazione e all'iter autorizzativo.
+  etichetta: Energie rinnovabili
+  bottone: Valutate il vostro impianto con noi
+  rendering: ingresso
+sezioni:
+  - titolo: Dalla biomassa al biometano
+    blocchi:
+      - tipo: p
+        testo: Il processo comincia nei digestori, grandi serbatoi chiusi e riscaldati in cui le matrici organiche vengono decomposte da batteri in assenza di ossigeno. Questa digestione anaerobica produce biogas, una miscela composta in prevalenza da metano e anidride carbonica. Con l'upgrading il biogas viene purificato e separato dall'anidride carbonica fino a diventare biometano, un gas con caratteristiche analoghe a quelle del metano di origine fossile. Se rispetta i requisiti di qualità previsti, il biometano può essere immesso nella rete del gas o destinato agli altri usi consentiti, come l'autotrazione. Ciò che resta dopo la digestione è il digestato, che può tornare nei campi come fertilizzante quando le sue caratteristiche e le regole sull'utilizzazione agronomica lo permettono.
+      - tipo: rendering
+        chiave: vistaAerea
+  - titolo: Che cosa serve per realizzare un impianto
+    blocchi:
+      - tipo: p
+        testo: Un impianto a biometano è un'opera complessa, che va valutata su dati precisi prima di qualsiasi investimento. Contano la quantità e la costanza delle matrici disponibili durante l'anno, la logistica per conferirle, le superfici e gli stoccaggi necessari, la distanza dal punto di immissione nella rete del gas e la sostenibilità economica, che dipende anche dagli incentivi in vigore. Per questo il nostro lavoro parte sempre da un'analisi di fattibilità, che vi dice se esistono le condizioni per procedere e a quali costi.
+  - titolo: Il nostro supporto, fase per fase
+    blocchi:
+      - tipo: passi
+        voci:
+          - Analisi preliminare e fattibilità, con la valutazione del sito e delle matrici disponibili.
+          - Progettazione dell'impianto in funzione degli obiettivi produttivi e delle condizioni operative.
+          - Iter autorizzativo, dalla preparazione della documentazione alla gestione delle procedure con gli enti.
+          - Supporto alla realizzazione, con il coordinamento delle attività tecniche previste dall'incarico.
+faq:
+  - domanda: Quali matrici si possono usare?
+    risposta: In un impianto agricolo si usano in genere effluenti zootecnici, come liquami e letami, e sottoprodotti dell'attività agricola o agroindustriale. Le matrici ammesse e le loro proporzioni dipendono dal regime autorizzativo e incentivante scelto, e le definiamo già nello studio di fattibilità.
+  - domanda: Il digestato si può usare nei campi?
+    risposta: Sì, nella maggior parte dei casi il digestato può essere utilizzato come fertilizzante, rispettando le regole sull'utilizzazione agronomica e i piani di spandimento previsti. È uno degli aspetti che teniamo in conto fin dal progetto, perché incide su stoccaggi e superfici necessarie.
+  - domanda: Da dove si parte per valutare un impianto?
+    risposta: "Dai dati della vostra azienda: capi allevati, superfici coltivate, matrici e quantità disponibili nell'arco dell'anno. Con queste informazioni impostiamo una prima analisi e vi indichiamo quali approfondimenti servono."
+chiusura:
+  titolo: Volete capire se la vostra azienda può produrre biometano?
+  testo: Raccontateci quali matrici avete a disposizione e in quali quantità. Partiremo da lì per una prima analisi di fattibilità.
+  bottone: Valutate il vostro impianto con noi

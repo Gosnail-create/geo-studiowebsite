@@ -5,7 +5,9 @@ import Base from '../layouts/Base.astro';
 import { alberatura } from '../data/alberatura';
 
 export function getStaticPaths() {
-  return alberatura.map((p) => ({
+  // URL già costruiti dalle pagine definitive.
+  const PRONTE = (url: string) => url === '/' || url === '/chi-siamo/' || url.startsWith('/servizi/');
+  return alberatura.filter((p) => !PRONTE(p.url)).map((p) => ({
     params: { pagina: p.url === '/' ? undefined : p.url.replace(/^\/|\/$/g, '') },
     props: { nome: p.nome },
   }));

@@ -1,0 +1,42 @@
+# Contenuti della pagina "ambiente", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Consulenza ambientale per le imprese: rifiuti, emissioni, acque, acustica | Geo Studio"
+description: Autorizzazioni per rifiuti ed emissioni in atmosfera, pratiche sulle acque, valutazioni di impatto acustico, requisiti acustici degli edifici e pratiche per le industrie insalubri.
+origine: servizio
+servizio: ambiente
+hero:
+  titolo: Consulenza ambientale per le attività produttive
+  testo:
+    - "Seguiamo imprese industriali e artigianali negli adempimenti ambientali: prepariamo la documentazione, gestiamo le procedure autorizzative e valutiamo gli effetti dell'attività su aria, acqua, suolo e rumore. Ogni soluzione nasce dalle caratteristiche dell'impianto e dalle regole che lo riguardano, che spesso cambiano da un territorio all'altro."
+  etichetta: Consulenza ambientale
+  bottone: Verificate i vostri adempimenti ambientali
+  foto: gru-selezione-rottami-metallici
+sezioni:
+  - titolo: Autorizzazioni e gestione dei rifiuti
+    blocchi:
+      - tipo: p
+        testo: Chi produce, trasporta, tratta o recupera rifiuti deve muoversi dentro un sistema di autorizzazioni, registri e comunicazioni regolato dal D.Lgs. 152/2006, il testo unico ambientale. Vi affianchiamo nelle procedure autorizzative per il trasporto, il trattamento, il recupero e lo stoccaggio dei rifiuti, comprese quelle per la trasformazione dei rifiuti in materiali o prodotti riutilizzabili. Seguiamo anche gli adempimenti ambientali degli impianti di produzione di energia, un tema che conosciamo da vicino grazie ai progetti di impianti a biometano.
+  - titolo: Emissioni in atmosfera
+    blocchi:
+      - tipo: p
+        testo: "Verniciature, saldature, lavorazioni del legno e dei metalli, impianti termici di potenza elevata: molte attività producono emissioni che devono essere autorizzate e tenute sotto controllo. Valutiamo quali punti di emissione richiedono un'autorizzazione, prepariamo le domande e vi aiutiamo a rispettare le prescrizioni nel tempo. Per molte piccole e medie imprese le autorizzazioni ambientali confluiscono nell'autorizzazione unica ambientale (AUA), che riunisce in un solo procedimento emissioni, scarichi e impatto acustico, e possiamo gestirla nel suo insieme."
+  - titolo: Acque e risorse idriche
+    blocchi:
+      - tipo: p
+        testo: Prelevare acqua da un pozzo o da un corso d'acqua per uso produttivo richiede denunce e, in molti casi, concessioni. Prepariamo le pratiche relative agli approvvigionamenti idrici secondo la normativa applicabile al vostro caso e vi aiutiamo a mantenerle in regola.
+  - titolo: Acustica ambientale ed edilizia
+    blocchi:
+      - tipo: p
+        testo: Il rumore riguarda sia le attività produttive, che non devono disturbare il vicinato oltre i limiti fissati dalla zonizzazione acustica del Comune, sia gli edifici, che devono garantire un isolamento adeguato fra un ambiente e l'altro. Per le attività prepariamo le valutazioni previsionali di impatto acustico richieste per l'apertura o la modifica di un insediamento. Per gli edifici progettiamo i requisiti acustici passivi, ne verifichiamo il rispetto a opera finita con misure in opera e studiamo gli interventi di mitigazione e bonifica quando i valori non sono adeguati.
+  - titolo: Igiene e attività insalubri
+    blocchi:
+      - tipo: p
+        testo: Alcune lavorazioni sono classificate come industrie insalubri e richiedono una comunicazione al Comune prima dell'avvio. Vi assistiamo in queste pratiche e nella preparazione della documentazione igienico-sanitaria richiesta alle attività industriali e artigianali.
+faq:
+  - domanda: Che cos'è l'AUA e chi deve richiederla?
+    risposta: L'autorizzazione unica ambientale, introdotta dal DPR 59/2013, sostituisce con un unico provvedimento diverse autorizzazioni e comunicazioni, come quelle per le emissioni in atmosfera, gli scarichi e l'impatto acustico. Riguarda in genere le piccole e medie imprese e gli impianti non soggetti ad autorizzazione integrata ambientale.
+  - domanda: Quando serve una valutazione di impatto acustico?
+    risposta: La richiede in genere il Comune per l'apertura, l'ampliamento o la modifica di attività produttive, commerciali e di servizio che possono generare rumore verso l'esterno. Deve essere firmata da un tecnico competente in acustica.
+chiusura:
+  titolo: Quali adempimenti ambientali riguardano la vostra attività?
+  testo: Ogni attività produttiva ha obblighi ambientali propri. Descriveteci il vostro impianto e vi aiuteremo a individuare le autorizzazioni e le valutazioni necessarie.
+  bottone: Verificate i vostri adempimenti ambientali

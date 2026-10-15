@@ -1,0 +1,125 @@
+---
+// Costruisce una pagina dal suo file in src/content/pagine/: hero, sezioni H2 con fasce
+// alternate, domande frequenti e fascia di chiusura.
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import Sezione from './Sezione.astro';
+import Testo from './Testo.astro';
+import Passi from './Passi.astro';
+import Elenco from './Elenco.astro';
+import Tabella from './Tabella.astro';
+import CardGrid from './CardGrid.astro';
+import ServiceCard from './ServiceCard.astro';
+import CardContatto from './CardContatto.astro';
+import CorsiGrid from './CorsiGrid.astro';
+import PannelloDati from './PannelloDati.astro';
+import Figura from './Figura.astro';
+import Segnaposto from './Segnaposto.astro';
+import LinkFreccia from './LinkFreccia.astro';
+import BlogGrid from './BlogGrid.astro';
+import MappaSede from './MappaSede.astro';
+import Faq from './Faq.astro';
+import FasciaChiusura from './FasciaChiusura.astro';
+import { foto as fotoStock, type NomeFoto } from '../data/immagini';
+import { rendering } from '../data/rendering';
+import { servizi } from '../data/servizi';
+import { linkContatti } from '../lib/cta';
+
+interface Props {
+  pagina: CollectionEntry<'pagine'>['data'];
+}
+const { pagina } = Astro.props;
+const { hero, dopoHero, sezioni, faq, chiusura } = pagina;
+const cta = linkContatti(pagina.origine, pagina.servizio);
+
+const LARGHI = new Set(['servizi', 'card', 'corsi', 'tabella', 'blog']);
+const layoutDi = (s: (typeof sezioni)[number]) => (s.blocchi.some((b) => LARGHI.has(b.tipo)) ? 'stack' : 'split');
+const sfondo = (i: number) => ((i + (dopoHero ? 1 : 0)) % 2 === 0 ? 'sunken' : 'surface') as 'sunken' | 'surface';
+const idDi = (titolo: string) => titolo.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
+---
+<Base title={pagina.title} description={pagina.description}>
+  <Hero
+    etichetta={hero.etichetta}
+    titolo={hero.titolo}
+    testo={hero.testo}
+    home={pagina.origine === 'home'}
+    bottone={hero.bottone ? { label: hero.bottone, href: cta } : undefined}
+    link={hero.link}
+    foto={hero.foto ? fotoStock(hero.foto as NomeFoto) : undefined}
+    immagine={hero.rendering ? rendering[hero.rendering] : undefined}
+  />
+
+  {dopoHero && (
+    <section class="section section--sunken" aria-label={hero.titolo}>
+      <div class="container">
+        {dopoHero.map((b) => b.tipo === 'servizi' && (
+          <CardGrid colonne={4}>
+            {b.voci.map((v, n) => {
+              const srv = servizioPerNome(v.titolo);
+              return (
+                <li>
+                  <ServiceCard numero={String(n + 1).padStart(2, '0')} titolo={v.titolo} testo={v.testo}
+                    href={srv?.url} linkLabel={b.linkLabel} livello="h2"
+                    immagine={srv?.slug === 'energie-rinnovabili' ? rendering.vistaLaterale : undefined} />
+                </li>
+              );
+            })}
+            {chiusura && <li><CardContatto label={chiusura.bottone} href={cta} /></li>}
+          </CardGrid>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {sezioni.map((s, i) => (
+    <Sezione id={idDi(s.titolo)} titolo={s.titolo} layout={layoutDi(s)} sfondo={sfondo(i)}>
+      {s.blocchi.map((b) => {
+        switch (b.tipo) {
+          case 'p': return <p><Testo text={b.testo} /></p>;
+          case 'passi': return <Passi voci={b.voci} titoloInline={b.titoloInline} />;
+          case 'elenco': return <Elenco voci={b.voci} colonne={b.colonne} />;
+          case 'tabella': return <Tabella intestazioni={b.intestazioni} righe={b.righe} didascalia={s.titolo} />;
+          case 'pannello': return <PannelloDati voci={b.voci} />;
+          case 'segnaposto': return <Segnaposto text={b.testo.replace(/^\[|\]$/g, '')} />;
+          case 'rendering': return <Figura {...rendering[b.chiave]} />;
+          case 'link': return <p><LinkFreccia href={b.href}>{b.label}</LinkFreccia></p>;
+          case 'blog': return <BlogGrid />;
+          case 'mappa': return <MappaSede />;
+          case 'corsi': return <CorsiGrid voci={b.voci} />;
+          case 'card': return (
+            <CardGrid colonne={4}>
+              {b.voci.map((v) => (
+                <li>
+                  <ServiceCard titolo={v.titolo} testo={v.testo} href={v.href}
+                    immagine={v.rendering ? rendering[v.rendering] : undefined} />
+                </li>
+              ))}
+            </CardGrid>
+          );
+          case 'servizi': return (
+            <CardGrid colonne={4}>
+              {b.voci.map((v, n) => {
+                const srv = servizioPerNome(v.titolo);
+                return (
+                  <li>
+                    <ServiceCard numero={String(n + 1).padStart(2, '0')} titolo={v.titolo} testo={v.testo}
+                      href={srv?.url} linkLabel={b.linkLabel}
+                      immagine={srv?.slug === 'energie-rinnovabili' ? rendering.vistaLaterale : undefined} />
+                  </li>
+                );
+              })}
+              {chiusura && <li><CardContatto label={chiusura.bottone} href={cta} /></li>}
+            </CardGrid>
+          );
+          default: return null;
+        }
+      })}
+    </Sezione>
+  ))}
+
+  {faq && <Faq voci={faq} sfondo={sfondo(sezioni.length)} />}
+
+  {chiusura && <FasciaChiusura titolo={chiusura.titolo} testo={chiusura.testo} bottone={{ label: chiusura.bottone, href: cta }} />}
+</Base>

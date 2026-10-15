@@ -1,0 +1,52 @@
+# Contenuti della pagina "chi-siamo", da docs/testi-it.md. I testi del cliente non si modificano.
+title: Chi siamo | Geo Studio Engineering, Bovolone (VR)
+description: Società di consulenza tecnica e progettazione attiva dal 1990, organizzata in due divisioni, impianti tecnologici e QHSE, con sistema qualità certificato ISO 9001.
+origine: chi-siamo
+hero:
+  titolo: Consulenti e progettisti al fianco delle imprese dal 1990
+  testo:
+    - Geo Studio Engineering è una società di servizi tecnici con sede a Bovolone, in provincia di Verona, che lavora per clienti di tutta Italia. Ci occupiamo degli adempimenti tecnici, organizzativi e normativi delle aziende e progettiamo gli impianti che li rendono possibili, dalla prima analisi fino ai controlli negli anni successivi.
+  foto: tecnici-progetto-planimetria
+sezioni:
+  - titolo: Una storia lunga più di trent'anni
+    blocchi:
+      - tipo: p
+        testo: Lo studio è nato nel 1990 e da allora è cresciuto insieme alle norme che segue. Nei primi anni la sicurezza sul lavoro era regolata dal D.Lgs. 626/1994, la prevenzione incendi da decreti che oggi non esistono più e le energie rinnovabili erano un tema per pochi; nel frattempo sono arrivati il testo unico sulla sicurezza, il codice di prevenzione incendi, le norme ISO sui sistemi di gestione e una lunga serie di incentivi e procedure per gli impianti da fonti rinnovabili. Abbiamo attraversato questi cambiamenti accanto ai nostri clienti, aggiornando ogni volta competenze, strumenti e metodo. In questi anni abbiamo lavorato con aziende artigiane, piccole e medie imprese, società di capitali e grandi gruppi, oltre che con enti statali e istituti scolastici, bancari e assicurativi.
+  - titolo: Due divisioni, un solo gruppo di lavoro
+    blocchi:
+      - tipo: p
+        testo: "La prima divisione progetta impianti tecnologici: elettrici, termoidraulici, di climatizzazione, in atmosfere esplosive e da fonti rinnovabili, compresi impianti complessi come quelli a biometano. La seconda segue qualità, ambiente, salute e sicurezza negli ambienti di lavoro, l'area che in azienda si indica con la sigla QHSE, e la formazione del personale. Le due divisioni condividono clienti, progetti e scadenze, perché molti incarichi le chiamano in causa entrambe: un nuovo stabilimento richiede impianti, pratica antincendio, valutazione dei rischi e autorizzazioni ambientali, e funziona meglio quando tutto nasce da un unico progetto. Nel gruppo lavorano professionisti e tecnici specializzati, ciascuno con competenze specifiche nella propria materia, e il loro lavoro non finisce con la consegna di un documento."
+  - titolo: Il nostro modo di lavorare
+    blocchi:
+      - tipo: p
+        testo: Vogliamo essere per il cliente un interlocutore rapido e competente su qualsiasi adempimento, che sia di natura tecnica, organizzativa, giuridica, progettuale o amministrativa. Ogni azienda ha un'attività, tempi e risorse propri, e per questo costruiamo il servizio attorno a lei invece di applicare un modello uguale per tutti. Ogni incarico si organizza in cinque passaggi collegati fra loro.
+      - tipo: passi
+        voci:
+          - Analisi delle problematiche e delle esigenze del cliente.
+          - Pianificazione e progettazione del servizio.
+          - Verifica delle norme applicabili e delle richieste del cliente.
+          - Assegnazione delle persone e delle competenze più adatte.
+          - Monitoraggio e controllo continuo delle attività.
+  - titolo: La nostra organizzazione
+    blocchi:
+      - tipo: p
+        testo: L'organigramma mostra come sono distribuite responsabilità e competenze fra le due divisioni e chi segue ciascuna area di servizio.
+      - tipo: segnaposto
+        testo: "[Organigramma aggiornato: da ricevere dal cliente]"
+  - titolo: Certificati ISO 9001
+    blocchi:
+      - tipo: p
+        testo: Il nostro sistema di gestione per la qualità è certificato secondo la norma ISO 9001 da oltre quindici anni. La certificazione riguarda il modo in cui organizziamo, controlliamo e miglioriamo i nostri processi, e ogni anno un ente esterno ne verifica l'applicazione. È la stessa disciplina che proponiamo ai clienti che si rivolgono a noi per i loro sistemi di gestione.
+      - tipo: pannello
+        voci:
+          - valore: ISO 9001
+            descrizione: "[ente di certificazione, numero e scadenza del certificato da ricevere dal cliente]"
+  - titolo: Dove siamo
+    blocchi:
+      - tipo: p
+        testo: Geo Studio Engineering S.r.l., via Madonna 420, 37051 Bovolone (VR). Telefono 045 7101045, email info@geo-studio.it.
+      - tipo: mappa
+chiusura:
+  titolo: Volete conoscerci meglio?
+  testo: Raccontateci il vostro progetto o l'adempimento che dovete affrontare. Vi diremo come possiamo aiutarvi e chi, nel nostro gruppo, se ne occuperà.
+  bottone: Parlate con un nostro tecnico

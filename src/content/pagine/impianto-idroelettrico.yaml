@@ -1,0 +1,39 @@
+# Contenuti della pagina "impianto-idroelettrico", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Impianti idroelettrici: studio del sito, concessione e progetto | Geo Studio"
+description: Individuazione del sito, studio di fattibilità, autorizzazioni e concessioni, progettazione e assistenza alla realizzazione di impianti idroelettrici su misura.
+origine: servizio
+servizio: energie-rinnovabili
+hero:
+  titolo: Impianti idroelettrici progettati sul singolo sito
+  testo:
+    - L'energia idroelettrica sfrutta il salto o il movimento dell'acqua per produrre elettricità in modo continuo, anche di notte e con il cielo coperto. Ogni impianto dipende dalle caratteristiche idrologiche, ambientali e infrastrutturali del luogo in cui sorge, e per questo lo progettiamo su misura, dallo studio preliminare fino al supporto in fase di costruzione.
+  etichetta: Energie rinnovabili
+  bottone: Valutate il vostro impianto con noi
+  foto: centrale-idroelettrica-torrente
+sezioni:
+  - titolo: Portata, salto e vincoli
+    blocchi:
+      - tipo: p
+        testo: La potenza di un impianto idroelettrico dipende da due grandezze, la quantità d'acqua che passa nella turbina e il dislivello che quest'acqua compie. Entrambe vanno studiate nell'arco dell'anno, perché un torrente generoso in primavera può ridursi molto in estate, e una parte della portata deve sempre restare nel corso d'acqua per tutelarne l'ecosistema. A questi aspetti si aggiungono i vincoli ambientali e paesaggistici, la presenza di opere esistenti come traverse, canali o vecchi mulini, e la possibilità di connettersi alla rete elettrica. Su questa base scegliamo la tecnologia più adatta e valutiamo se l'impianto può reggersi economicamente.
+  - titolo: La concessione e le autorizzazioni
+    blocchi:
+      - tipo: p
+        testo: Per usare l'acqua a fini energetici serve una concessione di derivazione rilasciata dall'ente competente, a cui si affiancano le autorizzazioni per la costruzione e l'esercizio dell'impianto e la richiesta di connessione alla rete. Sono procedure lunghe, in cui la qualità della documentazione tecnica fa la differenza; le prepariamo e le seguiamo con voi fino al rilascio dei titoli.
+  - titolo: Le fasi del progetto
+    blocchi:
+      - tipo: passi
+        voci:
+          - Individuazione del sito, con l'analisi preliminare dell'area e della risorsa idrica.
+          - Studio di fattibilità tecnica, energetica ed economica.
+          - Pratiche per la concessione, le autorizzazioni e la connessione.
+          - Progettazione dell'impianto in funzione delle caratteristiche del sito.
+          - Supporto alla costruzione, all'avviamento e all'assistenza, secondo le prestazioni concordate.
+faq:
+  - domanda: Si può recuperare un vecchio salto o un mulino esistente?
+    risposta: Spesso sì, e in molti casi conviene, perché le opere idrauliche esistenti riducono i costi e l'impatto del nuovo impianto. Va verificato lo stato delle opere e la situazione della concessione, che potrebbe essere scaduta o da rinnovare.
+  - domanda: Quanto produce un impianto idroelettrico?
+    risposta: Dipende dalla portata disponibile durante l'anno e dal salto, per questo la produzione si stima solo dopo aver raccolto i dati idrologici del sito. Lo facciamo nello studio di fattibilità.
+chiusura:
+  titolo: Avete un corso d'acqua o un salto da valorizzare?
+  testo: Indicateci la località e quello che sapete della risorsa idrica. Ne ricaveremo una prima valutazione e l'elenco dei dati da raccogliere.
+  bottone: Valutate il vostro impianto con noi

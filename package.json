@@ -6,7 +6,8 @@
   "scripts": {
     "token": "node scripts/genera-token.mjs",
     "dev": "npm run token && astro dev",
-    "build": "npm run token && astro check && astro build",
+    "build": "npm run token && npm run verifica && astro check && astro build",
+    "verifica": "node scripts/verifica-testi.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@types/node": "^26.6.5",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.1"
   }
 }

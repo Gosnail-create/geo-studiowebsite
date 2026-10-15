@@ -1,0 +1,32 @@
+# Contenuti della pagina "servizi", da docs/testi-it.md. I testi del cliente non si modificano.
+title: Servizi | Geo Studio Engineering
+description: Progettazione impianti, energie rinnovabili, sicurezza sul lavoro, consulenza ambientale, prevenzione incendi, sistemi di gestione e formazione per imprese ed enti.
+origine: servizi
+hero:
+  titolo: I nostri servizi
+  testo:
+    - "Molti obblighi di un'azienda si intrecciano fra loro. La valutazione dei rischi rimanda alla gestione delle emergenze, la pratica antincendio agli impianti, gli impianti alle autorizzazioni ambientali, e una modifica in un punto si riflette quasi sempre sugli altri. Per questo i nostri servizi sono pensati per lavorare insieme, anche quando ci affidate una sola attività. Scegliete l'area che vi interessa oppure descriveteci la situazione: saremo noi a indicarvi quali adempimenti vi riguardano e da dove conviene cominciare."
+  etichetta: Servizi
+dopoHero:
+  - tipo: servizi
+    voci:
+      - titolo: Progettazione impianti tecnologici
+        testo: Impianti elettrici, termici, idraulici e di climatizzazione per edifici civili e industriali, classificazione delle aree ATEX e verifiche periodiche degli impianti di messa a terra.
+      - titolo: Energie rinnovabili
+        testo: "Fotovoltaico, mini-eolico, biometano e idroelettrico: dallo studio di fattibilità alla progettazione, alle autorizzazioni e al supporto in cantiere."
+      - titolo: Sicurezza negli ambienti di lavoro
+        testo: Documento di valutazione dei rischi, misure strumentali di rumore, vibrazioni e agenti fisici, incarichi di RSPP esterno secondo il D.Lgs. 81/2008.
+      - titolo: Consulenza ambientale
+        testo: Autorizzazioni per emissioni e rifiuti, pratiche sulle acque, valutazioni di impatto acustico e requisiti acustici degli edifici.
+      - titolo: Prevenzione incendi
+        testo: Progetti, SCIA e rinnovi presso i Vigili del Fuoco, piani di emergenza, formazione degli addetti e prove di evacuazione.
+      - titolo: Sistemi di gestione
+        testo: Qualità, ambiente, salute e sicurezza e sicurezza alimentare secondo le norme ISO, standard della filiera agroalimentare e modelli organizzativi 231.
+      - titolo: Formazione
+        testo: Corsi obbligatori per lavoratori, preposti, dirigenti e datori di lavoro, addetti alle emergenze, conduttori di attrezzature e alimentaristi.
+    linkLabel: Approfondite
+sezioni: []
+chiusura:
+  titolo: Non sapete quale servizio fa al caso vostro?
+  testo: Capita spesso, soprattutto quando un'azienda cresce, cambia sede o avvia un nuovo processo produttivo. Descriveteci l'attività e il problema da risolvere, anche a grandi linee, e un nostro tecnico vi aiuterà a mettere in fila le priorità.
+  bottone: Richiedete una consulenza

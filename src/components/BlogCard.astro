@@ -1,0 +1,33 @@
+---
+// Card di un articolo del blog in bozza: copertina d'area, etichetta "Bozza", titolo.
+import type { Articolo } from '../data/blog';
+import BlogCover from './BlogCover.astro';
+
+interface Props {
+  articolo: Articolo;
+  livello?: 'h2' | 'h3';
+}
+const { articolo, livello = 'h3' } = Astro.props;
+const Titolo = livello;
+---
+<article class="blog-card" data-area={articolo.area}>
+  <BlogCover area={articolo.area} />
+  <div class="meta">
+    <span class="tag">Bozza</span>
+    <span class="label">{articolo.area}</span>
+  </div>
+  <Titolo class="h3">{articolo.href ? <a href={articolo.href}>{articolo.titolo}</a> : articolo.titolo}</Titolo>
+</article>
+
+<style>
+  .blog-card {
+    display: flex; flex-direction: column; gap: var(--space-3); height: 100%;
+    background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-4);
+  }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-2); }
+  .tag {
+    font-family: var(--label-family); font-size: var(--label-size); line-height: var(--label-line); font-weight: var(--label-weight);
+    color: var(--ink); border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); padding: 0 var(--space-2);
+  }
+  .h3 a { color: var(--ink); text-decoration-color: var(--accent-ink); }
+</style>

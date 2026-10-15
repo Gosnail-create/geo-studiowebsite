@@ -32,11 +32,14 @@ const headingId = id ? `${id}-titolo` : undefined;
   .sez { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
   .sez-head { display: grid; gap: var(--space-2); align-content: start; }
   .sez-full { margin-top: var(--space-6); }
+  .sez-body > :global(*) + :global(:not(p)) { margin-top: var(--space-8); }
   @media (min-width: 1080px) {
     .sez { grid-template-columns: repeat(12, minmax(0, 1fr)); }
     .sez--split .sez-head { grid-column: 1 / span 4; }
     .sez--split .sez-body { grid-column: 5 / span 8; }
-    .sez--stack .sez-head, .sez--stack .sez-body { grid-column: 1 / span 8; }
+    .sez--stack .sez-head { grid-column: 1 / span 8; }
+    .sez--stack .sez-body { grid-column: 1 / -1; }
+    .sez--stack .sez-body > :global(p) { max-width: calc(100% * 8 / 12); }
     .sez-full { grid-column: 1 / -1; }
   }
 </style>

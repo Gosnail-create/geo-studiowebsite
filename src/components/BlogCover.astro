@@ -1,0 +1,30 @@
+---
+// Copertina grafica di un'area del blog (docs/immagini.md): fondo grafite,
+// fascia tagliata a 64 gradi e nome dell'area. Nessuna foto per articolo.
+interface Props {
+  area: string;
+}
+const { area } = Astro.props;
+---
+<div class="cover on-deep" aria-hidden="true">
+  <span class="fascia"></span>
+  <span class="cut-mark"></span>
+  <span class="area">{area}</span>
+</div>
+
+<style>
+  .cover {
+    position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between; padding: var(--space-6);
+  }
+  /* il bordo sinistro della fascia sale a 64 gradi: in 16:9 rientra del 27,4% della larghezza */
+  .fascia {
+    position: absolute; inset: 0; background: var(--brand-deep-2);
+    clip-path: polygon(72% 0, 100% 0, 100% 100%, 44.6% 100%);
+  }
+  .cut-mark, .area { position: relative; }
+  .area {
+    font-family: var(--font-head); font-size: var(--h3-size); line-height: var(--h3-line);
+    font-weight: var(--h3-weight); color: var(--on-brand-deep); max-width: 60%;
+  }
+</style>

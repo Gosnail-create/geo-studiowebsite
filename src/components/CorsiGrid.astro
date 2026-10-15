@@ -1,0 +1,27 @@
+---
+// Aree di formazione come card: l'area è il titolo, i corsi un elenco (testi invariati).
+import CardGrid from './CardGrid.astro';
+import Elenco from './Elenco.astro';
+
+interface Props {
+  voci: { area: string; corsi: string[] }[];
+}
+const { voci } = Astro.props;
+---
+<CardGrid colonne={3}>
+  {voci.map((v) => (
+    <li>
+      <article class="card">
+        <h3 class="h3">{v.area}</h3>
+        <Elenco voci={v.corsi} />
+      </article>
+    </li>
+  ))}
+</CardGrid>
+
+<style>
+  .card {
+    background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    padding: var(--space-6); display: grid; gap: var(--space-4); align-content: start; height: 100%;
+  }
+</style>

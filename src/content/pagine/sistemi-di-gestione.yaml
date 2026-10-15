@@ -1,0 +1,75 @@
+# Contenuti della pagina "sistemi-di-gestione", da docs/testi-it.md. I testi del cliente non si modificano.
+title: Sistemi di gestione ISO 9001, 14001, 45001, 22000 e modelli 231 | Geo Studio
+description: Progettazione, implementazione e mantenimento di sistemi di gestione per qualità, ambiente, sicurezza e sicurezza alimentare, standard BRCGS, IFS, GLOBALG.A.P. e modelli 231.
+origine: servizio
+servizio: sistemi-di-gestione
+hero:
+  titolo: Sistemi di gestione costruiti sulla vostra azienda
+  testo:
+    - Progettiamo, mettiamo in opera, aggiorniamo e manteniamo sistemi di gestione per la qualità, l'ambiente, la salute e sicurezza sul lavoro e la sicurezza alimentare. Partiamo dai vostri processi per definire procedure, responsabilità e documenti che le persone usano davvero, in linea con la norma di riferimento e con gli obiettivi dell'impresa.
+  etichetta: Sistemi di gestione
+  bottone: Valutate il percorso verso la certificazione
+  foto: verifica-documenti-magazzino
+sezioni:
+  - titolo: Perché un sistema di gestione
+    blocchi:
+      - tipo: p
+        testo: "Molte aziende arrivano alla certificazione perché un cliente importante la chiede, o perché è un requisito per partecipare a gare e capitolati. È una ragione concreta, ma un sistema di gestione ben costruito rende anche altro: processi più chiari, responsabilità definite, problemi che emergono prima di diventare reclami. Il rischio opposto è un sistema fatto di documenti che nessuno legge e che si riaprono solo prima dell'audit. Per evitarlo partiamo da come l'azienda lavora oggi e scriviamo solo le procedure che servono, coinvolgendo le persone che dovranno applicarle."
+  - titolo: Le norme e gli standard che seguiamo
+    blocchi:
+      - tipo: tabella
+        intestazioni:
+          - Ambito
+          - Norma o standard
+          - Che cosa riguarda
+        righe:
+          - - Qualità
+            - ISO 9001:2026
+            - Organizzazione dei processi, misura delle prestazioni, soddisfazione del cliente
+          - - Ambiente
+            - ISO 14001:2026
+            - Aspetti ambientali dell'attività, controllo degli impatti, obiettivi di miglioramento
+          - - Salute e sicurezza
+            - ISO 45001
+            - Prevenzione di infortuni e malattie professionali, controllo dei rischi
+          - - Sicurezza alimentare
+            - ISO 22000
+            - Analisi dei pericoli e misure di controllo lungo la filiera alimentare
+          - - Filiera agroalimentare
+            - BRCGS e IFS
+            - Requisiti di qualità e sicurezza richiesti dalla grande distribuzione
+          - - Produzione agricola
+            - GLOBALG.A.P.
+            - Buone pratiche agricole e requisiti di produzione
+          - - Modelli organizzativi
+            - D.Lgs. 231/2001
+            - Analisi dei rischi di reato e modello di organizzazione, gestione e controllo
+      - tipo: p
+        testo: Le nuove edizioni della ISO 14001 e della ISO 9001 sono state pubblicate nel 2026. Se la vostra azienda è certificata secondo le versioni precedenti, vi aiutiamo ad aggiornare il sistema entro il periodo di transizione previsto dagli organismi di accreditamento.
+  - titolo: Sistemi integrati e modelli 231
+    blocchi:
+      - tipo: p
+        testo: "Le norme ISO più recenti condividono la stessa struttura, e questo permette di costruire un unico sistema integrato per qualità, ambiente e sicurezza invece di tre sistemi paralleli, con meno documenti e un solo calendario di audit. Il sistema per la salute e sicurezza ha anche un legame diretto con il modello organizzativo previsto dal D.Lgs. 231/2001: l'articolo 30 del D.Lgs. 81/2008 stabilisce le condizioni alle quali un modello ben costruito e applicato può escludere la responsabilità dell'azienda per alcuni reati in materia di sicurezza. Per questo, quando un cliente ci chiede un modello 231, partiamo spesso da ciò che il sistema di gestione già contiene."
+  - titolo: Audit, fornitori e miglioramento
+    blocchi:
+      - tipo: p
+        testo: Un sistema di gestione vive di verifiche. Vi prepariamo agli audit dell'ente di certificazione, conduciamo audit interni, vi aiutiamo a gestire le non conformità e le azioni correttive e a impostare il miglioramento continuo. Qualifichiamo inoltre fornitori e appaltatori con verifiche documentali e ispettive, un'attività che diventa sempre più richiesta lungo le filiere.
+  - titolo: Come lavoriamo
+    blocchi:
+      - tipo: passi
+        voci:
+          - Analisi iniziale dei processi aziendali, delle esigenze e degli obiettivi del sistema.
+          - Progettazione di procedure, responsabilità, documentazione e strumenti di controllo.
+          - Implementazione del sistema e coinvolgimento del personale.
+          - Verifica e miglioramento, con audit, gestione delle non conformità e aggiornamento del sistema.
+faq:
+  - domanda: Rilasciate voi la certificazione?
+    risposta: No. La certificazione la rilascia un organismo di certificazione accreditato, indipendente dal consulente. Noi vi aiutiamo a costruire il sistema, a prepararvi all'audit e a mantenerlo nel tempo.
+  - domanda: Quanto tempo serve per arrivare alla certificazione?
+    risposta: Dipende dalla dimensione dell'azienda, dalla norma scelta e da quanto i processi sono già organizzati. Nella maggior parte dei casi servono alcuni mesi, che definiamo dopo l'analisi iniziale.
+  - domanda: Si possono certificare più norme insieme?
+    risposta: "Sì, ed è spesso la scelta più efficiente: un sistema integrato qualità, ambiente e sicurezza può essere verificato in un unico audit."
+chiusura:
+  titolo: Quale sistema di gestione serve alla vostra azienda?
+  testo: C'è chi deve rispondere a un cliente che chiede la certificazione e chi vuole mettere ordine nei propri processi. Parliamone e costruiamo il percorso adatto.
+  bottone: Valutate il percorso verso la certificazione

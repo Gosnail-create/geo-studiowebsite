@@ -1,0 +1,44 @@
+# Contenuti della pagina "prevenzione-incendi", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Prevenzione incendi: progetti, SCIA e rinnovi presso i Vigili del Fuoco | Geo Studio"
+description: Progettazione antincendio, valutazione del progetto, SCIA, rinnovo periodico della conformità, piani di emergenza, formazione degli addetti e prove di evacuazione.
+origine: servizio
+servizio: prevenzione-incendi
+hero:
+  titolo: Prevenzione incendi, dal progetto ai rinnovi
+  testo:
+    - "Accompagniamo le aziende in tutto il percorso della prevenzione incendi: analizziamo l'attività, progettiamo le misure di sicurezza, prepariamo e presentiamo le pratiche al Comando dei Vigili del Fuoco e vi assistiamo durante i sopralluoghi. Completiamo il servizio con i piani di emergenza, la formazione degli addetti e le prove di evacuazione."
+  etichetta: Prevenzione incendi
+  bottone: Verificate i vostri adempimenti antincendio
+  foto: impianto-sprinkler-antincendio
+sezioni:
+  - titolo: La vostra attività è soggetta ai controlli?
+    blocchi:
+      - tipo: p
+        testo: Il DPR 151/2011 elenca le attività soggette ai controlli di prevenzione incendi e le divide in tre categorie, A, B e C, in base alla dimensione e al livello di rischio. Ne fanno parte, fra le altre, le aziende con depositi di materiali combustibili oltre certe quantità, le officine e i laboratori con un numero elevato di addetti, i depositi di gas e di liquidi infiammabili, le centrali termiche di potenza elevata e molti edifici aperti al pubblico. Il primo passo è quindi capire se e in quale categoria rientra la vostra attività, perché da questo dipendono le procedure da seguire. Anche le attività non soggette, però, devono valutare il rischio di incendio e adottare le misure previste dai decreti del settembre 2021, che hanno sostituito il vecchio DM 10 marzo 1998.
+  - titolo: Progetto antincendio e valutazione del progetto
+    blocchi:
+      - tipo: p
+        testo: Per le attività di categoria B e C, prima di realizzare o modificare l'insediamento, serve la valutazione del progetto da parte del Comando dei Vigili del Fuoco. Analizziamo l'attività, definiamo le misure di prevenzione e protezione secondo il codice di prevenzione incendi o le regole tecniche applicabili, redigiamo la relazione tecnica e gli elaborati grafici e presentiamo il progetto, seguendo l'istruttoria e le eventuali richieste di chiarimento.
+  - titolo: SCIA antincendio e documentazione per le verifiche
+    blocchi:
+      - tipo: p
+        testo: "Prima di avviare l'attività va presentata la segnalazione certificata di inizio attività (SCIA), con la quale l'azienda attesta di rispettare i requisiti di sicurezza antincendio. Prepariamo la SCIA e la documentazione che la accompagna: certificazioni di nostra competenza, dichiarazioni su impianti, materiali e sistemi di protezione, valutazione del carico d'incendio e della resistenza al fuoco delle strutture dove richiesto. Vi assistiamo poi durante l'eventuale visita tecnica dei Vigili del Fuoco."
+  - titolo: Rinnovo periodico della conformità
+    blocchi:
+      - tipo: p
+        testo: In genere ogni cinque anni le attività soggette devono attestare che le condizioni di sicurezza antincendio non sono cambiate. Teniamo sotto controllo questa scadenza, verifichiamo la documentazione antincendio esistente e quella di impianti e sistemi di protezione, vi supportiamo nelle verifiche tecniche e prepariamo le asseverazioni necessarie per l'attestazione di rinnovo.
+  - titolo: Gestione delle emergenze e formazione
+    blocchi:
+      - tipo: p
+        testo: La prevenzione incendi riguarda anche le persone che devono sapere cosa fare quando qualcosa va storto. Prepariamo il piano di emergenza ed evacuazione, organizziamo le procedure di gestione delle emergenze e formiamo gli addetti antincendio secondo il DM 2 settembre 2021, che prevede corsi di livello diverso in base al rischio e un aggiornamento ogni cinque anni. Con voi pianifichiamo infine le prove di evacuazione, che sono il modo più concreto per scoprire che cosa non funziona prima che serva davvero.
+faq:
+  - domanda: Ogni quanto si rinnova la pratica antincendio?
+    risposta: Per la maggior parte delle attività soggette l'attestazione di rinnovo periodico va presentata ogni cinque anni; per alcune attività il termine è di dieci anni. Vi segnaliamo noi la scadenza.
+  - domanda: Cosa succede se modifico l'attività?
+    risposta: Se la modifica aumenta il rischio di incendio, per esempio con un ampliamento, un nuovo deposito o un cambio di lavorazione, servono una nuova valutazione del progetto, se dovuta, e una nuova SCIA. È uno dei casi in cui conviene sentirci prima di avviare i lavori.
+  - domanda: Ogni quanto vanno aggiornati gli addetti antincendio?
+    risposta: Il DM 2 settembre 2021 prevede un corso di aggiornamento almeno ogni cinque anni, di durata diversa a seconda del livello di rischio dell'attività.
+chiusura:
+  titolo: La vostra pratica antincendio è in regola?
+  testo: Che si tratti di un'attività nuova, di una modifica o di un rinnovo in scadenza, vi aiutiamo a capire quali adempimenti vi riguardano e come affrontarli.
+  bottone: Verificate i vostri adempimenti antincendio

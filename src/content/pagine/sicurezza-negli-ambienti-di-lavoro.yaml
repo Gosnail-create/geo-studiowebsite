@@ -1,0 +1,59 @@
+# Contenuti della pagina "sicurezza-negli-ambienti-di-lavoro", da docs/testi-it.md. I testi del cliente non si modificano.
+title: "Sicurezza sul lavoro: DVR, valutazioni dei rischi e RSPP esterno | Geo Studio"
+description: "Consulenza per gli adempimenti del D.Lgs. 81/2008: documento di valutazione dei rischi, misure strumentali, piani di emergenza, RSPP esterno e assistenza continuativa."
+origine: servizio
+servizio: sicurezza-negli-ambienti-di-lavoro
+hero:
+  titolo: Sicurezza negli ambienti di lavoro
+  testo:
+    - Affianchiamo le aziende negli adempimenti previsti dal D.Lgs. 81/2008, il testo unico sulla salute e sicurezza nei luoghi di lavoro. Individuiamo i rischi, verifichiamo la conformità alle norme e pianifichiamo con voi gli interventi, perché la sicurezza entri nell'organizzazione quotidiana del lavoro e non resti chiusa in un fascicolo.
+  etichetta: Sicurezza negli ambienti di lavoro
+  bottone: Richiedete un sopralluogo
+  foto: operai-lavorazione-carpenteria
+sezioni:
+  - titolo: Il documento di valutazione dei rischi
+    blocchi:
+      - tipo: p
+        testo: "La valutazione dei rischi è l'obbligo da cui discendono quasi tutti gli altri, ed è uno dei due compiti che il datore di lavoro non può delegare. Il documento che la raccoglie, il DVR, descrive i rischi presenti in azienda, le misure di prevenzione e protezione adottate e il programma per migliorare nel tempo i livelli di sicurezza. Non è un documento da redigere una volta per tutte: va rielaborato quando cambiano i processi produttivi o l'organizzazione del lavoro, quando si introducono nuove attrezzature, dopo infortuni significativi o quando la sorveglianza sanitaria ne evidenzia la necessità, e il D.Lgs. 81/2008 fissa in trenta giorni il termine per aggiornarlo. Lo redigiamo partendo dal sopralluogo e dal confronto con chi lavora nei reparti, perché è lì che si capisce come le cose avvengono davvero."
+  - titolo: Le valutazioni specifiche e le misure strumentali
+    blocchi:
+      - tipo: p
+        testo: Alcuni rischi richiedono una valutazione dedicata, spesso basata su misure eseguite con strumenti e software tecnici. È il caso del rumore e delle vibrazioni nelle lavorazioni meccaniche, del rischio chimico e delle polveri nelle verniciature e nelle lavorazioni del legno, della movimentazione manuale dei carichi in magazzino. In base all'attività ci occupiamo di queste valutazioni.
+      - tipo: elenco
+        voci:
+          - Rumore
+          - Vibrazioni meccaniche, al sistema mano-braccio e al corpo intero
+          - Campi elettromagnetici
+          - Radiazioni ottiche artificiali
+          - Microclima
+          - Rischio chimico ed esposizione a polveri
+          - Stress lavoro-correlato
+          - Movimentazione manuale dei carichi
+          - Movimenti ripetitivi degli arti superiori
+          - Rischio sismico, dove pertinente
+          - Piani di emergenza ed evacuazione
+          - Sicurezza nei cantieri temporanei o mobili, secondo il Titolo IV del D.Lgs. 81/2008
+        colonne: 2
+  - titolo: RSPP esterno e assistenza continuativa
+    blocchi:
+      - tipo: p
+        testo: Il servizio di prevenzione e protezione è il gruppo che supporta il datore di lavoro nella gestione della sicurezza, e il suo responsabile, l'RSPP, può essere un consulente esterno. Possiamo assumere questo incarico, dove la normativa lo consente, e seguire per voi sopralluoghi periodici, riunione periodica, aggiornamento dei documenti e rapporti con gli organi di vigilanza. Lavoriamo con aziende di settori molto diversi, fra cui industria manifatturiera e metalmeccanica, trasporti, servizi, chimica, farmaceutica e agricoltura. Anche quando l'RSPP è interno all'azienda possiamo affiancarlo con verifiche interne, valutazioni specialistiche e consulenza sulle non conformità.
+  - titolo: Come lavoriamo
+    blocchi:
+      - tipo: passi
+        voci:
+          - Analisi iniziale e sopralluogo, per individuare attività, mansioni, ambienti e attrezzature.
+          - Valutazione dei rischi, con misure strumentali e valutazioni specifiche quando servono.
+          - Definizione degli interventi di prevenzione e protezione e del programma di miglioramento.
+          - Documentazione e supporto nel tempo, dall'attuazione delle misure all'aggiornamento delle valutazioni.
+faq:
+  - domanda: Ogni quanto va aggiornato il DVR?
+    risposta: "Non esiste una scadenza fissa: il DVR va rielaborato entro trenta giorni da ogni modifica significativa dell'attività, dell'organizzazione o delle attrezzature, dopo infortuni significativi e quando lo richiedono i risultati della sorveglianza sanitaria. Per questo conviene rivederlo comunque a intervalli regolari."
+  - domanda: Le misure del rumore sono obbligatorie?
+    risposta: La valutazione del rumore è obbligatoria per tutte le aziende. Le misure strumentali servono quando si può ragionevolmente ritenere che l'esposizione superi i valori inferiori di azione fissati dalla norma, cosa frequente nelle lavorazioni meccaniche, del legno e nei cantieri.
+  - domanda: Potete fare da RSPP esterno?
+    risposta: Sì, dove la normativa consente di affidare l'incarico a un consulente esterno. Il datore di lavoro resta comunque responsabile della valutazione dei rischi, che costruiamo insieme.
+chiusura:
+  titolo: Il vostro DVR è aggiornato?
+  testo: Che dobbiate redigerlo da zero o rivederlo dopo un cambiamento in azienda, un sopralluogo è il modo più rapido per capire da dove partire.
+  bottone: Richiedete un sopralluogo

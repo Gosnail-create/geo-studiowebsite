@@ -1,0 +1,8 @@
+---
+import CardGrid from './CardGrid.astro';
+import BlogCard from './BlogCard.astro';
+import { articoli } from '../data/blog';
+---
+<CardGrid colonne={3}>
+  {articoli.map((a) => <li><BlogCard articolo={a} /></li>)}
+</CardGrid>

@@ -1,0 +1,85 @@
+# Contenuti della pagina "formazione", da docs/testi-it.md. I testi del cliente non si modificano.
+title: Formazione sicurezza sul lavoro, antincendio, primo soccorso e HACCP | Geo Studio
+description: Corsi per lavoratori, preposti, dirigenti, datori di lavoro, RSPP e RLS, addetti antincendio e primo soccorso, conduttori di attrezzature, alimentaristi e corsi su misura.
+origine: servizio
+servizio: formazione
+hero:
+  titolo: Formazione per lavorare in sicurezza
+  testo:
+    - La formazione è lo strumento più diretto per prevenire gli infortuni e far crescere in azienda una cultura della sicurezza. Vi aiutiamo a individuare i fabbisogni formativi e organizziamo percorsi per lavoratori, responsabili e altre figure aziendali, su sicurezza, emergenze, igiene alimentare e sistemi di gestione, anche con programmi costruiti su misura per la vostra realtà.
+  etichetta: Formazione
+  bottone: Organizzate la formazione del personale
+  foto: formatrice-corso-gruppo
+sezioni:
+  - titolo: Che cosa è cambiato con l'Accordo del 2025
+    blocchi:
+      - tipo: p
+        testo: Il 17 aprile 2025 la Conferenza Stato-Regioni ha approvato un nuovo accordo che riordina la formazione in materia di salute e sicurezza sul lavoro. Fra le novità più rilevanti c'è un corso obbligatorio anche per i datori di lavoro, oltre a regole aggiornate su durate, contenuti, modalità di erogazione e verifiche finali dei corsi, e sulle abilitazioni per le attrezzature. La formazione svolta in precedenza secondo le regole allora in vigore resta in genere valida, ma le scadenze degli aggiornamenti e i nuovi obblighi vanno verificati azienda per azienda. Per i preposti, inoltre, la legge richiede già dal 2021 una formazione in presenza con aggiornamento almeno ogni due anni. Vi aiutiamo a fare il punto sulla situazione del vostro personale e a pianificare ciò che manca.
+  - titolo: Le nostre aree di formazione
+    blocchi:
+      - tipo: corsi
+        voci:
+          - area: Salute e sicurezza sul lavoro
+            corsi:
+              - Formazione generale e specifica dei lavoratori
+              - preposti
+              - dirigenti
+              - datori di lavoro
+              - RSPP e ASPP
+              - rappresentanti dei lavoratori per la sicurezza (RLS)
+              - rischi specifici aziendali
+              - aggiornamenti periodici
+          - area: Gestione delle emergenze
+            corsi:
+              - Addetti antincendio, ai livelli previsti dal DM 2 settembre 2021
+              - gestione delle emergenze ed evacuazione
+              - addetti al primo soccorso
+              - informazione sulle procedure aziendali
+          - area: Attrezzature, cantieri e lavori in quota
+            corsi:
+              - Carrelli elevatori e altre attrezzature soggette ad abilitazione
+              - montaggio, smontaggio e trasformazione dei ponteggi
+              - lavori in quota
+              - rischi specifici dei cantieri
+              - figure della sicurezza nei cantieri, dove previsto
+          - area: Igiene e sicurezza alimentare
+            corsi:
+              - Formazione degli alimentaristi secondo le disposizioni regionali
+              - igiene degli alimenti e buone pratiche igieniche
+              - sistema HACCP
+              - autocontrollo e gestione delle non conformità
+          - area: Rischi specifici
+            corsi:
+              - Rumore
+              - rischio chimico
+              - rischio biologico
+              - vibrazioni meccaniche
+              - videoterminali
+              - movimentazione manuale dei carichi
+              - movimenti ripetitivi
+              - campi elettromagnetici
+          - area: Sistemi di gestione e corsi su misura
+            corsi:
+              - Applicazione dei sistemi di gestione
+              - procedure operative e istruzioni di lavoro
+              - sensibilizzazione su qualità, ambiente e sicurezza
+              - percorsi progettati sulle esigenze dell'azienda
+  - titolo: Formazione legata ai rischi reali
+    blocchi:
+      - tipo: p
+        testo: Un corso utile parla dei rischi che le persone incontrano davvero nel loro reparto, delle macchine che usano e delle procedure che devono seguire. Per questo, quando seguiamo anche la valutazione dei rischi, costruiamo la formazione specifica a partire dal DVR, con esempi e casi tratti dall'azienda. Lo stesso vale per la formazione sui sistemi di gestione, che spiega al personale le procedure scritte per quell'organizzazione e non regole astratte.
+  - titolo: Un piano formativo che tiene il passo con le scadenze
+    blocchi:
+      - tipo: p
+        testo: Tra assunzioni, cambi di mansione e aggiornamenti periodici, tenere in ordine la formazione di un'azienda è un lavoro continuo. Vi aiutiamo a individuare i corsi necessari per ogni ruolo, a pianificarli nell'anno e a tenere sotto controllo le scadenze degli aggiornamenti, così che nessun attestato scada senza che ve ne accorgiate.
+faq:
+  - domanda: I corsi fatti prima dell'Accordo del 2025 restano validi?
+    risposta: "In genere sì, se erano conformi alle regole in vigore quando sono stati svolti. Cambiano però alcune durate e scadenze degli aggiornamenti, e si aggiungono obblighi nuovi come quello per i datori di lavoro: conviene verificarli caso per caso."
+  - domanda: Ogni quanto vanno aggiornati gli addetti antincendio?
+    risposta: Il DM 2 settembre 2021 prevede un aggiornamento almeno ogni cinque anni, con una durata che dipende dal livello di rischio dell'attività.
+  - domanda: Organizzate anche corsi su misura per la nostra azienda?
+    risposta: Sì, progettiamo percorsi sui rischi, le attrezzature e le procedure della vostra organizzazione, oltre ai corsi previsti dalla normativa.
+chiusura:
+  titolo: Dovete pianificare i corsi dell'anno o recuperare scadenze arretrate?
+  testo: Inviateci l'elenco delle mansioni e la situazione attuale degli attestati. Vi proporremo un calendario e i percorsi adatti.
+  bottone: Organizzate la formazione del personale
