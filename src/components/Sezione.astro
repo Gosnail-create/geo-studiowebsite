@@ -48,8 +48,9 @@ const headingId = id ? `${id}-titolo` : undefined;
   .sez-body > :global(.chiude) { margin-top: var(--space-8); }
   @media (min-width: 1080px) {
     .sez { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-    .sez--split .sez-head { grid-column: 1 / span 4; }
-    .sez--split .sez-body { grid-column: 5 / span 8; }
+    /* titolo su 5 colonne, contenuto su 7 fino al bordo destro (circa 75 caratteri in body-lg) */
+    .sez--split .sez-head { grid-column: 1 / span 5; }
+    .sez--split .sez-body { grid-column: 6 / span 7; }
     .sez--stack .sez-head { grid-column: 1 / span 8; }
     .sez--stack .sez-body { grid-column: 1 / -1; }
     .sez-full { grid-column: 1 / -1; }
