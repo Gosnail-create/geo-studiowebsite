@@ -17,7 +17,6 @@ const cartella = resolve(root, 'src/content/pagine');
 
 const CAMPI_TECNICI = new Set(['href', 'tipo', 'chiave', 'foto', 'rendering', 'origine', 'servizio']);
 const ETICHETTE_UI = new Set([
-  'Consulenza tecnica e progettazione dal 1990', // etichetta hero home (Hero.html, footer)
   'Servizi', // etichetta degli hub
   'Approfondite', // link delle card (ServiceCard.html)
   'Progettazione impianti tecnologici', 'Energie rinnovabili', 'Sicurezza negli ambienti di lavoro',

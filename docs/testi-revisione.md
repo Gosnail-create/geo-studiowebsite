@@ -33,11 +33,9 @@ Descrizioni di una riga delle voci del pannello, dalle anteprime del design syst
 
 Il paragrafo della hero mantiene solo la prima frase; la seconda diventa il primo paragrafo della sezione "Perché conviene avere un solo interlocutore tecnico". Nessuna parola cambia.
 
-Fascia dati:
-- 1990 · anno di fondazione
-- ISO 9001 · sistema qualità certificato
-- 7 · servizi in due divisioni
-- Bovolone · sede, provincia di Verona
+Etichetta della hero (revisione 7, 16 ottobre 2026, preceduta dal segno obliquo): Consulenza tecnica e progettazione
+
+La fascia dati sotto la hero è stata tolta con la revisione 7: l'anno di fondazione compare solo nel paragrafo.
 
 ## Modulo di contatto
 

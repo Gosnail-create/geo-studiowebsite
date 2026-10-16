@@ -41,7 +41,6 @@ const pagine = defineCollection({
       link: z.object({ label: z.string(), href: z.string() }).optional(),
       foto: z.string().optional(),
       rendering: z.enum(['ingresso', 'vistaAerea', 'vistaLaterale']).optional(),
-      dati: z.array(z.object({ valore: z.string(), descrizione: z.string() })).optional(),
     }),
     // blocchi senza titolo subito dopo l'hero (la griglia dei servizi nell'hub)
     dopoHero: z.array(blocco).optional(),
