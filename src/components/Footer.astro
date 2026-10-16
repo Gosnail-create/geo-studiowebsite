@@ -1,4 +1,7 @@
 ---
+// Footer su brand-deep (README, Testata e menu): azienda su 4 colonne, Servizi su 4, Geo Studio e
+// Recapiti su 2; testo e link in ui, intestazioni in label allineate al bordo superiore del logo,
+// riga legale in small.
 import { Image } from 'astro:assets';
 import logoNegativo from '../../assets/logo/geostudio-logo-negativo.png';
 import { servizi } from '../data/servizi';
@@ -8,25 +11,29 @@ import { azienda, linkStudio } from '../data/sito';
   <div class="container">
     <div class="cols">
       <div class="col col-azienda">
-        <Image src={logoNegativo} alt="Geo Studio Engineering" height={56} densities={[1, 2]} />
-        <p class="azienda">{azienda.ragioneSociale}, {azienda.descrizione}, {azienda.indirizzo}</p>
+        <Image src={logoNegativo} alt="Geo Studio Engineering" height={120} densities={[1]} />
+        <address class="azienda">
+          <span>{azienda.ragioneSociale}</span>
+          <span>{azienda.descrizione}</span>
+          <span>{azienda.indirizzo}</span>
+        </address>
       </div>
 
-      <nav class="col" aria-labelledby="footer-servizi">
+      <nav class="col col-servizi" aria-labelledby="footer-servizi">
         <h2 class="label" id="footer-servizi"><a href="/servizi/">Servizi</a></h2>
         <ul>
           {servizi.map((s) => <li><a href={s.url}>{s.nome}</a></li>)}
         </ul>
       </nav>
 
-      <nav class="col" aria-labelledby="footer-studio">
+      <nav class="col col-studio" aria-labelledby="footer-studio">
         <h2 class="label" id="footer-studio">Geo Studio</h2>
         <ul>
           {linkStudio.map((l) => <li><a href={l.url}>{l.nome}</a></li>)}
         </ul>
       </nav>
 
-      <div class="col">
+      <div class="col col-recapiti">
         <h2 class="label">Recapiti</h2>
         <ul>
           <li>Tel. <a href={azienda.telefonoHref}>{azienda.telefono}</a></li>
@@ -49,14 +56,24 @@ import { azienda, linkStudio } from '../data/sito';
 </footer>
 
 <style>
-  .site-footer { padding-block: var(--space-16) var(--space-8); margin-top: auto; }
-  .cols { display: grid; gap: var(--space-8); grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 640px) { .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1024px) {
-    .cols { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
-    .col { grid-column: span 3; }
+  .site-footer {
+    padding-block: var(--space-16) var(--space-8); margin-top: auto;
+    font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--body-weight);
   }
-  .col-azienda :global(img) { height: var(--space-12); width: auto; margin-bottom: var(--space-4); }
+  .cols { display: grid; gap: var(--space-8) var(--space-6); grid-template-columns: minmax(0, 1fr); align-items: start; }
+  /* fra 640 e 1024px l'azienda va a tutta larghezza, poi le altre colonne: due più una, tre da 768px */
+  @media (min-width: 640px) {
+    .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .col-azienda { grid-column: 1 / -1; }
+  }
+  @media (min-width: 768px) { .cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) {
+    .cols { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .col-azienda, .col-servizi { grid-column: span 4; }
+    .col-studio, .col-recapiti { grid-column: span 2; }
+  }
+  .col-azienda :global(img) { height: var(--logo-h); width: auto; margin-bottom: var(--space-4); }
+  .azienda { font-style: normal; display: grid; color: var(--on-brand-deep-muted); }
   .col h2 { margin-bottom: var(--space-3); }
   .col h2 a { color: inherit; text-decoration: none; }
   .col ul { list-style: none; padding: 0; }
