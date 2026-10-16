@@ -1,5 +1,5 @@
 ---
-// Pannello dati su brand-deep: valori in IBM Plex Mono, descrizioni in Red Hat Text.
+// Pannello dati in acciaio (brand): valori in IBM Plex Mono e accent-on-brand, descrizioni in on-brand-muted.
 import Testo from './Testo.astro';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 const { voci, titolo } = Astro.props;
 ---
-<div class="pannello on-deep">
+<div class="pannello on-brand">
   {titolo && <p class="label">{titolo}</p>}
   <dl class="voci" style={`--colonne: ${voci.length}; --colonne-md: ${Math.min(voci.length, 2)}`}>
     {voci.map((v) => (
@@ -26,8 +26,8 @@ const { voci, titolo } = Astro.props;
   /* con i valori in data-lg servono colonne larghe: due fino a 1280px, poi tutte */
   @media (min-width: 640px) { .voci { grid-template-columns: repeat(var(--colonne-md), minmax(0, 1fr)); } }
   @media (min-width: 1280px) { .voci { grid-template-columns: repeat(var(--colonne), minmax(0, 1fr)); } }
-  .voce { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-3); border-top: 2px solid var(--accent-on-deep); }
-  .valore { color: var(--accent-on-deep); }
-  .descrizione { margin: 0; color: var(--on-brand-deep); }
+  .voce { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-3); border-top: 2px solid var(--accent-on-brand); }
+  .valore { color: var(--accent-on-brand); }
+  .descrizione { margin: 0; color: var(--on-brand-muted); }
   @media (min-width: 768px) { .pannello { padding: var(--space-8); } }
 </style>

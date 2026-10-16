@@ -20,6 +20,10 @@ interface Props {
 const { numero, titolo, testo, href, linkLabel = 'Approfondite', immagine, foto, livello = 'h3' } = Astro.props;
 const Titolo = livello;
 const sizes = '(min-width: 1080px) 300px, (min-width: 640px) 50vw, 100vw';
+// Nella card niente didascalia: la frase del rendering va nel testo alternativo (README, Immagini).
+const altImmagine = immagine?.didascalia
+  ? `${immagine.didascalia}: ${immagine.alt.charAt(0).toLowerCase()}${immagine.alt.slice(1)}`
+  : (immagine?.alt ?? '');
 ---
 <article class="card">
   {foto && (
@@ -29,10 +33,9 @@ const sizes = '(min-width: 1080px) 300px, (min-width: 640px) 50vw, 100vw';
       loading="lazy" decoding="async" />
   )}
   {immagine && (
-    <figure class="figura-media">
-      <Image class="media" src={immagine.src} alt={immagine.alt} widths={[480, 800]} sizes={sizes} />
-      {immagine.didascalia && <figcaption class="small">{immagine.didascalia}</figcaption>}
-    </figure>
+    <div class="media-box">
+      <Image class="media" src={immagine.src} alt={altImmagine} widths={[480, 800]} sizes={sizes} />
+    </div>
   )}
   <div class="corpo">
     {numero && (
@@ -53,10 +56,9 @@ const sizes = '(min-width: 1080px) 300px, (min-width: 640px) 50vw, 100vw';
     overflow: hidden; display: flex; flex-direction: column; height: 100%;
   }
   .card :global(.media) { width: 100%; height: var(--panel-photo-h); object-fit: cover; display: block; }
-  .figura-media figcaption { padding: var(--space-2) var(--space-6) 0; }
   .corpo { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
-  @media (min-width: 768px) { .corpo { padding: var(--space-8); } .figura-media figcaption { padding-inline: var(--space-8); } }
-  @media (min-width: 1080px) { .corpo { padding: var(--space-10); } .figura-media figcaption { padding-inline: var(--space-10); } }
+  @media (min-width: 768px) { .corpo { padding: var(--space-8); } }
+  @media (min-width: 1080px) { .corpo { padding: var(--space-10); } }
   .top { display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); }
   .testo { color: var(--ink-muted); }
   .corpo :global(.link) { margin-top: auto; align-self: flex-start; }
