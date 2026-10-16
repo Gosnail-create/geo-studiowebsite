@@ -80,9 +80,12 @@ const sizes = variante === 'evidenza' ? '(min-width: 1080px) 700px, 100vw' : '(m
   .titolo-link:focus-visible { outline: none; }
   .con-link:has(.titolo-link:focus-visible) { outline: 2px solid var(--focus); outline-offset: var(--space-2); border-radius: var(--radius-lg); }
 
-  /* da 768px la foto sta accanto al testo */
-  @media (min-width: 768px) {
+  /* da 768px la foto sta accanto al testo; l'articolo in evidenza, con titolo e riassunto più grandi,
+     la affianca da 1080px, prima resta sopra a tutta larghezza */
+  @media (min-width: 1080px) {
     .evidenza { grid-template-columns: 7fr 5fr; column-gap: var(--space-12); align-items: center; }
+  }
+  @media (min-width: 768px) {
     .riga { grid-template-columns: 4fr 8fr; column-gap: var(--space-10); align-items: start; }
     .compatta { grid-template-columns: 3fr 9fr; column-gap: var(--space-8); align-items: start; }
     .riga .media-box, .compatta .media-box { aspect-ratio: 3 / 2; }
