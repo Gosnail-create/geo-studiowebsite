@@ -1,53 +1,61 @@
-<!-- @dsCard group="Sito web" height=750 width=1200 subtitle="I sette servizi" -->
+<!-- @dsCard group="Sito web" height=1620 width=1280 subtitle="I sette servizi: tre colonne e card di contatto su due" -->
 <style>
-  .sec { padding: var(--space-12) !important; }
-  .sec > .h2 { margin: var(--space-2) 0 var(--space-8); }
-  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
-  .card { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); }
+  .sec { padding: var(--space-24) var(--space-12) !important; }
+  .sec > .h2 { margin: var(--space-2) 0 var(--space-4); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); }
+  .intro { max-width: 66%; margin: 0 0 var(--space-8); text-wrap: balance; }
+  .card { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
+  .card > div.body { padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
+  .card .photo { height: 150px; border-radius: 0; }
+  .card .top .n { color: var(--brand) !important; }
   .card .top { display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); }
-  .card .top .n { font-size: 12px; font-weight: 600; letter-spacing: .08em; color: var(--ink-muted); }
+  .card .top .n { font-size: 14px; font-weight: 600; letter-spacing: .08em; color: var(--ink-muted); }
   .card .top i { width: 16px; height: 8px; border-radius: 1px; background: var(--accent); transform: skewX(-26deg); }
   .card .btn-ghost { margin-top: auto; align-self: flex-start; }
-  .card.cta { background: var(--brand-deep); border-color: var(--brand-deep); color: var(--on-brand-deep); }
-  .card.cta .h3 { color: var(--on-brand-deep); }
-  .card.cta .small { color: var(--on-brand-deep-muted); }
-  .card.cta .btn { margin-top: auto; align-self: flex-start; }
+  .card.cta { background: var(--brand); border-color: var(--brand); color: var(--on-brand); padding: var(--space-8); gap: var(--space-3); }
+  .card.cta .h3 { color: var(--on-brand); }
+  .card.cta { grid-column: span 2; justify-content: center; }
+  .card.cta p.body { color: var(--on-brand-muted); max-width: 520px; }
+  .card.cta .cut { width: 20px; height: 8px; background: var(--accent); transform: skewX(-26deg); }
+  .card.cta .btn { margin-top: var(--space-4); align-self: flex-start; white-space: nowrap; }
 </style>
 <div class="gs sec">
   <p class="label">Servizi</p>
   <h2 class="h2">Sette servizi, un solo interlocutore tecnico</h2>
-  <div class="grid4">
-    <div class="card"><div class="top"><span class="n">01</span><i></i></div>
+  <p class="lead intro">Potete affidarci un singolo adempimento oppure l'intera gestione tecnica.</p>
+  <div class="grid3">
+    <div class="card"><div class="photo"><span>Foto: Impianto elettrico in un capannone</span></div><div class="body"><div class="top"><span class="n">01</span><i></i></div>
       <h3 class="h3">Progettazione impianti tecnologici</h3>
-      <p class="small">Impianti elettrici, termoidraulici e di climatizzazione, aree ATEX e verifiche di messa a terra.</p>
-      <a class="btn btn-ghost" href="#">Approfondite </a></div>
-    <div class="card"><div class="top"><span class="n">02</span><i></i></div>
+      <p class="body">Impianti elettrici, termoidraulici e di climatizzazione, aree ATEX e verifiche di messa a terra.</p>
+      <a class="btn btn-ghost" href="#">Approfondite </a></div></div>
+    <div class="card"><div class="photo"><span>Foto: Impianto a biometano (rendering di progetto)</span></div><div class="body"><div class="top"><span class="n">02</span><i></i></div>
       <h3 class="h3">Energie rinnovabili</h3>
-      <p class="small">Fotovoltaico, mini-eolico, biometano e idroelettrico, dalla fattibilità al cantiere.</p>
-      <a class="btn btn-ghost" href="#">Approfondite </a></div>
-    <div class="card"><div class="top"><span class="n">03</span><i></i></div>
+      <p class="body">Fotovoltaico, mini-eolico, biometano e idroelettrico, dalla fattibilità al cantiere.</p>
+      <a class="btn btn-ghost" href="#">Approfondite </a></div></div>
+    <div class="card"><div class="photo"><span>Foto: Tecnico con DPI in reparto</span></div><div class="body"><div class="top"><span class="n">03</span><i></i></div>
       <h3 class="h3">Sicurezza negli ambienti di lavoro</h3>
-      <p class="small">Valutazione dei rischi, misure di rumore e vibrazioni, incarichi di RSPP esterno.</p>
-      <a class="btn btn-ghost" href="#">Approfondite </a></div>
-    <div class="card"><div class="top"><span class="n">04</span><i></i></div>
+      <p class="body">Valutazione dei rischi, misure di rumore e vibrazioni, incarichi di RSPP esterno.</p>
+      <a class="btn btn-ghost" href="#">Approfondite </a></div></div>
+    <div class="card"><div class="photo"><span>Foto: Rilievo ambientale all'aperto</span></div><div class="body"><div class="top"><span class="n">04</span><i></i></div>
       <h3 class="h3">Consulenza ambientale</h3>
-      <p class="small">Rifiuti, emissioni, acque e acustica: autorizzazioni e valutazioni.</p>
-      <a class="btn btn-ghost" href="#">Approfondite </a></div>
-    <div class="card"><div class="top"><span class="n">05</span><i></i></div>
+      <p class="body">Rifiuti, emissioni, acque e acustica: autorizzazioni e valutazioni.</p>
+      <a class="btn btn-ghost" href="#">Approfondite </a></div></div>
+    <div class="card"><div class="photo"><span>Foto: Impianto antincendio</span></div><div class="body"><div class="top"><span class="n">05</span><i></i></div>
       <h3 class="h3">Prevenzione incendi</h3>
-      <p class="small">Progetti, SCIA e rinnovi presso i Vigili del Fuoco, piani di emergenza.</p>
-      <a class="btn btn-ghost" href="#">Approfondite </a></div>
-    <div class="card"><div class="top"><span class="n">06</span><i></i></div>
+      <p class="body">Progetti, SCIA e rinnovi presso i Vigili del Fuoco, piani di emergenza.</p>
+      <a class="btn btn-ghost" href="#">Approfondite </a></div></div>
+    <div class="card"><div class="photo"><span>Foto: Riunione di audit</span></div><div class="body"><div class="top"><span class="n">06</span><i></i></div>
       <h3 class="h3">Sistemi di gestione</h3>
-      <p class="small">Qualità, ambiente, sicurezza e sicurezza alimentare, modelli 231.</p>
-      <a class="btn btn-ghost" href="#">Approfondite </a></div>
-    <div class="card"><div class="top"><span class="n">07</span><i></i></div>
+      <p class="body">Qualità, ambiente, sicurezza e sicurezza alimentare, modelli 231.</p>
+      <a class="btn btn-ghost" href="#">Approfondite </a></div></div>
+    <div class="card"><div class="photo"><span>Foto: Aula di formazione</span></div><div class="body"><div class="top"><span class="n">07</span><i></i></div>
       <h3 class="h3">Formazione</h3>
-      <p class="small">Corsi obbligatori per lavoratori, preposti, dirigenti e addetti alle emergenze.</p>
-      <a class="btn btn-ghost" href="#">Approfondite </a></div>
+      <p class="body">Corsi obbligatori per lavoratori, preposti, dirigenti e addetti alle emergenze.</p>
+      <a class="btn btn-ghost" href="#">Approfondite </a></div></div>
     <div class="card cta">
-      <h3 class="h3">Parlate con un nostro tecnico</h3>
-      <p class="small">Descriveteci l'impianto o l'obbligo da gestire: vi indichiamo il servizio adatto.</p>
-      <a class="btn btn-primary btn-sm" href="#">Contatti</a></div>
+      <span class="cut" aria-hidden="true"></span>
+      <h3 class="h3">Non sapete a quale area appartiene il vostro caso?</h3>
+      <p class="body">Descrivetecelo e vi indichiamo il tecnico giusto.</p>
+      <a class="btn btn-primary" href="#">Parlate con un nostro tecnico</a></div>
   </div>
 </div>

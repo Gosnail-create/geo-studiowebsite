@@ -1,32 +1,38 @@
-<!-- @dsCard group="Base" height=560 subtitle="Pattern dei tagli del logo, tono su tono (nell'anteprima scorre da solo; sul sito segue lo scroll)" -->
+<!-- @dsCard group="Base" height=600 subtitle="Pattern dei tagli del logo: solo nei margini e nel terzo destro delle fasce acciaio (nell'anteprima scorre da solo; sul sito segue lo scroll)" -->
 <style>
   .wrap { display: grid; gap: var(--space-6); padding: var(--space-8) !important; }
-  .pat { position: relative; overflow: hidden; border-radius: var(--radius-lg); min-height: 220px; isolation: isolate;
+  .pat { position: relative; overflow: hidden; border-radius: var(--radius-lg); min-height: 230px; isolation: isolate;
     display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-2); padding: var(--space-8); }
   .pat::before {
     content: ""; position: absolute; inset: -120px; z-index: -1; pointer-events: none;
     background-color: var(--pattern-ink);
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E");
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E");
-    -webkit-mask-size: 120px 120px; mask-size: 120px 120px;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E"), var(--zona);
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E"), var(--zona);
+    -webkit-mask-size: 120px 120px, 100% 100%; mask-size: 120px 120px, 100% 100%;
+    -webkit-mask-repeat: repeat, no-repeat; mask-repeat: repeat, no-repeat;
+    -webkit-mask-composite: source-in; mask-composite: intersect;
     animation: deriva 14s ease-in-out infinite alternate;
   }
-  /* il movimento segue l'inclinazione del taglio: 120px in verticale, 58,5px in orizzontale */
   @keyframes deriva { from { transform: translate(0, 60px); } to { transform: translate(-58.5px, -60px); } }
   @media (prefers-reduced-motion: reduce) { .pat::before { animation: none; } }
-  .sunken { background: var(--surface-sunken); --pattern-ink: var(--pattern-on-sunken); }
-  .acciaio { --pattern-ink: var(--pattern-on-brand); }
+  /* sezione chiara: in scala, i margini fuori dal contenuto sono le due fasce laterali */
+  .sunken { background: var(--surface-sunken); --pattern-ink: var(--pattern-on-sunken);
+    --zona: linear-gradient(90deg, #000 0 calc(120px + 12%), transparent calc(120px + 12% + 40px) calc(100% - 120px - 12% - 40px), #000 calc(100% - 120px - 12%) 100%);
+    padding-inline: calc(12% + var(--space-8)); }
+  .acciaio { --pattern-ink: var(--pattern-on-brand); --zona: linear-gradient(90deg, transparent 0 62%, #000 72% 100%); }
+  .acciaio .testo { max-width: 60%; display: grid; gap: var(--space-4); justify-items: start; }
   .pat .h3 { margin: 0; }
 </style>
 <div class="gs wrap">
   <div class="pat sunken">
-    <p class="label">Su surface-sunken</p>
-    <h3 class="h3">Di cosa ci occupiamo</h3>
-    <p class="small">Il pattern usa pattern-on-sunken e resta sotto il contenuto.</p>
+    <p class="label">Su surface-sunken, solo nei margini</p>
+    <h3 class="h3">Perché conviene avere un solo interlocutore tecnico</h3>
+    <p class="body">Il testo resta su un fondo liscio: il pattern compare ai lati, fuori dal contenuto.</p>
   </div>
   <div class="pat on-brand acciaio">
-    <p class="label">Su brand, fascia di chiusura</p>
-    <h3 class="h3">Avete un adempimento da gestire o un impianto da progettare?</h3>
-    <a class="btn btn-primary" href="#" style="align-self:flex-start">Parlate con un nostro tecnico</a>
+    <div class="testo">
+      <h3 class="h3">Avete un adempimento da gestire o un impianto da progettare?</h3>
+      <a class="btn btn-primary" href="#" style="align-self:flex-start">Parlate con un nostro tecnico</a>
+    </div>
   </div>
 </div>

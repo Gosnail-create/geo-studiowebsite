@@ -29,6 +29,10 @@ Questo repository contiene una demo navigabile del nuovo sito di Geo Studio Engi
 - Angoli con i token `radius-*`, card piatte senza ombra, taglio obliquo a 64 gradi solo per piccoli segni grafici e per il pattern di sfondo. Il segno obliquo non sta mai isolato: è sempre agganciato a un'etichetta, alla testa di una card, a una fascia di chiusura o a un valore, mai fra due colonne o sul bordo di una foto.
 - Icone lineari con tratto 1,5 px (Lucide va bene).
 - Griglia a 12 colonne, larghezza massima 1200 px, margine minimo 16 px su mobile. Il sito deve funzionare bene da 360 px in su.
+- Le sezioni hanno `space-24` sopra e sotto su desktop (`space-16` su tablet, `space-12` su mobile); `space-32` non si usa per le sezioni.
+- Le griglie di card hanno al massimo tre colonne sopra i 1080 px, due fra 640 e 1080 px e una sotto.
+- Le sezioni a due colonne mettono il titolo su 5 colonne e il contenuto su 7 sopra i 1080 px.
+- Il pattern dei tagli del logo non passa mai dietro al testo: sulle sezioni `surface-sunken` compare solo nei margini fuori da `content-max`, sulle fasce di chiusura `brand` solo nel terzo destro.
 - Accessibilità: contrasto almeno 4,5:1, focus visibile con il token `focus`, alt text sulle immagini, struttura dei titoli corretta, form utilizzabile da tastiera.
 
 ## Regole tecniche
