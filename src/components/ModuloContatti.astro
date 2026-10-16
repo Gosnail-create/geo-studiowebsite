@@ -17,7 +17,7 @@ const tessere = [...servizi.map((s) => ({ valore: s.slug, nome: s.nome })), { va
   <header class="testata on-brand">
     <div class="testata-testo">
       <p class="label">{testata.etichetta}</p>
-      <h2 class="titolo" id="modulo-titolo">{testata.titolo}</h2>
+      <h2 class="title-md" id="modulo-titolo">{testata.titolo}</h2>
       <p class="frase">{testata.testo}</p>
     </div>
     <ol class="passaggi" aria-label="Passaggi del modulo">
@@ -243,16 +243,12 @@ const tessere = [...servizi.map((s) => ({ valore: s.slug, nome: s.nome })), { va
   }
   @media (min-width: 768px) { .testata { padding: var(--space-8) var(--space-10); } }
   .testata-testo { display: grid; gap: var(--space-2); }
-  .titolo {
-    font-family: var(--title-md-family); font-size: var(--title-md-size); line-height: var(--title-md-line);
-    font-weight: var(--title-md-weight); color: var(--on-brand);
-  }
   .frase { color: var(--on-brand-muted); }
   .passaggi { list-style: none; padding: 0; margin: 0; display: flex; align-items: center; gap: var(--space-2); }
   .passo-dot {
     width: var(--step-dot); height: var(--step-dot); border-radius: var(--radius-pill);
     display: grid; place-items: center; border: 1.5px solid var(--on-brand-muted); color: var(--on-brand-muted);
-    font-family: var(--small-family); font-size: var(--small-size); font-weight: var(--label-weight);
+    font-family: var(--label-family); font-size: var(--label-size); line-height: var(--label-line); font-weight: var(--label-weight);
   }
   .passo-dot.attivo { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
   .linea { width: var(--space-8); height: 2px; background: var(--on-brand-muted); }
@@ -301,7 +297,7 @@ const tessere = [...servizi.map((s) => ({ valore: s.slug, nome: s.nome })), { va
   .campo { display: grid; gap: var(--space-2); align-content: start; }
 
   input:not([type='checkbox']):not([type='hidden']), select, textarea {
-    width: 100%; font: inherit; font-size: var(--body-size); line-height: var(--body-line); color: var(--ink);
+    width: 100%; font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); color: var(--ink);
     background: var(--surface-sunken); border: 1px solid var(--line-strong); border-radius: var(--radius-md);
     padding: var(--space-3) var(--space-4); min-height: var(--control-h);
   }

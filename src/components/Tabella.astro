@@ -33,7 +33,10 @@ const { intestazioni, righe, didascalia } = Astro.props;
     font-size: var(--label-size); line-height: var(--label-line); font-weight: var(--label-weight);
     letter-spacing: var(--label-tracking); text-transform: uppercase;
   }
-  tbody th, tbody td { text-align: left; vertical-align: top; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--line); font-weight: var(--body-weight); }
+  tbody th, tbody td {
+    text-align: left; vertical-align: top; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--line);
+    font-family: var(--body-family); font-size: var(--body-size); line-height: var(--body-line); font-weight: var(--body-weight);
+  }
   tbody th { font-weight: var(--label-weight); }
   tbody tr:nth-child(even) { background: var(--surface); }
 

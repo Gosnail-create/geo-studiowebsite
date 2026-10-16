@@ -258,7 +258,7 @@ const vociMenu = [
   .nav-list { display: flex; align-items: center; gap: var(--space-8); list-style: none; padding: 0; }
   .nav-link {
     display: inline-flex; align-items: center; gap: var(--space-1);
-    font-family: var(--body-family); font-size: var(--body-size); line-height: var(--body-line); font-weight: var(--ui-weight);
+    font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--ui-weight);
     color: var(--ink); text-decoration: none; background: none; border: 0; cursor: pointer;
     padding: var(--space-2) 0; border-bottom: 2px solid transparent;
   }
@@ -271,6 +271,7 @@ const vociMenu = [
     position: absolute; left: 0; right: 0; top: 100%;
     background: var(--surface-raised); box-shadow: var(--shadow-panel); border-top: 1px solid var(--line);
     padding-block: var(--space-10);
+    max-height: calc(100vh - var(--header-h)); overflow-y: auto;
   }
   .pannello-grid { display: grid; grid-template-columns: 1fr 1fr var(--panel-aside-w); gap: var(--space-10); align-items: start; }
   .titolo-colonna { padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); margin-bottom: var(--space-3); }

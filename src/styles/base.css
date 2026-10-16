@@ -36,27 +36,33 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* ---------- tipografia ---------- */
 
-.display-xl, .display, .h1, .h2, .h3 { font-family: var(--font-head); color: var(--ink); text-wrap: balance; }
+.display-xl, .display, .h1, .h2, .h3, .title-md { font-family: var(--font-head); color: var(--ink); text-wrap: balance; }
 
-/* sotto 768px le varianti -mobile dei token */
+/* sotto 768px le varianti -mobile dei token; body resta a 18px su ogni schermo */
 .display-xl { font-size: var(--display-xl-size-mobile); line-height: var(--display-xl-line-mobile); font-weight: var(--display-xl-weight); letter-spacing: var(--display-xl-tracking); }
 .display { font-size: var(--display-size-mobile); line-height: var(--display-line-mobile); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); }
 .h1 { font-size: var(--h1-size-mobile); line-height: var(--h1-line-mobile); font-weight: var(--h1-weight); letter-spacing: var(--h1-tracking); }
 .h2 { font-size: var(--h2-size-mobile); line-height: var(--h2-line-mobile); font-weight: var(--h2-weight); color: var(--brand); }
-.h3 { font-size: var(--h3-size); line-height: var(--h3-line); font-weight: var(--h3-weight); }
+.h3 { font-size: var(--h3-size-mobile); line-height: var(--h3-line-mobile); font-weight: var(--h3-weight); }
+.title-md { font-size: var(--title-md-size-mobile); line-height: var(--title-md-line-mobile); font-weight: var(--title-md-weight); }
+.lead { font-family: var(--lead-family); font-size: var(--lead-size-mobile); line-height: var(--lead-line-mobile); font-weight: var(--lead-weight); color: var(--ink-muted); }
+.body-lg { font-family: var(--body-lg-family); font-size: var(--body-lg-size-mobile); line-height: var(--body-lg-line-mobile); font-weight: var(--body-lg-weight); color: var(--ink); }
 
 @media (min-width: 768px) {
   .display-xl { font-size: var(--display-xl-size-medium); line-height: var(--display-xl-line-medium); }
   .display { font-size: var(--display-size); line-height: var(--display-line); }
   .h1 { font-size: var(--h1-size); line-height: var(--h1-line); }
   .h2 { font-size: var(--h2-size); line-height: var(--h2-line); }
+  .h3 { font-size: var(--h3-size); line-height: var(--h3-line); }
+  .title-md { font-size: var(--title-md-size); line-height: var(--title-md-line); }
+  .lead { font-size: var(--lead-size); line-height: var(--lead-line); }
+  .body-lg { font-size: var(--body-lg-size); line-height: var(--body-lg-line); }
 }
 @media (min-width: 1280px) {
   .display-xl { font-size: var(--display-xl-size); line-height: var(--display-xl-line); }
 }
 
-.lead { font-family: var(--lead-family); font-size: var(--lead-size); line-height: var(--lead-line); font-weight: var(--lead-weight); color: var(--ink-muted); }
-.body { font-size: var(--body-size); line-height: var(--body-line); }
+.body { font-family: var(--body-family); font-size: var(--body-size); line-height: var(--body-line); font-weight: var(--body-weight); }
 .ui { font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--ui-weight); }
 .small { font-family: var(--small-family); font-size: var(--small-size); line-height: var(--small-line); font-weight: var(--small-weight); color: var(--ink-muted); }
 .label {
@@ -98,7 +104,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* acciaio come superficie */
 .on-brand { background: var(--brand); color: var(--on-brand); }
-.on-brand .display, .on-brand .h1, .on-brand .h2, .on-brand .h3 { color: var(--on-brand); }
+.on-brand .display, .on-brand .h1, .on-brand .h2, .on-brand .h3, .on-brand .title-md, .on-brand .body-lg { color: var(--on-brand); }
 .on-brand .label, .on-brand .lead, .on-brand .small { color: var(--on-brand-muted); }
 .on-brand a:not(.btn) { color: var(--on-brand); }
 
