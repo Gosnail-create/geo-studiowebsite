@@ -1,6 +1,6 @@
 ---
-// Hero della home (design-system/components/Hero.md): split 7fr/5fr alto almeno l'80% della
-// finestra, foto a filo del bordo destro. Niente fascia di numeri né elementi decorativi fra
+// Hero della home (design-system/components/Hero.md): split 7fr/5fr alto quanto serve al testo
+// (space-16 sopra e sotto, almeno hero-min-h su desktop), foto a filo del bordo destro. Niente fascia di numeri né elementi decorativi fra
 // testo e foto; il segno obliquo sta solo davanti all'etichetta.
 import type { Foto } from '../data/immagini';
 import LinkFreccia from './LinkFreccia.astro';
@@ -16,6 +16,11 @@ interface Props {
 const { etichetta, titolo, testo, bottone, link, foto } = Astro.props;
 const srcset = foto.larghezze.map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ');
 const largh = foto.larghezze[foto.larghezze.length - 1]!;
+// La foto riempie l'altezza della hero con object-fit: cover, quindi la larghezza richiesta è
+// l'altezza della hero per il rapporto della foto (circa 650px x 1,5 su desktop, 280px x 1,5 su
+// mobile), non la larghezza della colonna: sizes lo dichiara perché il browser scelga la sorgente giusta.
+const rapporto = foto.width / foto.height;
+const sizes = `(min-width: 1080px) ${Math.round(660 * rapporto)}px, max(100vw, ${Math.round(280 * rapporto)}px)`;
 ---
 <section class="hero-home" aria-labelledby="hero-titolo">
   <div class="hh-grid">
@@ -29,7 +34,7 @@ const largh = foto.larghezze[foto.larghezze.length - 1]!;
       </div>
     </div>
     <div class="hh-foto">
-      <img src={`/images/${foto.nome}-1024.webp`} srcset={srcset} sizes="(min-width: 1080px) 45vw, 100vw"
+      <img src={`/images/${foto.nome}-1024.webp`} srcset={srcset} sizes={sizes}
         width={largh} height={Math.round((foto.height / foto.width) * largh)} alt={foto.alt}
         loading="eager" fetchpriority="high" decoding="async" />
     </div>
@@ -54,7 +59,7 @@ const largh = foto.larghezze[foto.larghezze.length - 1]!;
   /* desktop: il testo si allinea al contenitore, la foto arriva al bordo destro della finestra */
   @media (min-width: 1080px) {
     .hh-grid {
-      min-height: max(80vh, var(--hero-min-h));
+      min-height: var(--hero-min-h);
       grid-template-columns:
         minmax(var(--space-8), 1fr)
         minmax(0, calc(var(--content-max) * 7 / 12))
@@ -62,7 +67,7 @@ const largh = foto.larghezze[foto.larghezze.length - 1]!;
         minmax(var(--space-8), 1fr);
     }
     .hh-testo {
-      grid-column: 2; padding: var(--space-24) var(--space-16) var(--space-32) 0;
+      grid-column: 2; padding: var(--space-16) var(--space-16) var(--space-16) 0;
     }
     .hh-foto { grid-column: 3 / -1; order: 0; height: auto; }
     .hh-foto img { position: absolute; inset: 0; border-bottom-left-radius: var(--radius-lg); }

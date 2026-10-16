@@ -48,6 +48,9 @@ const foto = {
 };
 
 const larghezze = [640, 1024, 1600];
+// Larghezze in più per singole foto, mai oltre la larghezza della sorgente (nessun ingrandimento).
+// La foto della hero della home riempie un ritaglio largo circa 1000px: a densità 2 serve la 2400.
+const extra = { 'tecnico-manutenzione-macchinario': [2400] };
 const out = resolve(root, 'public/images');
 mkdirSync(out, { recursive: true });
 const dimensioni = {};
@@ -55,8 +58,9 @@ const dimensioni = {};
 for (const [file, nome] of Object.entries(foto)) {
   const input = readFileSync(resolve(sorgente, file));
   const meta = await sharp(input).rotate().metadata();
-  dimensioni[nome] = { width: meta.width, height: meta.height, larghezze };
-  for (const w of larghezze) {
+  const tutte = [...larghezze, ...(extra[nome] ?? [])].filter((w) => w <= meta.width);
+  dimensioni[nome] = { width: meta.width, height: meta.height, larghezze: tutte };
+  for (const w of tutte) {
     await sharp(input).rotate().resize({ width: w, withoutEnlargement: true })
       .webp({ quality: 78 }).toFile(resolve(out, `${nome}-${w}.webp`));
   }
