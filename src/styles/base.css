@@ -103,22 +103,47 @@ a:hover { text-decoration-thickness: 2px; }
 .section--sunken { background: var(--surface-sunken); }
 
 /* ---------- pattern dei tagli del logo (design-system/components/Pattern.md) ----------
-   Solo su surface-sunken e sulle fasce di chiusura brand. Tessera di pattern-tile con due
-   parallelogrammi 24x8 inclinati di cut-angle, disegnati con mask-image: il colore resta un token.
-   Lo pseudo-elemento sborda di una tessera, sta sotto il contenuto e non riceve clic. */
+   Tessera di pattern-tile con due parallelogrammi 24x8 inclinati di cut-angle, disegnati con mask-image:
+   il colore resta un token. Una seconda maschera a gradiente (mask-composite: intersect) lo limita alle
+   zone senza testo: i margini fuori da content-max sulle sezioni surface-sunken (da 1280px, sfumatura di
+   space-10) e il terzo destro delle fasce di chiusura brand (da 1080px). Lo pseudo-elemento sborda di
+   una tessera su ogni lato (quindi la sua metà è il centro della sezione), sta sotto il contenuto e non
+   riceve clic. Il gradiente si sposta con il pattern: a destra si aggiunge la deriva orizzontale
+   (pattern-drift x 0,4875) perché i tagli non arrivino sopra il testo. */
 .section--sunken, .fascia-pattern { position: relative; isolation: isolate; overflow: hidden; }
-.section--sunken { --pattern-ink: var(--pattern-on-sunken); }
-.fascia-pattern { --pattern-ink: var(--pattern-on-brand); }
+.section--sunken {
+  --pattern-ink: var(--pattern-on-sunken);
+  --deriva-x: calc(var(--pattern-drift) * 0.4875);
+  --zona: linear-gradient(90deg,
+    black 0, black calc(50% - var(--content-max) / 2 - var(--space-10)),
+    transparent calc(50% - var(--content-max) / 2),
+    transparent calc(50% + var(--content-max) / 2 + var(--deriva-x)),
+    black calc(50% + var(--content-max) / 2 + var(--space-10) + var(--deriva-x)), black 100%);
+}
+.fascia-pattern {
+  --pattern-ink: var(--pattern-on-brand);
+  --deriva-x: calc(var(--pattern-drift) * 0.4875);
+  /* il terzo destro della fascia comincia al 66,67% della larghezza meno 40px, in coordinate dello
+     pseudo-elemento che sborda di una tessera per lato */
+  --zona: linear-gradient(90deg,
+    transparent 0, transparent calc(66.667% - var(--pattern-tile) / 3 + var(--deriva-x)),
+    black calc(66.667% - var(--pattern-tile) / 3 + var(--deriva-x) + var(--space-10)), black 100%);
+}
 .section--sunken::before, .fascia-pattern::before {
   content: ""; position: absolute; inset: calc(-1 * var(--pattern-tile)); z-index: -1; pointer-events: none;
   background-color: var(--pattern-ink);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E");
-          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E");
-  -webkit-mask-size: var(--pattern-tile) var(--pattern-tile);
-          mask-size: var(--pattern-tile) var(--pattern-tile);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E"), var(--zona);
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E"), var(--zona);
+  -webkit-mask-size: var(--pattern-tile) var(--pattern-tile), 100% 100%;
+          mask-size: var(--pattern-tile) var(--pattern-tile), 100% 100%;
+  -webkit-mask-repeat: repeat, no-repeat;
+          mask-repeat: repeat, no-repeat;
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
 }
-/* mentre la sezione attraversa la finestra il pattern sale di pattern-drift e va a sinistra di circa
-   la metà, lungo l'inclinazione del taglio; senza scroll-driven animations resta fermo */
+/* sotto i 1280px le sezioni chiare restano lisce, sotto i 1080px anche le fasce acciaio */
+@media (max-width: 1279px) { .section--sunken::before { display: none; } }
+@media (max-width: 1079px) { .fascia-pattern::before { display: none; } }
 @keyframes deriva-pattern {
   from { transform: translate(0, calc(var(--pattern-drift) / 2)); }
   to { transform: translate(calc(var(--pattern-drift) * -0.4875), calc(var(--pattern-drift) / -2)); }
