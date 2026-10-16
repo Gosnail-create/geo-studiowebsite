@@ -27,10 +27,12 @@ const altImmagine = immagine?.didascalia
 ---
 <article class="card">
   {foto && (
-    <img class="media" src={`/images/${foto.nome}-640.webp`}
-      srcset={foto.larghezze.slice(0, 2).map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ')}
-      sizes={sizes} width="640" height={Math.round((640 * foto.height) / foto.width)} alt={foto.alt}
-      loading="lazy" decoding="async" />
+    <div class="media-box">
+      <img class="media" src={`/images/${foto.nome}-640.webp`}
+        srcset={foto.larghezze.slice(0, 2).map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ')}
+        sizes={sizes} width="640" height={Math.round((640 * foto.height) / foto.width)} alt={foto.alt}
+        loading="lazy" decoding="async" />
+    </div>
   )}
   {immagine && (
     <div class="media-box">
@@ -55,7 +57,15 @@ const altImmagine = immagine?.didascalia
     background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg);
     overflow: hidden; display: flex; flex-direction: column; height: 100%;
   }
-  .card :global(.media) { width: 100%; height: var(--panel-photo-h); object-fit: cover; display: block; }
+  /* foto viva: al passaggio del mouse si ingrandisce del 4% dentro il suo riquadro, che resta fermo */
+  .media-box { height: var(--panel-photo-h); overflow: hidden; }
+  .card :global(.media) {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform var(--duration-photo) var(--ease-out-soft);
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card:hover :global(.media) { transform: scale(1.04); }
+  }
   .corpo { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
   @media (min-width: 768px) { .corpo { padding: var(--space-8); } }
   @media (min-width: 1080px) { .corpo { padding: var(--space-10); } }

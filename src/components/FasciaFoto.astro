@@ -24,12 +24,14 @@ const tutti = [rendering.ingresso, rendering.vistaAerea, rendering.vistaLaterale
   </figure>
 ) : (
   <figure class="fascia-foto">
+    <div class="riquadro">
     {foto && (
       <img src={`/images/${foto.nome}-1600.webp`}
         srcset={foto.larghezze.map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ')} sizes="100vw"
         width="1600" height={Math.round((1600 * foto.height) / foto.width)} alt={foto.alt} loading="lazy" decoding="async" />
     )}
     {render && <Image src={render.src} alt={render.alt} widths={[800, 1600, 2400]} sizes="100vw" />}
+    </div>
     {render?.didascalia && <figcaption class="container small">{render.didascalia}</figcaption>}
   </figure>
 )}
@@ -38,6 +40,19 @@ const tutti = [rendering.ingresso, rendering.vistaAerea, rendering.vistaLaterale
   .fascia-foto { display: grid; gap: var(--space-2); }
   .fascia-foto :global(img) { width: 100%; height: var(--hero-photo-h-mobile); object-fit: cover; display: block; }
   @media (min-width: 768px) { .fascia-foto :global(img) { height: var(--band-photo-h); } }
+
+  /* la foto, ingrandita dell'8%, scorre più lentamente della pagina mentre la fascia attraversa
+     la finestra; senza scroll-driven animations o con movimento ridotto resta ferma */
+  .riquadro { overflow: hidden; }
+  @keyframes scorri-foto {
+    from { transform: scale(1.08) translateY(-4%); }
+    to { transform: scale(1.08) translateY(4%); }
+  }
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .riquadro :global(img) { animation: scorri-foto linear both; animation-timeline: view(); }
+    }
+  }
 
   .galleria { display: grid; gap: var(--space-2); padding-block: var(--space-16); }
   .galleria-grid { display: grid; gap: var(--space-4); grid-template-columns: minmax(0, 1fr); }
