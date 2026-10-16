@@ -73,7 +73,9 @@ a:hover { text-decoration-thickness: 2px; }
 .data-lg { font-family: var(--data-lg-family); font-size: var(--data-lg-size); line-height: var(--data-lg-line); font-weight: var(--data-lg-weight); font-variant-numeric: tabular-nums; }
 
 .prose > * + * { margin-top: var(--space-4); }
-.prose > p, .misura { max-width: var(--measure); }
+/* measure solo per il testo a una colonna; nella colonna di destra delle sezioni a due
+   colonne il testo (body-lg) arriva al bordo del contenitore */
+.prose > p:not(.body-lg), .misura { max-width: var(--measure); }
 .prose ul, .prose ol { padding-left: var(--space-6); }
 .prose li + li { margin-top: var(--space-2); }
 

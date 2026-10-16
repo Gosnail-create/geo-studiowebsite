@@ -95,7 +95,7 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
       ))}
       {s.blocchi.map((b) => {
         switch (b.tipo) {
-          case 'p': return <p><Testo text={b.testo} /></p>;
+          case 'p': return <p class={layoutDi(s) === 'split' ? 'body-lg' : undefined}><Testo text={b.testo} /></p>;
           case 'passi': return <Passi voci={b.voci} titoloInline={b.titoloInline} />;
           case 'elenco': return <Elenco voci={b.voci} colonne={b.colonne} />;
           case 'tabella': return <Tabella intestazioni={b.intestazioni} righe={b.righe} didascalia={s.titolo} />;
