@@ -135,12 +135,14 @@ a:hover { text-decoration-thickness: 2px; }
 .btn-lg { font-size: var(--body-size); padding: var(--space-4) var(--space-8); }
 .btn-sm { padding: var(--space-2) var(--space-4); }
 
-/* bottone principale lime, con fascia chiara obliqua come il taglio del logo */
+/* bottone principale lime (design-system/components/Button.md): al passaggio del mouse si schiarisce,
+   si solleva di 3px e una fascia bianca al 55%, larga metà del bottone e inclinata come il taglio
+   del logo, lo attraversa a velocità uniforme */
 .btn-primary { background: var(--accent); color: var(--on-accent); position: relative; overflow: hidden; isolation: isolate; }
 .btn-primary::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 45%; z-index: -1;
-  background: rgba(255, 255, 255, .38);
-  transform: translateX(-140%) skewX(calc(var(--cut-angle) - 90deg));
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 50%; z-index: -1;
+  background: rgba(255, 255, 255, .55);
+  transform: translateX(-160%) skewX(calc(var(--cut-angle) - 90deg));
   transition: transform var(--duration-sweep) var(--ease-sweep);
 }
 .btn-secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
@@ -154,9 +156,9 @@ a:hover { text-decoration-thickness: 2px; }
 
 @media (hover: hover) {
   .btn-primary:hover {
-    background: var(--accent-hover); transform: translateY(-2px); box-shadow: var(--shadow-button);
+    background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--shadow-button);
   }
-  .btn-primary:hover::before { transform: translateX(260%) skewX(calc(var(--cut-angle) - 90deg)); }
+  .btn-primary:hover::before { transform: translateX(300%) skewX(calc(var(--cut-angle) - 90deg)); }
   .btn-arrow:hover .icon, .btn-ghost:hover .icon { transform: translateX(var(--space-1)); }
   .btn-secondary:hover { background: var(--ink); color: var(--surface); }
   .on-deep .btn-secondary:hover { background: var(--on-brand-deep); color: var(--brand-deep); }
@@ -164,6 +166,10 @@ a:hover { text-decoration-thickness: 2px; }
   .btn-ghost:hover { text-decoration: underline; }
 }
 .btn-primary:active { background: var(--accent); transform: translateY(0); box-shadow: none; transition-duration: var(--duration-press); }
+/* sui dispositivi touch, senza passaggio del mouse, il bottone schiarisce alla pressione */
+@media (hover: none) {
+  .btn-primary:active { background: var(--accent-hover); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn-primary::before, .btn-arrow .icon, .btn-ghost .icon { transition: none; }
