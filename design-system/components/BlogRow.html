@@ -1,0 +1,49 @@
+<!-- @dsCard group="Sito web" height=980 width=1200 subtitle="Blog: articolo in evidenza e righe con riassunto" -->
+<style>
+  .blog { padding: var(--space-12) !important; display: grid; gap: var(--space-12); }
+  .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3); }
+  .meta .small { margin: 0; }
+  .tag { font-size: 14px; line-height: 20px; font-weight: 600; border: 1.5px solid var(--line-strong); border-radius: var(--radius-md); padding: 0 8px; }
+  .hero-art { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-12); align-items: center; }
+  .hero-art .photo { aspect-ratio: 16 / 9; }
+  .txt { display: grid; gap: var(--space-4); align-content: center; }
+  .t-md { font-family: var(--ff-head); font-weight: 600; font-size: 30px; line-height: 38px; margin: 0; }
+  .lead-s { font-size: 22px; line-height: 34px; color: var(--ink); margin: 0; }
+  .righe { list-style: none; margin: 0; padding: 0; display: grid; }
+  .riga { display: grid; grid-template-columns: 4fr 8fr; gap: var(--space-10); padding-block: var(--space-12); border-top: 1px solid var(--line); }
+  .riga .photo { aspect-ratio: 3 / 2; }
+  .riga .h3 { font-size: 24px; line-height: 32px; }
+  .riass { font-size: 18px; line-height: 30px; margin: 0; max-width: 680px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .riga:hover .h3 { text-decoration: underline; text-decoration-color: var(--accent-ink); text-underline-offset: 4px; }
+</style>
+<div class="gs blog">
+  <article class="hero-art">
+    <div class="photo"><span>Rendering dell'impianto a biometano</span></div>
+    <div class="txt">
+      <div class="meta"><span class="label">Energie rinnovabili</span><p class="small">Aggiornato il 16 ottobre 2026</p><span class="tag">Bozza</span></div>
+      <h2 class="t-md">Cos'è il biometano e come si produce</h2>
+      <p class="lead-s">Il biometano è un gas rinnovabile che si ottiene da effluenti zootecnici e sottoprodotti agricoli: la digestione anaerobica produce biogas, che dopo la purificazione può entrare nella rete del gas.</p>
+      <a class="btn btn-ghost" href="#">Leggete l'articolo </a>
+    </div>
+  </article>
+  <ul class="righe">
+    <li class="riga">
+      <div class="photo"><span>Lavori in quota</span></div>
+      <div class="txt">
+        <div class="meta"><span class="label">Sicurezza sul lavoro</span><p class="small">Aggiornato il 16 ottobre 2026</p><span class="tag">Bozza</span></div>
+        <h3 class="h3">Lavori in quota: obblighi e misure di prevenzione</h3>
+        <p class="riass">Si lavora in quota quando un'attività espone al rischio di caduta da oltre 2 metri rispetto a un piano stabile. Gli obblighi del datore di lavoro partono dalla scelta delle attrezzature, con le protezioni collettive prima di quelle individuali.</p>
+        <a class="btn btn-ghost" href="#">Leggete l'articolo </a>
+      </div>
+    </li>
+    <li class="riga">
+      <div class="photo"><span>Impianto sprinkler</span></div>
+      <div class="txt">
+        <div class="meta"><span class="label">Prevenzione incendi</span><p class="small">Aggiornato il 16 ottobre 2026</p><span class="tag">Bozza</span></div>
+        <h3 class="h3">Resistenza al fuoco delle strutture: cosa prevede il codice di prevenzione incendi</h3>
+        <p class="riass">La resistenza al fuoco indica per quanti minuti una trave, un pilastro o un solaio continua a svolgere la sua funzione durante un incendio. Nel codice di prevenzione incendi è la misura S.2.</p>
+        <a class="btn btn-ghost" href="#">Leggete l'articolo </a>
+      </div>
+    </li>
+  </ul>
+</div>

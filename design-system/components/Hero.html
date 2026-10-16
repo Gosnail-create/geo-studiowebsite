@@ -1,35 +1,29 @@
-<!-- @dsCard group="Sito web" height=680 width=1200 subtitle="Testata della home page" -->
+<!-- @dsCard group="Sito web" height=720 width=1280 subtitle="Hero della home: split a tutta altezza, senza numeri né elementi decorativi" -->
 <style>
-  .hero { padding: 0 !important; }
-  .nav { display: flex; align-items: center; gap: var(--space-8); padding: var(--space-4) var(--space-12); border-bottom: 1px solid var(--line); }
-  .nav img { height: 56px; display: block; }
-  .nav ul { display: flex; gap: var(--space-6); list-style: none; margin: 0 0 0 auto; padding: 0; font-size: 15px; font-weight: 500; }
-  .hero-body { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--space-12); padding: var(--space-16) var(--space-12); align-items: center; }
-  .hero-body .display { margin: var(--space-3) 0 var(--space-4); }
-  .actions { display: flex; gap: var(--space-6); margin-top: var(--space-8); align-items: center; }
-  .shot { display: flex; flex-direction: column; gap: var(--space-2); }
-  .shot .photo { height: 380px; }
-  .shot figcaption { font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+  .hero { padding: 0 !important; position: relative; }
+  .split { display: grid; grid-template-columns: 7fr 5fr; min-height: 640px; }
+  .txt { padding: var(--space-24) var(--space-16) var(--space-32) var(--space-12); display: flex; flex-direction: column; justify-content: center; }
+  .txt .display-xl { margin: var(--space-4) 0 var(--space-6); font-size: 64px; line-height: 68px; }
+  .txt .lead { max-width: 520px; }
+  .actions { display: flex; gap: var(--space-6); margin-top: var(--space-10); align-items: center; }
+  .actions .btn { padding: 16px var(--space-8); font-size: 16px; }
+  .pic { position: relative; }
+  .pic .photo { position: absolute; inset: 0; border-radius: 0 0 0 var(--radius-lg); align-items: flex-start; }
+  .seg { display: inline-block; width: 16px; height: 8px; margin-right: 10px; border-radius: 1px; background: var(--accent); transform: skewX(-26deg); }
 </style>
 <div class="gs hero">
-  <div class="nav">
-    <img src="../../assets/logo/geostudio-logo-colore.png" alt="Geo Studio Engineering">
-    <ul><li>Servizi</li><li>Chi siamo</li><li>Blog</li></ul>
-    <a class="btn btn-secondary btn-sm" href="#">Contatti</a>
-  </div>
-  <div class="hero-body">
-    <div>
-      <p class="label">Consulenza tecnica e progettazione dal 1990</p>
-      <h1 class="display">Un riferimento tecnico per gli obblighi e gli impianti della vostra azienda</h1>
-      <p class="lead">Progettiamo impianti tecnologici e da fonti rinnovabili e seguiamo le aziende in sicurezza, ambiente, prevenzione incendi, sistemi di gestione e formazione.</p>
+  <div class="split">
+    <div class="txt">
+      <p class="label"><span class="seg"></span>Consulenza tecnica e progettazione</p>
+      <h1 class="display-xl">Un riferimento tecnico per gli obblighi e gli impianti della vostra azienda</h1>
+      <p class="lead">Impianti tecnologici e da fonti rinnovabili, sicurezza, ambiente, prevenzione incendi, sistemi di gestione e formazione.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#">Parlate con un nostro tecnico</a>
         <a class="btn btn-ghost" href="#">Scoprite i servizi </a>
       </div>
     </div>
-    <figure class="shot" style="margin:0">
-      <div class="photo"><span>Foto: tecnico al lavoro in un capannone (stock provvisoria)</span></div>
-      <figcaption>Fotografia di persone al lavoro, in luce naturale, finché il cliente non fornisce foto reali.</figcaption>
-    </figure>
+    <div class="pic">
+      <div class="photo"><span>Foto a filo del bordo: tecnico al lavoro in un capannone (stock provvisoria)</span></div>
+    </div>
   </div>
 </div>

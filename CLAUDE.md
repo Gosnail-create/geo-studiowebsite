@@ -21,8 +21,12 @@ Questo repository contiene una demo navigabile del nuovo sito di Geo Studio Engi
 
 - Segui `design-system/README.md` e `design-system/tokens.json`: genera da `tokens.json` le variabili CSS e usa solo quelle, senza colori, misure o font fuori sistema.
 - Font self-hosted (pacchetti @fontsource di Red Hat Display, Red Hat Text e IBM Plex Mono), non caricati da Google Fonts.
-- Il verde `accent` è solo per il bottone principale e piccoli indicatori; la grafite `brand-deep` solo a blocchi (pannelli dati, fasce di chiusura, footer). Hero su `surface` con foto, mai grafite a tutto schermo.
-- Angoli con i token `radius-*`, card piatte senza ombra, taglio obliquo a 64 gradi solo per piccoli segni grafici.
+- Il verde `accent` è solo per il bottone principale e piccoli indicatori. Sul sito la grafite `brand-deep` è solo per il footer: pannelli dati, fasce di chiusura e blocchi di contatto sono in acciaio `brand` (nei pannelli dati i valori sono in `accent-on-brand`), e tra una superficie `brand` e il footer resta sempre una fascia chiara. Hero su `surface` con foto, mai grafite a tutto schermo.
+- Nessuna fascia di numeri decorativi: un numero si mostra solo se dice qualcosa di utile, e nella stessa vista un'informazione compare una volta sola.
+- Il testo da leggere non scende mai sotto i 18px (`body`). `small` è solo per note, didascalie, diciture legali, aiuti ed errori dei campi, banner dei cookie e descrizioni brevi del menu.
+- Nelle sezioni a due colonne (titolo a sinistra, contenuto a destra) il testo occupa tutta la colonna di destra, in `body-lg` e colore `ink`; il limite `measure` vale solo per le sezioni a una colonna e per le risposte delle FAQ.
+- Durate e curve delle animazioni vengono solo dalle famiglie `duration` ed `easing` dei token; si animano solo `transform` e `opacity` (più i cambi di colore dei bottoni), e con `prefers-reduced-motion` resta solo il cambio di colore.
+- Angoli con i token `radius-*`, card piatte senza ombra, taglio obliquo a 64 gradi solo per piccoli segni grafici e per il pattern di sfondo. Il segno obliquo non sta mai isolato: è sempre agganciato a un'etichetta, alla testa di una card, a una fascia di chiusura o a un valore, mai fra due colonne o sul bordo di una foto.
 - Icone lineari con tratto 1,5 px (Lucide va bene).
 - Griglia a 12 colonne, larghezza massima 1200 px, margine minimo 16 px su mobile. Il sito deve funzionare bene da 360 px in su.
 - Accessibilità: contrasto almeno 4,5:1, focus visibile con il token `focus`, alt text sulle immagini, struttura dei titoli corretta, form utilizzabile da tastiera.

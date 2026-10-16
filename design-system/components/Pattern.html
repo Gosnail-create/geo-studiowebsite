@@ -1,0 +1,32 @@
+<!-- @dsCard group="Base" height=560 subtitle="Pattern dei tagli del logo, tono su tono (nell'anteprima scorre da solo; sul sito segue lo scroll)" -->
+<style>
+  .wrap { display: grid; gap: var(--space-6); padding: var(--space-8) !important; }
+  .pat { position: relative; overflow: hidden; border-radius: var(--radius-lg); min-height: 220px; isolation: isolate;
+    display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-2); padding: var(--space-8); }
+  .pat::before {
+    content: ""; position: absolute; inset: -120px; z-index: -1; pointer-events: none;
+    background-color: var(--pattern-ink);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M18 34L21.9 26L45.9 26L42 34ZM78 94L81.9 86L105.9 86L102 94Z'/%3E%3C/svg%3E");
+    -webkit-mask-size: 120px 120px; mask-size: 120px 120px;
+    animation: deriva 14s ease-in-out infinite alternate;
+  }
+  /* il movimento segue l'inclinazione del taglio: 120px in verticale, 58,5px in orizzontale */
+  @keyframes deriva { from { transform: translate(0, 60px); } to { transform: translate(-58.5px, -60px); } }
+  @media (prefers-reduced-motion: reduce) { .pat::before { animation: none; } }
+  .sunken { background: var(--surface-sunken); --pattern-ink: var(--pattern-on-sunken); }
+  .acciaio { --pattern-ink: var(--pattern-on-brand); }
+  .pat .h3 { margin: 0; }
+</style>
+<div class="gs wrap">
+  <div class="pat sunken">
+    <p class="label">Su surface-sunken</p>
+    <h3 class="h3">Di cosa ci occupiamo</h3>
+    <p class="small">Il pattern usa pattern-on-sunken e resta sotto il contenuto.</p>
+  </div>
+  <div class="pat on-brand acciaio">
+    <p class="label">Su brand, fascia di chiusura</p>
+    <h3 class="h3">Avete un adempimento da gestire o un impianto da progettare?</h3>
+    <a class="btn btn-primary" href="#" style="align-self:flex-start">Parlate con un nostro tecnico</a>
+  </div>
+</div>

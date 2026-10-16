@@ -38,6 +38,9 @@ for (const t of tokens.shadow.tokens) add(t.name, t.value);
 for (const t of tokens.angle.tokens) add(t.name, t.value);
 lines.push('  /* misure */');
 for (const t of tokens.size?.tokens ?? []) add(t.name, t.value);
+lines.push('  /* movimento: durate e curve */');
+for (const t of tokens.duration?.tokens ?? []) add(t.name, t.value);
+for (const t of tokens.easing?.tokens ?? []) add(t.name, t.value);
 
 const css = `/* File generato da scripts/genera-token.mjs: non modificare a mano. */\n:root {\n${lines.join('\n')}\n}\n`;
 mkdirSync(dirname(out), { recursive: true });

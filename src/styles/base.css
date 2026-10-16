@@ -121,7 +121,8 @@ a:hover { text-decoration-thickness: 2px; }
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   padding: var(--space-3) var(--space-6); border-radius: var(--radius-md); border: 1.5px solid transparent;
   text-decoration: none; cursor: pointer; text-align: center; background: none;
-  transition: background-color .18s ease-out, transform .18s ease-out, box-shadow .18s ease-out, color .18s ease-out;
+  transition: background-color var(--duration-fast) var(--ease-out-soft), transform var(--duration-fast) var(--ease-out-soft),
+    box-shadow var(--duration-fast) var(--ease-out-soft), color var(--duration-fast) var(--ease-out-soft);
 }
 .btn-lg { font-size: var(--body-size); padding: var(--space-4) var(--space-8); }
 .btn-sm { padding: var(--space-2) var(--space-4); }
@@ -132,12 +133,12 @@ a:hover { text-decoration-thickness: 2px; }
   content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 45%; z-index: -1;
   background: rgba(255, 255, 255, .38);
   transform: translateX(-140%) skewX(calc(var(--cut-angle) - 90deg));
-  transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+  transition: transform var(--duration-sweep) var(--ease-sweep);
 }
 .btn-secondary { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost { color: var(--brand); padding-inline: 0; }
 .btn-ghost.btn-sm { padding-inline: 0; }
-.btn-ghost .icon, .btn-arrow .icon { transition: transform .18s ease-out; }
+.btn-ghost .icon, .btn-arrow .icon { transition: transform var(--duration-fast) var(--ease-out-soft); }
 .on-deep .btn-secondary { color: var(--on-brand-deep); border-color: var(--on-brand-deep); }
 .on-deep .btn-ghost { color: var(--on-brand-deep); }
 .on-brand .btn-secondary { color: var(--on-brand); border-color: var(--on-brand); }
@@ -154,7 +155,7 @@ a:hover { text-decoration-thickness: 2px; }
   .on-brand .btn-secondary:hover { background: var(--on-brand); color: var(--brand); }
   .btn-ghost:hover { text-decoration: underline; }
 }
-.btn-primary:active { background: var(--accent); transform: translateY(0); box-shadow: none; transition-duration: .06s; }
+.btn-primary:active { background: var(--accent); transform: translateY(0); box-shadow: none; transition-duration: var(--duration-press); }
 
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn-primary::before, .btn-arrow .icon, .btn-ghost .icon { transition: none; }

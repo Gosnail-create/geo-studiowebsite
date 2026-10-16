@@ -230,9 +230,9 @@ const vociMenu = [
   }
 
   .site-header { position: sticky; top: 0; z-index: 40; background: var(--surface); border-bottom: 1px solid var(--line); }
-  .bar { display: flex; align-items: center; gap: var(--space-8); height: var(--header-h-compact); transition: height .2s ease-out; }
+  .bar { display: flex; align-items: center; gap: var(--space-8); height: var(--header-h-compact); transition: height var(--duration-fast) var(--ease-out-soft); }
   .logo { display: block; flex: none; border-radius: var(--radius-sm); }
-  .logo :global(img) { height: var(--logo-h-compact); width: auto; transition: height .2s ease-out; }
+  .logo :global(img) { height: var(--logo-h-compact); width: auto; transition: height var(--duration-fast) var(--ease-out-soft); }
   @media (min-width: 1080px) {
     .bar { height: var(--header-h); }
     .logo :global(img) { height: var(--logo-h); }
