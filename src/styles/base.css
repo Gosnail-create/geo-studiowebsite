@@ -28,6 +28,11 @@ img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
 /* nessuna parola sola sull'ultima riga */
 p { text-wrap: pretty; }
+/* balance funziona fino a sei righe: sugli schermi stretti i paragrafi d'apertura, più lunghi,
+   tornano a pretty per non lasciare una parola sola sull'ultima riga */
+@media (max-width: 767px) {
+  .apertura, .intro { text-wrap: pretty !important; }
+}
 
 a { color: var(--brand); text-underline-offset: 0.2em; }
 a:hover { text-decoration-thickness: 2px; }

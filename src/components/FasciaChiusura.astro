@@ -6,6 +6,7 @@ interface Props {
   testo: string;
   bottone: { label: string; href: string };
 }
+import { senzaVedova } from '../lib/vedova';
 const { titolo, testo, bottone } = Astro.props;
 ---
 <section class="section" aria-labelledby="chiusura-titolo">
@@ -13,7 +14,7 @@ const { titolo, testo, bottone } = Astro.props;
     <div class="chiusura on-brand fascia-pattern">
       <span class="cut-mark" aria-hidden="true"></span>
       <h2 class="h2" id="chiusura-titolo">{titolo}</h2>
-      <p class="lead">{testo}</p>
+      <p class="lead misura">{senzaVedova(testo)}</p>
       <a class="btn btn-primary" href={bottone.href}>{bottone.label}</a>
     </div>
   </div>

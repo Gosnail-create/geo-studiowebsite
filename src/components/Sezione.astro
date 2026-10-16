@@ -5,6 +5,7 @@
 // space-8 fra intestazione e contenuto, space-12 fra blocchi diversi, space-8 prima del link che
 // chiude un elenco (classe .chiude).
 import Testo from './Testo.astro';
+import { senzaVedova } from '../lib/vedova';
 
 interface Props {
   id?: string;
@@ -23,7 +24,7 @@ const headingId = id ? `${id}-titolo` : undefined;
     <div class="sez-head">
       {etichetta && <p class="label">{etichetta}</p>}
       <h2 class="h2" id={headingId}>{titolo}</h2>
-      {intro && <p class="lead intro"><Testo text={intro} /></p>}
+      {intro && <p class="lead intro"><Testo text={senzaVedova(intro)} /></p>}
       {Astro.slots.has('aside') && <div class="sez-aside"><slot name="aside" /></div>}
     </div>
     <div class="sez-body prose">
@@ -41,6 +42,10 @@ const headingId = id ? `${id}-titolo` : undefined;
   .intro { color: var(--ink); text-wrap: balance; }
   .sez-aside { margin-top: var(--space-4); }
   .sez-full { margin-top: 0; }
+  /* sotto i 1080px le due colonne si impilano: il testo torna entro measure */
+  @media (max-width: 1079px) {
+    .sez--split .sez-body, .intro { max-width: var(--measure); }
+  }
   /* blocchi diversi a space-12, paragrafi consecutivi a space-4, link di chiusura a space-8 */
   .sez-body > :global(* + *) { margin-top: var(--space-12); }
   .sez-body > :global(p + p) { margin-top: var(--space-4); }

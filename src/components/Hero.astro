@@ -6,6 +6,7 @@ import Figura from './Figura.astro';
 import FotoSegnaposto from './FotoSegnaposto.astro';
 import LinkFreccia from './LinkFreccia.astro';
 import type { Foto } from '../data/immagini';
+import { senzaVedova } from '../lib/vedova';
 
 interface Props {
   etichetta?: string;
@@ -26,7 +27,7 @@ const haMedia = Boolean(immagine || foto || fotoSegnaposto);
     <div class="hero-testo">
       {etichetta && <p class="label">{etichetta}</p>}
       <h1 class={home ? 'display-xl' : 'display'}>{titolo}</h1>
-      {testo.map((p) => <p class="lead misura apertura">{p}</p>)}
+      {testo.map((p) => <p class="lead misura apertura">{senzaVedova(p)}</p>)}
       <slot />
       {(bottone || link) && (
         <div class="azioni">

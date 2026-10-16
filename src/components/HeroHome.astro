@@ -4,6 +4,7 @@
 // testo e foto; il segno obliquo sta solo davanti all'etichetta.
 import type { Foto } from '../data/immagini';
 import LinkFreccia from './LinkFreccia.astro';
+import { senzaVedova } from '../lib/vedova';
 
 interface Props {
   etichetta?: string;
@@ -27,7 +28,7 @@ const sizes = `(min-width: 1080px) ${Math.round(660 * rapporto)}px, max(100vw, $
     <div class="hh-testo">
       {etichetta && <p class="label etichetta"><span class="cut-mark" aria-hidden="true"></span>{etichetta}</p>}
       <h1 class="display-xl" id="hero-titolo">{titolo}</h1>
-      {testo.map((p) => <p class="lead misura">{p}</p>)}
+      {testo.map((p) => <p class="lead misura">{senzaVedova(p)}</p>)}
       <div class="azioni">
         <a class="btn btn-primary btn-lg" href={bottone.href}>{bottone.label}</a>
         {link && <LinkFreccia href={link.href}>{link.label}</LinkFreccia>}
