@@ -8,7 +8,6 @@ import { articoli } from '../../data/blog';
 import { foto, type NomeFoto } from '../../data/immagini';
 
 const t = (await getEntry('speciali', 'blog'))!.data;
-const aggiornato = (await getEntry('speciali', 'articolo'))!.data.aggiornato as string;
 const filtri = t.filtri as string[];
 // Il primo articolo è il più recente e va in evidenza; gli altri seguono uno per riga.
 const [evidenza, ...altri] = articoli;
@@ -25,8 +24,8 @@ const [evidenza, ...altri] = articoli;
         ))}
       </div>
       <ul class="righe" id="elenco-articoli" role="list">
-        {evidenza && <li data-area={evidenza.area}><BlogRow articolo={evidenza} aggiornato={aggiornato} variante="evidenza" /></li>}
-        {altri.map((a) => <li data-area={a.area}><BlogRow articolo={a} aggiornato={aggiornato} variante="riga" /></li>)}
+        {evidenza && <li data-area={evidenza.area}><BlogRow articolo={evidenza} variante="evidenza" /></li>}
+        {altri.map((a) => <li data-area={a.area}><BlogRow articolo={a} variante="riga" /></li>)}
       </ul>
       <div id="nessun-articolo" hidden>
         <Segnaposto text="Articoli in preparazione" />

@@ -7,15 +7,13 @@ import type { Articolo } from '../data/blog';
 import { foto as fotoStock, type NomeFoto } from '../data/immagini';
 import { rendering } from '../data/rendering';
 import Icon from './Icon.astro';
-import Testo from './Testo.astro';
 
 interface Props {
   articolo: Articolo;
-  aggiornato: string;
   variante?: 'evidenza' | 'riga' | 'compatta';
   livello?: 'h2' | 'h3';
 }
-const { articolo, aggiornato, variante = 'riga', livello = 'h2' } = Astro.props;
+const { articolo, variante = 'riga', livello = 'h2' } = Astro.props;
 const Titolo = livello;
 const foto = articolo.foto ? fotoStock(articolo.foto as NomeFoto) : undefined;
 const render = articolo.rendering ? rendering[articolo.rendering] : undefined;
@@ -26,14 +24,14 @@ const sizes = variante === 'evidenza' ? '(min-width: 1080px) 700px, 100vw' : '(m
     {foto && (
       <img class="media" src={`/images/${foto.nome}-1024.webp`}
         srcset={foto.larghezze.map((w) => `/images/${foto.nome}-${w}.webp ${w}w`).join(', ')} sizes={sizes}
-        width="1024" height={Math.round((1024 * foto.height) / foto.width)} alt={foto.alt} loading="lazy" decoding="async" />
+        width="1024" height={Math.round((1024 * foto.height) / foto.width)} alt={foto.alt} loading="eager" decoding="async" />
     )}
-    {render && <Image class="media" src={render.src} alt={render.alt} widths={[640, 1024, 1600]} sizes={sizes} />}
+    {render && <Image class="media" src={render.src} alt={render.alt} widths={[640, 1024, 1600]} sizes={sizes} loading="eager" />}
   </div>
   <div class="txt">
     <div class="meta">
+      <!-- la data compare solo quando è vera: il segnaposto resta nella pagina dell'articolo -->
       <span class="label">{articolo.area}</span>
-      <span class="small"><Testo text={aggiornato} /></span>
       <span class="tag">Bozza</span>
     </div>
     <Titolo class={variante === 'evidenza' ? 'title-md titolo' : 'h3 titolo'}>
@@ -62,12 +60,12 @@ const sizes = variante === 'evidenza' ? '(min-width: 1080px) 700px, 100vw' : '(m
   .titolo-link { color: var(--ink); text-decoration: none; }
   /* il link del titolo si allarga sull'intera riga */
   .titolo-link::after { content: ""; position: absolute; inset: 0; }
-  .riassunto { color: var(--ink); }
+  /* riassunti larghi al massimo measure, tagliati con i puntini nelle righe */
+  .riassunto { color: var(--ink); max-width: var(--measure); }
   .riga .riassunto, .compatta .riassunto {
     display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 3; line-clamp: 3;
   }
   .compatta .riassunto { -webkit-line-clamp: 2; line-clamp: 2; }
-  .riga .riassunto { max-width: var(--measure); }
   .leggi { pointer-events: none; }
 
   @media (hover: hover) {

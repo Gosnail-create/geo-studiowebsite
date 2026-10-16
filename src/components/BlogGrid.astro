@@ -1,13 +1,11 @@
 ---
 // Home, sezione "Approfondimenti tecnici e normativi": i tre articoli più recenti in righe compatte.
-import { getEntry } from 'astro:content';
 import BlogRow from './BlogRow.astro';
 import { articoli } from '../data/blog';
 
-const aggiornato = (await getEntry('speciali', 'articolo'))!.data.aggiornato as string;
 ---
 <ul class="righe-blog" role="list">
-  {articoli.slice(0, 3).map((a) => <li><BlogRow articolo={a} aggiornato={aggiornato} variante="compatta" livello="h3" /></li>)}
+  {articoli.slice(0, 3).map((a) => <li><BlogRow articolo={a} variante="compatta" livello="h3" /></li>)}
 </ul>
 
 <style>
