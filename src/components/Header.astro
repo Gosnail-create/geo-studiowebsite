@@ -251,7 +251,11 @@ const vociMenu = [
   .menu-toggle[aria-expanded='true'] :global(.chiudi) { display: block; }
   @media (min-width: 1080px) {
     .nav-desktop { display: block; margin-left: auto; }
-    .cta-testata { display: inline-flex; }
+    /* bottone della testata alto control-h-sm, a space-10 dall'ultima voce (la barra ha gap space-8) */
+    .cta-testata {
+      display: inline-flex; min-height: var(--control-h-sm); padding-block: 0;
+      margin-left: calc(var(--space-10) - var(--space-8));
+    }
     .menu-toggle, .mobile-panel { display: none; }
   }
 
