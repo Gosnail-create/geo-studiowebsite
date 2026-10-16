@@ -41,6 +41,12 @@ const layoutDi = (s: (typeof sezioni)[number]) => (s.blocchi.some((b) => LARGHI.
 const sfondo = (i: number) => (Math.floor((i + (dopoHero ? 1 : 0)) / 2) % 2 === 0 ? 'sunken' : 'surface') as 'sunken' | 'surface';
 const idDi = (titolo: string) => titolo.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
+// Nelle sezioni a tutta larghezza il primo paragrafo, se precede una griglia, un elenco o il blog,
+// va nell'intestazione sotto il titolo (README, Forma, spazi e griglia).
+const APRE = new Set(['servizi', 'card', 'corsi', 'blog', 'elenco']);
+const introDi = (s: (typeof sezioni)[number]) =>
+  layoutDi(s) === 'stack' && s.blocchi[0]?.tipo === 'p' && APRE.has(s.blocchi[1]?.tipo ?? '') ? s.blocchi[0].testo : undefined;
+const LISTE = new Set(['servizi', 'card', 'corsi', 'blog', 'elenco', 'passi', 'tabella']);
 ---
 <Base title={pagina.title} description={pagina.description}>
   {pagina.origine === 'home' ? (
@@ -89,12 +95,13 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
 
   {sezioni.map((s, i) => (
     <Fragment>
-    <Sezione id={idDi(s.titolo)} titolo={s.titolo} layout={layoutDi(s)}
+    <Sezione id={idDi(s.titolo)} titolo={s.titolo} layout={layoutDi(s)} intro={introDi(s)}
       sfondo={s.blocchi.some((b) => b.tipo === 'blog') ? 'surface' : sfondo(i)}>
       {s.blocchi.filter((b) => b.tipo === 'foto').map((b) => b.tipo === 'foto' && (
         <Figura slot="aside" foto={fotoStock(b.foto as NomeFoto)} ratio="4 / 3" sizes="(min-width: 1080px) 400px, 100vw" />
       ))}
-      {s.blocchi.map((b) => {
+      {s.blocchi.map((b, n) => {
+        if (n === 0 && introDi(s)) return null;
         switch (b.tipo) {
           case 'p': return <p class={layoutDi(s) === 'split' ? 'body-lg' : undefined}><Testo text={b.testo} /></p>;
           case 'passi': return <Passi voci={b.voci} titoloInline={b.titoloInline} />;
@@ -103,7 +110,7 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
           case 'pannello': return <PannelloDati voci={b.voci} />;
           case 'segnaposto': return <Segnaposto text={b.testo.replace(/^\[|\]$/g, '')} />;
           case 'rendering': return <Figura {...rendering[b.chiave]} eager />;
-          case 'link': return <p><LinkFreccia href={b.href}>{b.label}</LinkFreccia></p>;
+          case 'link': return <p class={LISTE.has(s.blocchi[n - 1]?.tipo ?? '') ? 'chiude' : undefined}><LinkFreccia href={b.href}>{b.label}</LinkFreccia></p>;
           case 'blog': return <BlogGrid />;
           case 'mappa': return <MappaSede />;
           case 'corsi': return <CorsiGrid voci={b.voci} />;

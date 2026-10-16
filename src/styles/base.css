@@ -26,6 +26,8 @@ main:focus { outline: none; }
 img { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+/* nessuna parola sola sull'ultima riga */
+p { text-wrap: pretty; }
 
 a { color: var(--brand); text-underline-offset: 0.2em; }
 a:hover { text-decoration-thickness: 2px; }
@@ -94,9 +96,10 @@ a:hover { text-decoration-thickness: 2px; }
 .grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-6); }
 
 /* spazio verticale delle sezioni: 64 / 96 / 128 px */
-.section { padding-block: var(--space-16); }
-@media (min-width: 768px) { .section { padding-block: var(--space-24); } }
-@media (min-width: 1080px) { .section { padding-block: var(--space-32); } }
+/* spazio verticale delle sezioni: 48 / 64 / 96 px */
+.section { padding-block: var(--space-12); }
+@media (min-width: 768px) { .section { padding-block: var(--space-16); } }
+@media (min-width: 1080px) { .section { padding-block: var(--space-24); } }
 .section--sunken { background: var(--surface-sunken); }
 
 /* ---------- pattern dei tagli del logo (design-system/components/Pattern.md) ----------

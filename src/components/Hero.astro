@@ -26,7 +26,7 @@ const haMedia = Boolean(immagine || foto || fotoSegnaposto);
     <div class="hero-testo">
       {etichetta && <p class="label">{etichetta}</p>}
       <h1 class={home ? 'display-xl' : 'display'}>{titolo}</h1>
-      {testo.map((p) => <p class="lead misura">{p}</p>)}
+      {testo.map((p) => <p class="lead misura apertura">{p}</p>)}
       <slot />
       {(bottone || link) && (
         <div class="azioni">
@@ -56,9 +56,10 @@ const haMedia = Boolean(immagine || foto || fotoSegnaposto);
   .hero-grid { display: grid; gap: var(--space-8); align-items: center; }
   .hero-testo { display: grid; gap: var(--space-4); }
   .hero-testo .label { margin-bottom: calc(-1 * var(--space-1)); }
+  .apertura { text-wrap: balance; }
   .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); margin-top: var(--space-4); }
   @media (min-width: 1080px) {
-    .hero { padding-block: var(--space-24) var(--space-32); }
+    .hero { padding-block: var(--space-16) var(--space-24); }
     .hero-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-12); }
     .hero-testo { grid-column: 1 / span 8; }
     .hero--media .hero-testo { grid-column: 1 / span 7; }
