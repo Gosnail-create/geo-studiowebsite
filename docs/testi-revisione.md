@@ -82,3 +82,13 @@ Revisione 7 (16 ottobre 2026): riassunti scritti e approvati da Gosnail, da ripo
 - La resistenza al fuoco indica per quanto tempo un elemento strutturale, come una trave, un pilastro o un solaio, continua a svolgere la sua funzione durante un incendio, e si esprime in minuti con sigle come R 60 o REI 120. Nel codice di prevenzione incendi (DM 3 agosto 2015) è la misura S.2, e il livello richiesto dipende dalle caratteristiche dell'attività e dal carico di incendio specifico di progetto.
 
 Link delle righe del blog (design-system/components/BlogRow.html): Leggete l'articolo
+
+## Card di contatto nella griglia dei servizi
+
+Revisione 8 (16 ottobre 2026): testi nuovi approvati da Gosnail per l'ottava cella della griglia dei servizi, in home e nella pagina Servizi.
+
+Titolo: Non sapete a quale area appartiene il vostro caso?
+
+Frase: Descrivetecelo e vi indichiamo il tecnico giusto.
+
+Bottone: Parlate con un nostro tecnico

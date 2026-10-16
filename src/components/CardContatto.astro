@@ -1,21 +1,25 @@
 ---
-// Ottava cella della griglia dei servizi: card di contatto in acciaio, solo con il bottone.
+// Ultima cella della griglia dei servizi (design-system/components/ServiceCard.md): card di contatto
+// su brand, larga due colonne, con segno obliquo, titolo, frase e bottone che non va a capo.
+import { cardContatto } from '../data/card-contatto';
+
 interface Props {
-  label: string;
   href: string;
 }
-const { label, href } = Astro.props;
+const { href } = Astro.props;
 ---
 <div class="card-contatto on-brand">
   <span class="cut-mark" aria-hidden="true"></span>
-  <a class="btn btn-primary" href={href}>{label}</a>
+  <h3 class="h3">{cardContatto.titolo}</h3>
+  <p class="frase">{cardContatto.testo}</p>
+  <a class="btn btn-primary" href={href}>{cardContatto.bottone}</a>
 </div>
 
 <style>
   .card-contatto {
-    border-radius: var(--radius-lg); padding: var(--space-6); height: 100%;
-    display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: var(--space-8);
+    border-radius: var(--radius-lg); padding: var(--space-8); height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: var(--space-3);
   }
-  @media (min-width: 768px) { .card-contatto { padding: var(--space-8); } }
-  @media (min-width: 1080px) { .card-contatto { padding: var(--space-10); } }
+  .frase { color: var(--on-brand-muted); }
+  .card-contatto .btn { margin-top: var(--space-4); white-space: nowrap; }
 </style>

@@ -110,6 +110,13 @@ for (const [, r] of blog.matchAll(/riassunto: "([^"]+)"/g)) {
     «${r}»`);
 }
 
+// Card di contatto della griglia dei servizi (src/data/card-contatto.ts).
+const card = readFileSync(resolve(root, 'src/data/card-contatto.ts'), 'utf8');
+for (const [, r] of card.matchAll(/(?:titolo|testo|bottone): "([^"]+)"/g)) {
+  if (!REVISIONE.has(r)) errori.push(`card-contatto.ts: testo non presente in testi-revisione.md:
+    «${r}»`);
+}
+
 if (errori.length) {
   console.error(`Verifica testi: ${errori.length} problemi\n  ` + errori.join('\n  '));
   process.exit(1);

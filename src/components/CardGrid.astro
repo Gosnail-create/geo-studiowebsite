@@ -1,5 +1,6 @@
 ---
-// Griglia di card: una colonna su mobile, due su tablet, fino a quattro su desktop.
+// Griglia di card: una colonna sotto i 640px, due fra 640 e 1080px, al massimo tre sopra
+// (README: con il corpo a 18px una card più stretta di 360px circa non regge una descrizione).
 interface Props {
   colonne?: 2 | 3 | 4;
 }
@@ -13,10 +14,11 @@ const { colonne = 3 } = Astro.props;
   .card-grid { list-style: none; padding: 0; display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
   /* le celle non prendono lo spazio fra voci di elenco di .prose */
   .card-grid > :global(li) { display: flex; flex-direction: column; margin: 0; }
+  /* la card di contatto occupa due colonne: chiude la terza riga su desktop, l'ultima riga fra 640 e 1080px */
+  @media (min-width: 640px) { .card-grid > :global(li.doppia) { grid-column: span 2; } }
   @media (min-width: 640px) { .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 768px) { .card-grid { gap: var(--space-8); } }
   @media (min-width: 1080px) {
-    .col-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .col-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .col-3, .col-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 </style>

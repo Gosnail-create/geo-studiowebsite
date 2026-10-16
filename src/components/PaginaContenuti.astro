@@ -74,7 +74,7 @@ const LISTE = new Set(['servizi', 'card', 'corsi', 'blog', 'elenco', 'passi', 't
     <section class="section section--sunken" aria-label={hero.titolo}>
       <div class="container">
         {dopoHero.map((b) => b.tipo === 'servizi' && (
-          <CardGrid colonne={4}>
+          <CardGrid colonne={3}>
             {b.voci.map((v, n) => {
               const srv = servizioPerNome(v.titolo);
               return (
@@ -86,7 +86,7 @@ const LISTE = new Set(['servizi', 'card', 'corsi', 'blog', 'elenco', 'passi', 't
                 </li>
               );
             })}
-            {chiusura && <li><CardContatto label={chiusura.bottone} href={cta} /></li>}
+            <li class="doppia"><CardContatto href={cta} /></li>
           </CardGrid>
         ))}
       </div>
@@ -115,7 +115,7 @@ const LISTE = new Set(['servizi', 'card', 'corsi', 'blog', 'elenco', 'passi', 't
           case 'mappa': return <MappaSede />;
           case 'corsi': return <CorsiGrid voci={b.voci} />;
           case 'card': return (
-            <CardGrid colonne={4}>
+            <CardGrid colonne={3}>
               {b.voci.map((v) => (
                 <li>
                   <ServiceCard titolo={v.titolo} testo={v.testo} href={v.href}
@@ -126,7 +126,7 @@ const LISTE = new Set(['servizi', 'card', 'corsi', 'blog', 'elenco', 'passi', 't
             </CardGrid>
           );
           case 'servizi': return (
-            <CardGrid colonne={4}>
+            <CardGrid colonne={3}>
               {b.voci.map((v, n) => {
                 const srv = servizioPerNome(v.titolo);
                 return (
@@ -138,7 +138,7 @@ const LISTE = new Set(['servizi', 'card', 'corsi', 'blog', 'elenco', 'passi', 't
                   </li>
                 );
               })}
-              {chiusura && <li><CardContatto label={chiusura.bottone} href={cta} /></li>}
+              <li class="doppia"><CardContatto href={cta} /></li>
             </CardGrid>
           );
           default: return null;
