@@ -2,19 +2,21 @@
 import { getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
-import CardGrid from '../../components/CardGrid.astro';
-import BlogCard from '../../components/BlogCard.astro';
+import BlogRow from '../../components/BlogRow.astro';
 import Segnaposto from '../../components/Segnaposto.astro';
 import { articoli } from '../../data/blog';
 import { foto, type NomeFoto } from '../../data/immagini';
 
 const t = (await getEntry('speciali', 'blog'))!.data;
+const aggiornato = (await getEntry('speciali', 'articolo'))!.data.aggiornato as string;
 const filtri = t.filtri as string[];
+// Il primo articolo è il più recente e va in evidenza; gli altri seguono uno per riga.
+const [evidenza, ...altri] = articoli;
 ---
 <Base title={t.title} description={t.description}>
   <Hero titolo={t.h1} testo={[t.testo]} foto={foto(t.foto as NomeFoto)} />
 
-  <section class="section section--sunken" aria-labelledby="filtri-titolo">
+  <section class="section" aria-labelledby="filtri-titolo">
     <div class="container blog">
       <h2 class="visually-hidden" id="filtri-titolo">{t.filtriTitolo}</h2>
       <div class="filtri" role="group" aria-labelledby="filtri-titolo">
@@ -22,11 +24,10 @@ const filtri = t.filtri as string[];
           <button type="button" class="filtro" data-filtro={i === 0 ? '' : f} aria-pressed={i === 0 ? 'true' : 'false'}>{f}</button>
         ))}
       </div>
-      <div id="elenco-articoli">
-        <CardGrid colonne={3}>
-          {articoli.map((a) => <li data-area={a.area}><BlogCard articolo={a} livello="h2" /></li>)}
-        </CardGrid>
-      </div>
+      <ul class="righe" id="elenco-articoli" role="list">
+        {evidenza && <li data-area={evidenza.area}><BlogRow articolo={evidenza} aggiornato={aggiornato} variante="evidenza" /></li>}
+        {altri.map((a) => <li data-area={a.area}><BlogRow articolo={a} aggiornato={aggiornato} variante="riga" /></li>)}
+      </ul>
       <div id="nessun-articolo" hidden>
         <Segnaposto text="Articoli in preparazione" />
       </div>
@@ -36,7 +37,7 @@ const filtri = t.filtri as string[];
 
 <script>
   const bottoni = [...document.querySelectorAll<HTMLButtonElement>('.filtro')];
-  const voci = [...document.querySelectorAll<HTMLElement>('#elenco-articoli li[data-area]')];
+  const voci = [...document.querySelectorAll<HTMLElement>('#elenco-articoli > li[data-area]')];
   const vuoto = document.getElementById('nessun-articolo')!;
   bottoni.forEach((b) => b.addEventListener('click', () => {
     const area = b.dataset.filtro ?? '';
@@ -47,18 +48,24 @@ const filtri = t.filtri as string[];
       v.hidden = !mostra;
       if (mostra) visibili++;
     });
+    // il filetto separa solo le righe visibili
+    voci.filter((v) => !v.hidden).forEach((v, i) => v.classList.toggle('prima', i === 0));
     vuoto.hidden = visibili > 0;
   }));
 </script>
 
 <style>
-  .blog { display: grid; gap: var(--space-8); }
+  .blog { display: grid; gap: var(--space-12); }
   .filtri { display: flex; flex-wrap: wrap; gap: var(--space-2); }
   .filtro {
     font-family: var(--ui-family); font-size: var(--ui-size); line-height: var(--ui-line); font-weight: var(--ui-weight);
     color: var(--ink); background: var(--surface-raised); border: 1.5px solid var(--line-strong);
     border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); cursor: pointer;
+    transition: background-color var(--duration-fast) var(--ease-out-soft), border-color var(--duration-fast) var(--ease-out-soft);
   }
-  .filtro:hover { border-color: var(--ink); }
-  .filtro[aria-pressed='true'] { background: var(--brand); border-color: var(--brand); color: var(--surface-raised); }
+  .filtro:hover { border-color: var(--brand); }
+  .filtro[aria-pressed='true'] { background: var(--brand-tint); border-color: var(--brand); color: var(--brand); }
+  .righe { list-style: none; padding: 0; margin: 0; }
+  .righe > li { padding-block: var(--space-12); border-top: 1px solid var(--line); }
+  .righe > li:first-child, .righe > li.prima { padding-top: 0; border-top: 0; }
 </style>

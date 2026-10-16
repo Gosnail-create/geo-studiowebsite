@@ -89,7 +89,8 @@ const servizioPerNome = (nome: string) => servizi.find((s) => s.nome === nome);
 
   {sezioni.map((s, i) => (
     <Fragment>
-    <Sezione id={idDi(s.titolo)} titolo={s.titolo} layout={layoutDi(s)} sfondo={sfondo(i)}>
+    <Sezione id={idDi(s.titolo)} titolo={s.titolo} layout={layoutDi(s)}
+      sfondo={s.blocchi.some((b) => b.tipo === 'blog') ? 'surface' : sfondo(i)}>
       {s.blocchi.filter((b) => b.tipo === 'foto').map((b) => b.tipo === 'foto' && (
         <Figura slot="aside" foto={fotoStock(b.foto as NomeFoto)} ratio="4 / 3" sizes="(min-width: 1080px) 400px, 100vw" />
       ))}

@@ -72,3 +72,13 @@ Etichette della colonna dei recapiti:
 
 Testi di `testi-it.md` sostituiti dalla revisione (a sinistra il testo originale, a destra quello nuovo):
 - Messaggio → Raccontateci la situazione
+
+## Riassunti degli articoli del blog
+
+Revisione 7 (16 ottobre 2026): riassunti scritti e approvati da Gosnail, da riportare parola per parola. Il limite di righe nelle pagine si ottiene con il CSS.
+
+- Il biometano è un gas rinnovabile che si ottiene dagli effluenti zootecnici e dai sottoprodotti agricoli: la digestione anaerobica produce biogas, che dopo la purificazione può essere immesso nella rete del gas o usato come carburante. Per valutare un impianto in azienda contano soprattutto la quantità e la costanza delle matrici disponibili, la logistica e la distanza dalla rete.
+- Si parla di lavoro in quota quando un'attività espone il lavoratore al rischio di caduta da un'altezza superiore a 2 metri rispetto a un piano stabile, come stabilisce l'articolo 107 del D.Lgs. 81/2008. Gli obblighi del datore di lavoro partono dalla scelta delle attrezzature, privilegiando le protezioni collettive su quelle individuali, e arrivano alla formazione e all'addestramento di chi le usa.
+- La resistenza al fuoco indica per quanto tempo un elemento strutturale, come una trave, un pilastro o un solaio, continua a svolgere la sua funzione durante un incendio, e si esprime in minuti con sigle come R 60 o REI 120. Nel codice di prevenzione incendi (DM 3 agosto 2015) è la misura S.2, e il livello richiesto dipende dalle caratteristiche dell'attività e dal carico di incendio specifico di progetto.
+
+Link delle righe del blog (design-system/components/BlogRow.html): Leggete l'articolo

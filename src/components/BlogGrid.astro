@@ -1,8 +1,17 @@
 ---
-import CardGrid from './CardGrid.astro';
-import BlogCard from './BlogCard.astro';
+// Home, sezione "Approfondimenti tecnici e normativi": i tre articoli più recenti in righe compatte.
+import { getEntry } from 'astro:content';
+import BlogRow from './BlogRow.astro';
 import { articoli } from '../data/blog';
+
+const aggiornato = (await getEntry('speciali', 'articolo'))!.data.aggiornato as string;
 ---
-<CardGrid colonne={3}>
-  {articoli.map((a) => <li><BlogCard articolo={a} /></li>)}
-</CardGrid>
+<ul class="righe-blog" role="list">
+  {articoli.slice(0, 3).map((a) => <li><BlogRow articolo={a} aggiornato={aggiornato} variante="compatta" livello="h3" /></li>)}
+</ul>
+
+<style>
+  .righe-blog { list-style: none; padding: 0; margin: 0; }
+  .righe-blog > li { margin: 0; padding-block: var(--space-12); border-top: 1px solid var(--line); }
+  .righe-blog > li:first-child { padding-top: 0; border-top: 0; }
+</style>

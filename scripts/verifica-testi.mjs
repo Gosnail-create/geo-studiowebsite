@@ -103,6 +103,13 @@ for (const [titolo, files] of Object.entries(SPECIALI)) {
   }
 }
 
+// Riassunti del blog (src/data/blog.ts): devono comparire identici in docs/testi-revisione.md.
+const blog = readFileSync(resolve(root, 'src/data/blog.ts'), 'utf8');
+for (const [, r] of blog.matchAll(/riassunto: "([^"]+)"/g)) {
+  if (!REVISIONE.has(r)) errori.push(`blog.ts: riassunto non presente in testi-revisione.md:
+    «${r}»`);
+}
+
 if (errori.length) {
   console.error(`Verifica testi: ${errori.length} problemi\n  ` + errori.join('\n  '));
   process.exit(1);

@@ -26,6 +26,7 @@ const coppie = [
   ...chiari.flatMap((f) => [['ink', f, 4.5, 'testo'], ['ink-muted', f, 4.5, 'testo secondario'], ['brand', f, 4.5, 'link']]),
   // accent-ink solo su surface e surface-raised (README): sottolineatura dei titoli del blog
   ['accent-ink', 'surface-raised', 3, 'sottolineatura link articoli'],
+  ['accent-ink', 'surface', 3, 'sottolineatura dei titoli nelle righe del blog'],
   ['state-danger', 'surface-raised', 4.5, 'messaggi di errore'],
   ['surface-raised', 'brand', 4.5, 'intestazioni di tabella, filtro attivo'],
   ['on-accent', 'accent', 4.5, 'bottone principale'],
